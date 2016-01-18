@@ -1,0 +1,10 @@
+<div class="sidebar">
+  <div class="sidebar-header">
+    <a href="{{ .Site.BaseURL }}" class="brand"><h1>{{ .Site.Title }}</h1></a>
+  </div>
+  <div class="sidebar-links">
+    {{ range sort .Site.Params.links "weight" "desc" }}
+    <a href="{{ .url }}" class="sidebar-link"><h3>{{ .title }}</h4></a>
+    {{ end }}
+  </div>
+</div>

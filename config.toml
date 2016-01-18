@@ -1,0 +1,19 @@
+baseurl = "https://walterkuppens.com/"
+languageCode = "en-us"
+title = "Walter Kuppens"
+
+[params]
+  description = "Software development and technology blog written by Walter Kuppens."
+  author = "Walter Kuppens"
+  primaryColor = "#375EAB"
+  secondaryColor = "#1847A3"
+
+  [params.links]
+    [params.links.Projects]
+      url = "/projects"
+      title = "Projects"
+      weight = 10
+    [params.links.About]
+      url = "/about"
+      title = "About"
+      weight = 0

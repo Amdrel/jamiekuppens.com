@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no">
+  <meta name="description" content="{{ .Site.Params.description }}">
+  <meta name="theme-color" content="{{ .Site.Params.primaryColor }}">
+  <meta name="msapplication-TileColor" content="{{ .Site.Params.primaryColor }}">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="{{ .Site.Title }}">
+
+  <!-- Above the fold css for fast paint. -->
+  {{ partial "critical.html" . }}
+</head>

@@ -1,0 +1,13 @@
+{{ partial "head.html" . }}
+<body>
+  <div class="flex-container">
+    {{ partial "sidebar.html" . }}
+
+    <div class="content">
+      <article>{{ .Content }}</article>
+    </div>
+
+    {{ partial "footer.html" . }}
+  </div>
+</body>
+</html>

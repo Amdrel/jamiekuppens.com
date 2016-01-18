@@ -1,0 +1,162 @@
+<!-- Critical CSS using evil inline styles. -->
+<style>
+  /* Webfont: LatoLatin-Semibold */
+  @font-face {
+    font-family: 'LatoLatinSemibold';
+    src: url('/fonts/LatoLatin-Semibold.eot'); /* IE9 Compat Modes */
+    src: url('/fonts/LatoLatin-Semibold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('/fonts/LatoLatin-Semibold.woff2') format('woff2'), /* Modern Browsers */
+         url('/fonts/LatoLatin-Semibold.woff') format('woff'), /* Modern Browsers */
+         url('/fonts/LatoLatin-Semibold.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Webfont: LatoLatin-Regular */
+  @font-face {
+    font-family: 'LatoLatinRegular';
+    src: url('/fonts/LatoLatin-Regular.eot'); /* IE9 Compat Modes */
+    src: url('/fonts/LatoLatin-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('/fonts/LatoLatin-Regular.woff2') format('woff2'), /* Modern Browsers */
+         url('/fonts/LatoLatin-Regular.woff') format('woff'), /* Modern Browsers */
+         url('/fonts/LatoLatin-Regular.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Webfont: LatoLatin-Semibold */
+  @font-face {
+    font-family: 'FjallaOneRegular';
+    src: url('/fonts/fjallaone-regular.eot'); /* IE9 Compat Modes */
+    src: url('/fonts/fjallaone-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('/fonts/fjallaone-regular.woff2') format('woff2'), /* Modern Browsers */
+         url('/fonts/fjallaone-regular.woff') format('woff'), /* Modern Browsers */
+         url('/fonts/fjallaone-regular.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  .flex-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
+  .sidebar {
+    min-width: 300px;
+    background: {{ .Site.Params.primaryColor }};
+    font-family: 'LatoLatinSemibold';
+  }
+
+  .brand {
+    text-decoration: none;
+  }
+
+  .brand h1 {
+    width: 100%;
+    margin: 25px 0 35px 25px;
+    color: white;
+  }
+
+  .sidebar-link {
+    text-decoration: none;
+    color: white;
+  }
+
+  .sidebar-link h3 {
+    margin: 0 0 15px 25px;
+  }
+
+  .content {
+    width: 100%;
+    font-family: 'LatoLatinRegular';
+  }
+
+  .content article {
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 25px;
+  }
+
+  .content article p {
+    font-size: 18px;
+  }
+
+  .content h1, .content h2, .content h3, .content h4 {
+    color: #2c3e50;
+    font-family: 'FjallaOneRegular';
+  }
+
+  .content h1 {
+    text-align: center;
+    font-size: 48px;
+  }
+
+  .content h2 {
+    font-size: 38px;
+  }
+
+  .content h3 {
+    font-size: 32px;
+  }
+
+  .content h4 {
+    font-size: 24px;
+  }
+
+  .mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 750px) {
+    .flex-container {
+      display: block;
+      flex-wrap: wrap;
+    }
+
+    .sidebar {
+      display: block;
+      width: 100vw;
+      background: {{ .Site.Params.primaryColor }};
+    }
+
+    .sidebar-header {
+      padding: 7px 15px 7px 15px;
+    }
+
+    .brand h1 {
+      display: inline;
+      margin: 0;
+      width: auto;
+      font-size: 28px;
+    }
+
+    .sidebar-links {
+      padding: 7px 0 7px 0;
+      background: {{ .Site.Params.secondaryColor }};
+    }
+
+    .sidebar-link h3 {
+      display: inline;
+      margin: 0 0 15px 15px;
+    }
+
+    .mobile {
+      display: inline;
+    }
+
+    .desktop {
+      display: none;
+    }
+  }
+</style>
