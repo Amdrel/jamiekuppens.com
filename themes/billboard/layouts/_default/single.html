@@ -6,7 +6,11 @@
     <div class="content">
       <article>
         <h1>{{ .Title }}</h1>
-        <div class="meta">{{ .Date.Format "Mon, Jan 2, 2006" }}</div>
+
+        {{ if eq .Type "post" }}
+          <div class="meta">{{ .Date.Format "Mon, Jan 2, 2006" }}</div>
+        {{ end }}
+
         {{ .Content }}
       </article>
     </div>
