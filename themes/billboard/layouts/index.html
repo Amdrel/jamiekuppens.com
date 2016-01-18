@@ -4,7 +4,7 @@
     {{ partial "sidebar.html" . }}
 
     <div class="content">
-      {{ range .Data.Pages }}
+      {{ range first 5 .Site.Pages }}
         {{ .Render "summary" }}
       {{ end }}
     </div>

@@ -4,7 +4,16 @@
   </div>
   <div class="sidebar-links">
     {{ range sort .Site.Params.links "weight" "desc" }}
-    <a href="{{ .url }}" class="sidebar-link"><h3>{{ .title }}</h4></a>
+      <a href="{{ .url }}" class="sidebar-link"><h3>{{ .title }}</h4></a>
+    {{ end }}
+  </div>
+
+  <div class="sidebar-link recent-posts desktop">
+    <h2>Recent Posts</h2>
+    {{ range .Site.Pages }}
+      {{ if eq .Type "post" }}
+        <a href="{{ .Permalink }}"><h4>{{ .Title }}</h4></a>
+      {{ end }}
     {{ end }}
   </div>
 </div>
