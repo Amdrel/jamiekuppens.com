@@ -9,6 +9,10 @@ title = "Walter Kuppens"
   secondaryColor = "#1847A3"
 
   [params.links]
+    [params.links.Blog]
+      url = "/"
+      title = "Blog"
+      weight = 20
     [params.links.Projects]
       url = "/projects"
       title = "Projects"

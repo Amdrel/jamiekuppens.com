@@ -1,0 +1,13 @@
+{{ if eq .Type "post" }}
+  <article>
+    <a class="header" href="{{ .Permalink }}"><h1>{{ .Title }}</h1></a>
+    <div class="meta">{{ .Date.Format "Mon, Jan 2, 2006" }}</div>
+
+    {{ if .Truncated }}
+      <div class="summary">{{ .Summary }}...</div>
+      <a href="{{ .Permalink }}">Read more →</a>
+    {{ else }}
+      <div class="summary">{{ .Summary }}</div>
+    {{ end }}
+  </article>
+{{ end }}
