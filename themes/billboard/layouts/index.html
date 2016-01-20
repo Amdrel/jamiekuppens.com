@@ -7,9 +7,9 @@
       {{ range first 5 .Site.Pages }}
         {{ .Render "summary" }}
       {{ end }}
-    </div>
 
-    {{ partial "footer.html" . }}
+      {{ partial "footer.html" . }}
+    </div>
   </div>
 </body>
 </html>

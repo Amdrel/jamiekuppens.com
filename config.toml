@@ -7,6 +7,7 @@ title = "Walter Kuppens"
   author = "Walter Kuppens"
   primaryColor = "#375EAB"
   secondaryColor = "#1847A3"
+  analytics = "UA-72614951-1"
 
   [params.links]
     [params.links.Blog]
