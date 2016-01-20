@@ -1,0 +1,21 @@
+{{ partial "head.html" . }}
+<body>
+  <div class="flex-container">
+    {{ partial "sidebar.html" . }}
+
+    <div class="content">
+      <div class="not-found">
+        <h1>404 - This is not the page you're looking for...</h1>
+        <h3>but you may find what you are looking for here.</h3>
+        <hr>
+      </div>
+
+      {{ range first 5 .Site.Pages }}
+        {{ .Render "summary" }}
+      {{ end }}
+
+      {{ partial "footer.html" . }}
+    </div>
+  </div>
+</body>
+</html>
