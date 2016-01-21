@@ -7,12 +7,25 @@
       <h1>{{ .Title }}</h1>
 
       <article class="archive">
-        {{ range .Site.Pages.GroupByDate "2006-01" }}
-          <span class="meta">{{ .Key }}</span>
+        {{ range .Site.Pages.GroupByDate "2006-01-02" }}
+          {{ $.Scratch.Set "count" 0 }}
+
           {{ range .Pages }}
             {{ if eq .Type "post" }}
-              <a href="{{ .Permalink }}"><h4>{{ .Title }}</h4></a>
+              {{ $.Scratch.Set "count" (add ($.Scratch.Get "count") 1) }}
             {{ end }}
+          {{ end }}
+
+          {{ if gt ($.Scratch.Get "count") 0 }}
+            <div class="date-group">
+              <span class="meta">{{ .Key }}</span>
+
+              {{ range .Pages }}
+                {{ if eq .Type "post" }}
+                  <a href="{{ .Permalink }}"><h4>{{ .Title }}</h4></a>
+                {{ end }}
+              {{ end }}
+            </div>
           {{ end }}
         {{ end }}
       </article>

@@ -2,7 +2,6 @@
 date = "2016-01-17T18:30:39-08:00"
 draft = false
 title = "About"
-
 +++
 
 I am a software developer primarily interested in web development and the
