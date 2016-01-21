@@ -1,0 +1,23 @@
+{{ partial "head.html" . }}
+<body>
+  <div class="flex-container">
+    {{ partial "sidebar.html" . }}
+
+    <div class="content">
+      <h1>{{ .Title }}</h1>
+
+      <article class="archive">
+        {{ range .Site.Pages.GroupByDate "2006-01" }}
+          <span class="meta">{{ .Key }}</span>
+          {{ range .Pages }}
+            {{ if eq .Type "post" }}
+              <a href="{{ .Permalink }}"><h4>{{ .Title }}</h4></a>
+            {{ end }}
+          {{ end }}
+        {{ end }}
+      </article>
+
+      {{ partial "footer.html" . }}
+    </div>
+  </div>
+</body>

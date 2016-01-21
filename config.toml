@@ -18,6 +18,10 @@ title = "Walter Kuppens"
       url = "/projects"
       title = "Projects"
       weight = 10
+    [params.links.Archive]
+      url = "/archive"
+      title = "Archive"
+      weight = 5
     [params.links.About]
       url = "/about"
       title = "About"
