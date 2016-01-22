@@ -5,6 +5,7 @@ title = "Walter Kuppens"
 [params]
   description = "Software development and technology blog written by Walter Kuppens."
   author = "Walter Kuppens"
+  copyright = "© 2016 Walter Kuppens. CC BY-SA 3.0"
   primaryColor = "#375EAB"
   secondaryColor = "#1847A3"
   analytics = "UA-72614951-1"

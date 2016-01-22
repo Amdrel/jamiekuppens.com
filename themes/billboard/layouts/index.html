@@ -3,13 +3,13 @@
   <div class="flex-container">
     {{ partial "sidebar.html" . }}
 
-    <div class="content">
+    <main class="content">
       {{ range first 5 .Site.Pages }}
         {{ .Render "summary" }}
       {{ end }}
 
       {{ partial "footer.html" . }}
-    </div>
+    </main>
   </div>
 </body>
 </html>

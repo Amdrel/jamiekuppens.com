@@ -43,6 +43,38 @@
     margin: 0;
   }
 
+  a {
+    color: #2A77DA;
+    text-decoration: none;
+  }
+
+  footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    color: white;
+    background: #525252;
+  }
+
+  footer span {
+    line-height: 40px;
+    vertical-align: middle;
+  }
+
+  footer a {
+    color: #8CBEFF;
+  }
+
+  .footer-text {
+    padding: 0 25px 0 25px;
+  }
+
+  .sidebar a {
+    color: #C6DFFF;
+    text-decoration: none;
+  }
+
   .flex-container {
     display: flex;
     width: 100%;
@@ -54,6 +86,7 @@
 
   .sidebar {
     min-width: 300px;
+    padding-left: 25px;
     background: {{ .Site.Params.primaryColor }};
     font-family: 'LatoLatinSemibold';
   }
@@ -64,7 +97,7 @@
 
   .brand h1 {
     width: 100%;
-    margin: 25px 0 35px 25px;
+    margin: 25px 0 35px 0;
     color: white;
   }
 
@@ -74,7 +107,7 @@
   }
 
   .sidebar-link h1, .sidebar-link h2, .sidebar-link h3, .sidebar-link h4 {
-    margin: 0 15px 15px 25px;
+    margin: 0 15px 15px 0;
   }
 
   .recent-posts {
@@ -90,8 +123,15 @@
     text-decoration: underline;
   }
 
+  .copyright {
+    margin-top: 35px;
+    color: white;
+  }
+
   .content {
+    position: relative;
     width: 100%;
+    padding-bottom: 40px;
     font-family: 'LatoLatinRegular';
   }
 
@@ -180,14 +220,25 @@
   }
 
   @media only screen and (max-width: 750px) {
+    footer {
+      height: 80px;
+    }
+
+    footer span {
+      line-height: 40px;
+    }
+
     .flex-container {
-      display: block;
       flex-wrap: wrap;
+      flex-direction: column;
     }
 
     .sidebar {
       display: block;
       width: 100vw;
+      flex-grow: 0;
+      flex-shrink: 1;
+      padding-left: 0;
       background: {{ .Site.Params.primaryColor }};
     }
 
@@ -210,6 +261,12 @@
     .sidebar-link h3 {
       display: inline;
       margin: 0 0 15px 15px;
+    }
+
+    .content {
+      padding-bottom: 80px;
+      flex-grow: 1;
+      flex-shrink: 0;
     }
 
     .content figure img {
