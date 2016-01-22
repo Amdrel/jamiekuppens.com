@@ -1,6 +1,6 @@
 {{ if eq .Type "post" }}
   <article>
-    <a class="header" href="{{ .Permalink }}"><h1>{{ .Title }}</h1></a>
+    <h1><a class="header" href="{{ .Permalink }}">{{ .Title }}</a></h1>
     <div class="meta">{{ .Date.Format "Mon, Jan 2, 2006" }}</div>
 
     {{ if .Truncated }}

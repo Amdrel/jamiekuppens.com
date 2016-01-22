@@ -45,7 +45,12 @@
 
   a {
     color: #2A77DA;
+    outline: none;
     text-decoration: none;
+  }
+
+  a:focus {
+    color: #FDAB27;
   }
 
   footer {
@@ -76,6 +81,10 @@
     text-decoration: none;
   }
 
+  .sidebar a:focus {
+    color: #FDAB27;
+  }
+
   .flex-container {
     display: flex;
     width: 100%;
@@ -92,6 +101,13 @@
     font-family: 'LatoLatinSemibold';
   }
 
+  /* Evil CSS hack for accessibility. Querying starting from sidebar prevents
+     the sidebar anchor color from overwriting the brand color ,while still
+     keeping the focus colors. */
+  .sidebar .brand {
+    color: white;
+  }
+
   .brand {
     text-decoration: none;
   }
@@ -99,7 +115,6 @@
   .brand h1 {
     width: 100%;
     margin: 25px 0 35px 0;
-    color: white;
   }
 
   .sidebar-link {
@@ -150,7 +165,6 @@
   }
 
   .content h1, .content h2, .content h3, .content h4 {
-    color: #2c3e50;
     font-family: 'FjallaOneRegular';
   }
 
@@ -186,7 +200,12 @@
   }
 
   .header {
+    color: #2c3e50;
     text-decoration: none;
+  }
+
+  .post h1, .post h2, .post h3, .post h4 {
+    color: #2c3e50;
   }
 
   .meta {

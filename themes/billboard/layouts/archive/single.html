@@ -4,7 +4,9 @@
     {{ partial "sidebar.html" . }}
 
     <main class="content">
-      <h1>{{ .Title }}</h1>
+      <div class="post">
+        <h1>{{ .Title }}</h1>
+      </div>
 
       <article class="archive">
         {{ range .Site.Pages.GroupByDate "2006-01-02" }}
@@ -26,7 +28,7 @@
               <!-- Render all pages in the group that are posts. -->
               {{ range .Pages }}
                 {{ if eq .Type "post" }}
-                  <a href="{{ .Permalink }}"><h4>{{ .Title }}</h4></a>
+                  <h4><a class="header" href="{{ .Permalink }}">{{ .Title }}</a></h4>
                 {{ end }}
               {{ end }}
             </div>
