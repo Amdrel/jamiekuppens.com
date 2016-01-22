@@ -9,6 +9,7 @@ title = "Walter Kuppens"
   primaryColor = "#375EAB"
   secondaryColor = "#1847A3"
   analytics = "UA-72614951-1"
+  favicon = "/favicon.ico?v=1"
 
   [params.links]
     [params.links.Blog]

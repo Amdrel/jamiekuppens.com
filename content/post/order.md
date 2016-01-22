@@ -8,7 +8,7 @@ title = "Order Testing yay!"
 Order testing is great testing. This is yet another pointless article that
 accomplishes nothing, if only I had anything better to do...
 
-{{< figure src="/static/images/code.png" alt="Random code" >}}
+{{< figure src="/images/code.png" alt="Random code" >}}
 
 More words below image, magical words. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In viverra nisl libero, bibendum rhoncus mi hendrerit nec. Duis non fringilla sem, et molestie mauris. Aenean condimentum ipsum at lorem tristique rutrum. Vivamus gravida convallis accumsan. Maecenas malesuada, ipsum eget egestas bibendum, massa odio pretium metus, in interdum nisi risus ac eros. Donec cursus hendrerit cursus. Integer tristique malesuada nunc, iaculis lobortis metus pellentesque a. Aliquam sodales scelerisque sollicitudin. Praesent vel sem pharetra, molestie purus eu, commodo risus.
 
