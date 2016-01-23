@@ -2,11 +2,18 @@
 <html>
 <head>
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no">
-  <meta name="description" content="{{ .Site.Params.description }}">
-  <meta name="theme-color" content="{{ .Site.Params.primaryColor }}">
 
+  <!-- Use the description of the blog post if available, which makes Google
+       happy and display relevant information in search results. -->
+  {{ if .Description }}
+    <meta name="description" content="{{ .Description }}">
+  {{ else }}
+    <meta name="description" content="{{ .Site.Params.description }}">
+  {{ end }}
+
+  <!-- Add to homescreen support. -->
   <link rel="manifest" href="/manifest.json">
-
+  <meta name="theme-color" content="{{ .Site.Params.primaryColor }}">
   <meta name="msapplication-TileColor" content="{{ .Site.Params.primaryColor }}">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="application-name" content="{{ .Site.Title }}">
@@ -20,6 +27,7 @@
 
   <title>{{ .Title }}</title>
 
-  <!-- Above the fold css for fast paint. -->
+  <!-- Above the fold css for fast paint, or rather all css stuffed in one
+       place due to laziness. -->
   {{ partial "critical.html" . }}
 </head>
