@@ -123,8 +123,13 @@
     color: white;
   }
 
-  .sidebar-link h1, .sidebar-link h2, .sidebar-link h3, .sidebar-link h4 {
+  .sidebar-link {
+    display: block;
     margin: 0 15px 15px 0;
+  }
+
+  .sidebar-link-lg {
+    font-size: 20px;
   }
 
   .recent-posts {
@@ -274,7 +279,7 @@
       background: {{ .Site.Params.secondaryColor }};
     }
 
-    .sidebar-link h3 {
+    .sidebar-link {
       display: inline;
       margin: 0 0 15px 15px;
     }

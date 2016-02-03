@@ -4,7 +4,7 @@
   </div>
   <div class="sidebar-links">
     {{ range sort .Site.Params.links "weight" "desc" }}
-      <a href="{{ $.Site.BaseURL }}{{ .url }}" class="sidebar-link"><h3>{{ .title }}</h3></a>
+      <span class="sidebar-link sidebar-link-lg"><a href="{{ $.Site.BaseURL }}{{ .url }}">{{ .title }}</a></span>
     {{ end }}
   </div>
 
