@@ -2,17 +2,18 @@
   <div class="sidebar-content">
     <div class="sidebar-header">
       <a href="{{ .Site.BaseURL }}" class="brand"><h1>{{ .Site.Title }}</h1></a>
-
-      <div class="social-icons">
-        <a href="https://github.com/Reshurum"><img src="/images/GitHub-Mark-Light-120px-plus.png"></a>
-        <a href="https://twitter.com/Reshurum"><img src="/images/twitter-128.png"></a>
-      </div>
     </div>
-    <div class="sidebar-links">
+
+    <div class="social-icons">
+      <a href="https://github.com/Reshurum"><img src="/images/GitHub-Mark-Light-120px-plus.png"></a>
+      <a href="https://twitter.com/Reshurum"><img src="/images/twitter-128.png"></a>
+    </div>
+
+    <nav class="sidebar-links">
       {{ range sort .Site.Params.links "weight" "desc" }}
         <span class="sidebar-link sidebar-link-lg"><a href="{{ $.Site.BaseURL }}{{ .url }}">{{ .title }}</a></span>
       {{ end }}
-    </div>
+    </nav>
 
     <div class="recent-posts desktop">
       <h2>Recent Posts</h2>

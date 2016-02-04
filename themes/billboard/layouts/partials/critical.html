@@ -270,7 +270,6 @@
     }
 
     .sidebar {
-      position: fixed;
       display: block;
       width: 100vw;
       z-index: 5;
@@ -287,8 +286,8 @@
     }
 
     .sidebar-header {
-      height: 36px;
       padding: 7px 15px 7px 15px;
+      text-align: center;
     }
 
     .brand h1 {
@@ -296,16 +295,12 @@
       margin: 0;
       width: auto;
       font-size: 28px;
-      line-height: 36px;
     }
 
     .social-icons {
-      display: inline-block;
-      position: absolute;
-      height: 36px;
-      margin: 0;
+      display: table;
+      margin: 0 auto;
       padding-top: 4px;
-      right: 0;
     }
 
     .social-icons img {
@@ -314,19 +309,18 @@
     }
 
     .sidebar-links {
-      height: 26px;
+      display: table;
+      margin: 0 auto;
       padding: 7px 0 7px 0;
-      background: {{ .Site.Params.secondaryColor }};
     }
 
     .sidebar-link {
       display: inline;
-      margin: 0 0 15px 15px;
+      margin: 0 7px 0 7px;
       line-height: 26px;
     }
 
     .content {
-      margin-top: 90px;
       padding-bottom: 40px;
       flex-grow: 1;
       flex-shrink: 0;
