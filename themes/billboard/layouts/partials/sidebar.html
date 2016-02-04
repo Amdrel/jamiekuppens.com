@@ -1,24 +1,26 @@
 <div class="sidebar">
-  <div class="sidebar-header">
-    <a href="{{ .Site.BaseURL }}" class="brand"><h1>{{ .Site.Title }}</h1></a>
-  </div>
-  <div class="sidebar-links">
-    {{ range sort .Site.Params.links "weight" "desc" }}
-      <span class="sidebar-link sidebar-link-lg"><a href="{{ $.Site.BaseURL }}{{ .url }}">{{ .title }}</a></span>
-    {{ end }}
-  </div>
-
-  <div class="sidebar-link recent-posts desktop">
-    <h2>Recent Posts</h2>
-    {{ range .Site.Pages }}
-      {{ if eq .Type "post" }}
-        <h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
+  <div class="sidebar-content">
+    <div class="sidebar-header">
+      <a href="{{ .Site.BaseURL }}" class="brand"><h1>{{ .Site.Title }}</h1></a>
+    </div>
+    <div class="sidebar-links">
+      {{ range sort .Site.Params.links "weight" "desc" }}
+        <span class="sidebar-link sidebar-link-lg"><a href="{{ $.Site.BaseURL }}{{ .url }}">{{ .title }}</a></span>
       {{ end }}
-    {{ end }}
-  </div>
+    </div>
 
-  <div class="copyright desktop">
-    Powered by <a href="https://gohugo.io/">Hugo</a><br>
-    {{ .Site.Params.copyright }}
+    <div class="recent-posts desktop">
+      <h2>Recent Posts</h2>
+      {{ range .Site.Pages }}
+        {{ if eq .Type "post" }}
+          <span class="sidebar-link"><a href="{{ .Permalink }}">{{ .Title }}</a></span>
+        {{ end }}
+      {{ end }}
+    </div>
+
+    <div class="copyright desktop">
+      Powered by <a href="https://gohugo.io/">Hugo</a><br>
+      {{ .Site.Params.copyright }}
+    </div>
   </div>
 </div>

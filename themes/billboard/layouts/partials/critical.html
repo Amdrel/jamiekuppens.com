@@ -68,10 +68,6 @@
     vertical-align: middle;
   }
 
-  footer a {
-    color: #8CBEFF;
-  }
-
   .footer-text {
     font-size: 14px;
     padding: 0 25px 0 25px;
@@ -100,6 +96,12 @@
     padding-left: 25px;
     background: {{ .Site.Params.primaryColor }};
     font-family: 'LatoLatinSemibold';
+  }
+
+  .sidebar-content {
+    position: fixed;
+    top: 0;
+    bottom: 0;
   }
 
   /* Evil CSS hack for accessibility. Querying starting from sidebar prevents
@@ -134,6 +136,7 @@
 
   .recent-posts {
     margin-top: 50px;
+    color: white;
   }
 
   .recent-posts a {
@@ -168,6 +171,7 @@
 
   .content article p {
     font-size: 20px;
+    line-height: 30px;
   }
 
   .content h1, .content h2, .content h3, .content h4 {
@@ -221,6 +225,7 @@
   .summary {
     margin: 15px 0 15px 0;
     font-size: 20px;
+    line-height: 30px;
   }
 
   .archive {
@@ -255,15 +260,24 @@
     }
 
     .sidebar {
+      position: fixed;
       display: block;
       width: 100vw;
+      z-index: 5;
       flex-grow: 0;
       flex-shrink: 1;
       padding-left: 0;
       background: {{ .Site.Params.primaryColor }};
     }
 
+    .sidebar-content {
+      position: static;
+      top: auto;
+      bottom: auto;
+    }
+
     .sidebar-header {
+      height: 36px;
       padding: 7px 15px 7px 15px;
     }
 
@@ -275,6 +289,7 @@
     }
 
     .sidebar-links {
+      height: 26px;
       padding: 7px 0 7px 0;
       background: {{ .Site.Params.secondaryColor }};
     }
@@ -285,6 +300,7 @@
     }
 
     .content {
+      margin-top: 90px;
       padding-bottom: 40px;
       flex-grow: 1;
       flex-shrink: 0;

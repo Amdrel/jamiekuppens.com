@@ -2,20 +2,14 @@
 # See https://github.com/spf13/hugoThemes#themetoml for an example
 
 name = "billboard"
-license = "MIT"
+license = "BSD 2-clause Simplified"
 licenselink = "https://github.com/yourname/yourtheme/blob/master/LICENSE.md"
 description = ""
-homepage = "http://siteforthistheme.com/"
+homepage = "https://walterkuppens.com/"
 tags = ["", ""]
 features = ["", ""]
-min_version = 0.14
+min_version = 0.1
 
 [author]
-  name = ""
-  homepage = ""
-
-# If porting an existing theme
-[original]
-  name = ""
-  homepage = ""
-  repo = ""
+  name = "Walter Kuppens"
+  homepage = "https://walterkuppens.com/"

@@ -2,6 +2,7 @@
 date = "2016-01-20T11:49:13-08:00"
 draft = true
 title = "Order Testing yay!"
+slug = "order-testing"
 description = "Order testing is easy, I have no idea what I'm jabbering on about."
 
 +++

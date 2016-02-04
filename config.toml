@@ -1,6 +1,9 @@
-baseurl = "https://walterkuppens.com/"
+baseurl = "https://walterkuppens.com"
 languageCode = "en-us"
 title = "Walter Kuppens"
+
+[permalinks]
+  post = "/:year/:month/:day/:slug"
 
 [params]
   description = "Software development and technology blog written by Walter Kuppens."
