@@ -105,7 +105,7 @@
   }
 
   /* Evil CSS hack for accessibility. Querying starting from sidebar prevents
-     the sidebar anchor color from overwriting the brand color ,while still
+     the sidebar anchor color from overwriting the brand color, while still
      keeping the focus colors. */
   .sidebar .brand {
     color: white;
@@ -117,7 +117,17 @@
 
   .brand h1 {
     width: 100%;
-    margin: 25px 0 35px 0;
+    margin: 25px 0 15px 0;
+  }
+
+  .social-icons {
+    margin-bottom: 15px;
+  }
+
+  .social-icons img {
+    width: 26px;
+    height: auto;
+    margin-right: 15px;
   }
 
   .sidebar-link {
@@ -286,6 +296,21 @@
       margin: 0;
       width: auto;
       font-size: 28px;
+      line-height: 36px;
+    }
+
+    .social-icons {
+      display: inline-block;
+      position: absolute;
+      height: 36px;
+      margin: 0;
+      padding-top: 4px;
+      right: 0;
+    }
+
+    .social-icons img {
+      width: 28px;
+      height: auto;
     }
 
     .sidebar-links {
@@ -297,6 +322,7 @@
     .sidebar-link {
       display: inline;
       margin: 0 0 15px 15px;
+      line-height: 26px;
     }
 
     .content {
