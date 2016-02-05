@@ -4,4 +4,10 @@ draft = true
 title = "Projects"
 +++
 
-TODO
+{{% headerlink href="https://github.com/StickmanVentures/inquiry-bot" %}}Inquiry Bot{{% /headerlink %}}
+
+Inquiry Bot is a slackbot using Slack's webhook api that I created for the
+wonderful people at [Stickman Ventures](https://www.stickmanventures.com/). It's
+purpose is to instantly post contact information from the website directly to
+one of our slack channels through [Firebase](https://www.firebase.com/).
+You can find Inquiry Bot on [GitHub](https://github.com/StickmanVentures/inquiry-bot).

@@ -154,7 +154,7 @@
     text-decoration: none;
   }
 
-  .recent-posts a :hover {
+  .recent-posts a:hover {
     text-decoration: underline;
   }
 
@@ -167,6 +167,7 @@
     position: relative;
     width: 100%;
     font-family: 'LatoLatinRegular';
+    background: #F9F9F9;
   }
 
   .content hr {
@@ -219,9 +220,13 @@
     text-align: center;
   }
 
-  .header {
+  .link-header a {
     color: #2c3e50;
     text-decoration: none;
+  }
+
+  .link-header a:focus {
+    color: #577DA2;
   }
 
   .post h1, .post h2, .post h3, .post h4 {
@@ -272,7 +277,7 @@
     .sidebar {
       display: block;
       width: 100vw;
-      z-index: 5;
+      min-width: auto;
       flex-grow: 0;
       flex-shrink: 1;
       padding-left: 0;
