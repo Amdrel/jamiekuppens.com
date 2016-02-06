@@ -100,6 +100,7 @@
 
   .sidebar-content {
     position: fixed;
+    max-width: 300px;
     top: 0;
     bottom: 0;
   }
@@ -216,6 +217,17 @@
     margin: 0 auto;
   }
 
+  .highlight {
+    overflow: auto;
+    padding: 1em;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+
+  .highlight pre {
+    margin: 0;
+  }
+
   .not-found h1, .not-found h2, .not-found h3, .not-found h4 {
     text-align: center;
   }
@@ -286,6 +298,7 @@
 
     .sidebar-content {
       position: static;
+      max-width: none;
       top: auto;
       bottom: auto;
     }
