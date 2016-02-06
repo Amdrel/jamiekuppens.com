@@ -1,5 +1,5 @@
 +++
-date = "2016-02-05T18:10:11-08:00"
+date = "2016-02-06T18:10:11-08:00"
 draft = true
 title = "Dependency Management in Go 1.6 is No Longer Painful"
 slug = "dependency-management-in-go-is-no-longer-painful"
