@@ -26,7 +26,7 @@
     text-rendering: optimizeLegibility;
   }
 
-  /* Webfont: LatoLatin-Semibold */
+  /* Webfont: FjallaOne-Regular */
   @font-face {
     font-family: 'FjallaOneRegular';
     src: url('/fonts/fjallaone-regular.eot'); /* IE9 Compat Modes */
@@ -34,6 +34,17 @@
          url('/fonts/fjallaone-regular.woff2') format('woff2'), /* Modern Browsers */
          url('/fonts/fjallaone-regular.woff') format('woff'), /* Modern Browsers */
          url('/fonts/fjallaone-regular.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Webfont: WorkSans-Regular */
+  @font-face {
+    font-family: 'WorkSansRegular';
+    src: url('/fonts/WorkSans-Regular.woff2') format('woff2'), /* Modern Browsers */
+         url('/fonts/WorkSans-Regular.woff') format('woff'), /* Modern Browsers */
+         url('/fonts/WorkSans-Regular.ttf') format('truetype');
     font-style: normal;
     font-weight: normal;
     text-rendering: optimizeLegibility;
@@ -66,6 +77,12 @@
   footer span {
     line-height: 40px;
     vertical-align: middle;
+  }
+
+  code {
+    background: #E6E6E6;
+    padding: 3px;
+    border-radius: 3px;
   }
 
   .footer-text {
@@ -167,7 +184,7 @@
   .content {
     position: relative;
     width: 100%;
-    font-family: 'LatoLatinRegular';
+    font-family: 'WorkSansRegular';
     background: #F9F9F9;
   }
 

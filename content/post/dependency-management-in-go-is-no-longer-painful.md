@@ -3,26 +3,26 @@ date = "2016-02-05T18:10:11-08:00"
 draft = true
 title = "Dependency Management in Go 1.6 is No Longer Painful"
 slug = "dependency-management-in-go-is-no-longer-painful"
-description = ""
+description = "Traditionally, Go has handled dependencies by installing them all in the same directory; but with Go 1.6, vendoring is now offical."
 +++
 
 Traditionally, Go has handled dependencies by installing them all in the same directory under
-`$GOPATH`. This works fine if you're working on a small application you do not care too much about;
-but if the project is large or has lots of developers, version locking dependencies becomes a
-must.
+`$GOPATH/src`. This works fine if you're working on a small application you do not care too much
+about; but if the project is large or has lots of developers, version locking dependencies becomes a
+must, lest library version mismatches will ruin your day.
+
+<!--more-->
 
 ### The Problem
 
-Version locking dependencies is typically not too much of a problem for most of the more popular
-languages; however since Go used to keep all dependencies in one area, you could not have more than
+Version locking dependencies is typically not a problem for the more popular
+languages; however since Go keeps all dependencies in one area, you could not have more than
 one version of the same dependency installed. How the community got around this limitation was to
-abuse go subpackages to store your dependencies using tools like
-[Godep](https://github.com/tools/godep). The problem with this approach is that you end up with
-ridiculously long import paths that are a pain to write and make vim scream.
+abuse go subpackages to store dependencies using tools like [Godep](https://github.com/tools/godep).
+The problem with this approach is that you end up with ridiculously long import paths that are a
+pain to manage and make vim scream.
 
 {{< highlight go >}}
-package main
-
 import (
 	"html/template"
 	"net/http"
@@ -30,16 +30,35 @@ import (
 	// Beautiful imports.
 	"github.com/reshurum/really-long-app-name/Godeps/_workspace/src/github.com/gorilla/mux"
 	"github.com/reshurum/really-long-app-name/Godeps/_workspace/src/github.com/gorilla/sessions"
-	"github.com/reshurum/really-long-app-name/Godeps/_workspace/src/github.com/jinzhu/gorm"
 )
-
-func main() {
-	...
-}
 {{< /highlight >}}
 
 ## The Solution
 
 With the release of Go 1.5, an experimental environment variable called `GO15VENDOREXPERIMENT` was
-added to solve all these problems. The only problem with is it's not enabled by default so you
-have to make it clear to contributors it's required.
+added to solve this problem. The only problem is that it's not enabled by default so you have to
+make it clear to contributors it's required. With the upcoming release of Go 1.6, vendoring
+is now enabled by default and is now considered stable.
+
+Vendoring allows Go projects to put dependencies in directory called `vendor`, and these
+dependencies can be referenced using the traditional method.
+
+{{< highlight go >}}
+import (
+	"html/template"
+	"net/http"
+
+	// Much better.
+	"github.com/gorilla/mux"
+	"github.com/gorilla/sessions"
+)
+{{< /highlight >}}
+
+`go get` will not manage vendor directories though and leaves that job to tools like
+[Glide](https://github.com/Masterminds/glide). Glide will set up lock files and keeps track of
+project dependencies using a project specific configuration file. These tools are not required and it is
+up to developers to decide how they want to manage their dependencies.
+
+All in all, dependency management in Go is much less of a pain with vendoring considered stable in
+the upcoming release of Go 1.6. At the time of this writing, Go 1.6 has yet to release and a release
+candidate version can be found [here](https://golang.org/dl/#unstable).
