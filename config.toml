@@ -17,14 +17,14 @@ title = "Walter Kuppens"
       title = "Blog"
       weight = 20
     [params.links.Projects]
-      url = "/projects"
+      url = "/projects/"
       title = "Projects"
       weight = 10
     [params.links.Archive]
-      url = "/archive"
+      url = "/archive/"
       title = "Archive"
       weight = 5
     [params.links.About]
-      url = "/about"
+      url = "/about/"
       title = "About"
       weight = 0
