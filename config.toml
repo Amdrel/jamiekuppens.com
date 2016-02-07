@@ -6,10 +6,18 @@ title = "Walter Kuppens"
   description = "Software development and technology blog written by Walter Kuppens."
   author = "Walter Kuppens"
   copyright = "© 2016 Walter Kuppens. CC BY-SA 3.0"
+
+  # Theming related values.
   primaryColor = "#375EAB"
   secondaryColor = "#1847A3"
+
   analytics = "UA-72614951-1"
   favicon = "/favicon.ico?v=1"
+
+  # Social urls.
+  github = "https://github.com/Reshurum"
+  twitter = "https://twitter.com/Reshurum"
+  googleplus = "https://plus.google.com/+WalterKuppens"
 
   [params.links]
     [params.links.Blog]
