@@ -1,6 +1,6 @@
 +++
 date = "2016-02-06T18:10:11-08:00"
-draft = true
+draft = false
 title = "Dependency Management in Go 1.6 is No Longer Painful"
 slug = "dependency-management-in-go-is-no-longer-painful"
 description = "Traditionally, Go has handled dependencies by installing them all in the same directory; but with Go 1.6, vendoring is now offical."
@@ -27,7 +27,7 @@ import (
 	"html/template"
 	"net/http"
 
-	// Beautiful imports.
+	// Try checking at a glance at what this really is.
 	"github.com/reshurum/really-long-app-name/Godeps/_workspace/src/github.com/gorilla/mux"
 	"github.com/reshurum/really-long-app-name/Godeps/_workspace/src/github.com/gorilla/sessions"
 )
@@ -37,8 +37,8 @@ import (
 
 With the release of Go 1.5, an experimental environment variable called `GO15VENDOREXPERIMENT` was
 added to solve this problem. The only problem is that it's not enabled by default so you have to
-make it clear to contributors it's required. With the upcoming release of Go 1.6, vendoring
-is now enabled by default and is now considered stable.
+make it clear to contributors it's required. With the upcoming release of Go 1.6 vendoring
+is now enabled by default and considered stable.
 
 Vendoring allows Go projects to put dependencies in directory called `vendor`, and these
 dependencies can be referenced using the traditional method.
@@ -48,14 +48,15 @@ import (
 	"html/template"
 	"net/http"
 
-	// Much better.
+	// These will reference the versions under vendor if they exist and fall
+	// back to $GOPATH/src if not available.
 	"github.com/gorilla/mux"
 	"github.com/gorilla/sessions"
 )
 {{< /highlight >}}
 
 `go get` will not manage vendor directories though and leaves that job to tools like
-[Glide](https://github.com/Masterminds/glide). Glide will set up lock files and keeps track of
+[Glide](https://github.com/Masterminds/glide). Glide will set up lock files and keep track of
 project dependencies using a project specific configuration file. These tools are not required and it is
 up to developers to decide how they want to manage their dependencies.
 
