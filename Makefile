@@ -1,4 +1,13 @@
 BUNDLE = "bundle.tar.gz"
 
-$(BUNDLE):
+all: build
+
+$(BUNDLE): build
 	tar -zcf $(BUNDLE) public/
+
+.PHONY build bundle:
+
+build:
+	hugo --theme=billboard
+
+bundle: $(BUNDLE)
