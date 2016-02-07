@@ -1,8 +1,7 @@
 <footer>
   {{ if isset .Site.Params "analytics" }}
     <script>
-      var doNotTrackSupported =
-        navigator.doNotTrack !== undefined ||
+      var doNotTrackSupported = navigator.doNotTrack !== undefined ||
         navigator.msDoNotTrack !== undefined ||
         window.doNotTrack !== undefined;
 
@@ -11,8 +10,7 @@
         navigator.msDoNotTrack == '1' || window.doNotTrack == '1');
 
       if (doNotTrackEnabled) {
-        console.log(
-            'It appears you have Do Not Track enabled! Since I ' +
+        console.log('It appears you have Do Not Track enabled! Since I ' +
             'somewhat respect other\'s privacy, you will not be ' +
             'tracked by Google Analytics!');
       } else {
