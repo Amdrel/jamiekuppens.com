@@ -5,7 +5,15 @@ title = "Projects"
 description = "This is an aggregated list of many open source programs I've written, although most of them are one-offs."
 +++
 
-This is an aggregated list of many open source programs I've written, although most of them are one-offs.
+This is an aggregated list of many open source programs I've worked on, however most of them are
+one-offs.
+
+{{% headerlink href="https://github.com/StickmanVentures/lol-csv" %}}LoL CSV{{% /headerlink %}}
+
+LoL CSV is a simple web application for League of Legends players wishing to track their match
+stats. Given a summoner name, a spreadsheet is generated with match data from the previous 10
+matches. You can find LoL CSV [here](https://lolcsv.com) and the source code on
+[GitHub](https://github.com/StickmanVentures/lol-csv).
 
 {{% headerlink href="https://github.com/StickmanVentures/inquiry-bot" %}}Inquiry Bot{{% /headerlink %}}
 
