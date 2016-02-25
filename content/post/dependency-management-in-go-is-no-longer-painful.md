@@ -33,7 +33,7 @@ import (
 )
 {{< /highlight >}}
 
-## The Solution
+### The Solution
 
 With the release of Go 1.5, an experimental environment variable called `GO15VENDOREXPERIMENT` was
 added to solve this problem. The only problem is that it's not enabled by default so you have to
@@ -57,9 +57,10 @@ import (
 
 `go get` will not manage vendor directories though and leaves that job to tools like
 [Glide](https://github.com/Masterminds/glide). Glide will set up lock files and keep track of
-project dependencies using a project specific configuration file. These tools are not required and it is
-up to developers to decide how they want to manage their dependencies.
+project dependencies using a project specific configuration file. These tools are not required and
+it is up to developers to decide how they want to manage their dependencies.
 
 All in all, dependency management in Go is much less of a pain with vendoring considered stable in
-the upcoming release of Go 1.6. At the time of this writing, Go 1.6 has yet to release and a release
-candidate version can be found [here](https://golang.org/dl/#unstable).
+the upcoming release of Go 1.6. ~~At the time of this writing, Go 1.6 has yet to release and a
+release candidate version can be found [here](https://golang.org/dl/#unstable)~~ Go 1.6 is now
+released and can be downloaded [here](https://golang.org/dl/).
