@@ -62,5 +62,5 @@ it is up to developers to decide how they want to manage their dependencies.
 
 All in all, dependency management in Go is much less of a pain with vendoring considered stable in
 the upcoming release of Go 1.6. ~~At the time of this writing, Go 1.6 has yet to release and a
-release candidate version can be found [here](https://golang.org/dl/#unstable)~~ Go 1.6 is now
+release candidate version can be found [here](https://golang.org/dl/#unstable).~~ Go 1.6 is now
 released and can be downloaded [here](https://golang.org/dl/).
