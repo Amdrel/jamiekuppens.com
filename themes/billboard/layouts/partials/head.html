@@ -28,5 +28,12 @@
 
   <title>{{ .Title }}</title>
 
-  <link rel="stylesheet" href="/css/billboard.css">
+  <!-- Critical css. The css is quite small so it can all be inline and as an
+       added bonus it is still cached since the site is static. -->
+  {{ partial "billboard-css" }}
+
+  <!-- Fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Work+Sans' rel='stylesheet' type='text/css'>
 </head>
