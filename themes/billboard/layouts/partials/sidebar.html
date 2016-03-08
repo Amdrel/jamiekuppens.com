@@ -1,18 +1,18 @@
 <div class="sidebar">
   <div class="sidebar-content">
     <div class="sidebar-header">
-      <a href="{{ .Site.BaseURL }}" class="brand"><h1>{{ .Site.Title }}</h1></a>
+      <h1><a href="{{ .Site.BaseURL }}" class="brand">{{ .Site.Title }}</a></h1>
     </div>
 
     <div class="social-icons">
       {{ if .Site.Params.github }}
-        <a href="{{ .Site.Params.github }}"><img src="/images/social/GitHub-Mark-Light-120px-plus.png"></a>
+        <a href="{{ .Site.Params.github }}"><i class="fa fa-code-fork"></i></a>
       {{ end }}
       {{ if .Site.Params.twitter }}
-        <a href="{{ .Site.Params.twitter }}"><img src="/images/social/twitter-128.png"></a>
+        <a href="{{ .Site.Params.twitter }}"><i class="fa fa-twitter"></i></a>
       {{ end }}
       {{ if .Site.Params.googleplus }}
-        <a href="{{ .Site.Params.googleplus }}"><img src="/images/social/google-plus-3-128.png"></a>
+        <a href="{{ .Site.Params.googleplus }}"><i class="fa fa-google-plus"></i></a>
       {{ end }}
     </div>
 

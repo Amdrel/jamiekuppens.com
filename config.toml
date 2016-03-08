@@ -2,6 +2,9 @@ baseurl = "https://walterkuppens.com"
 languageCode = "en-us"
 title = "Walter Kuppens"
 
+pygmentsUseClasses = true
+pygmentsStyle = "trac"
+
 [params]
   description = "Software development and technology blog written by Walter Kuppens."
   author = "Walter Kuppens"

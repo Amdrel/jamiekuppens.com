@@ -17,6 +17,15 @@
     color: #FDAB27;
   }
 
+  h1, h2, h3, h4 {
+    color: #3E3E3E;
+  }
+
+  .social-icons i {
+    font-size: 28px;
+    margin-right: 8px;
+  }
+
   footer {
     display: none;
     position: absolute;
@@ -33,9 +42,13 @@
   }
 
   code {
-    background: #E6E6E6;
+    background: #F3F3F3;
     padding: 3px;
     border-radius: 3px;
+  }
+
+  .highlight code {
+    background: inherit;
   }
 
   .footer-text {
@@ -44,12 +57,11 @@
   }
 
   .sidebar a {
-    color: #F4FCFF;
-    text-decoration: none;
+    color: #4A4A4A;
   }
 
   .sidebar a:focus {
-    color: #FDAB27;
+    color: #486B92;
   }
 
   .flex-container {
@@ -64,7 +76,7 @@
   .sidebar {
     min-width: 300px;
     padding-left: 25px;
-    background: #375EAB;
+    background: #EFEFEF;
     font-family: 'Lato';
   }
 
@@ -79,7 +91,8 @@
      the sidebar anchor color from overwriting the brand color, while still
      keeping the focus colors. */
   .sidebar .brand {
-    color: white;
+    color: #4A4A4A;
+    text-decoration: none;
   }
 
   .brand {
@@ -103,7 +116,7 @@
 
   .sidebar-link {
     text-decoration: none;
-    color: white;
+    color: #184988;
   }
 
   .sidebar-link {
@@ -117,11 +130,11 @@
 
   .recent-posts {
     margin-top: 50px;
-    color: white;
+    color: #4A4A4A;
   }
 
   .recent-posts a {
-    color: #C6DFFF;
+    color: #184988;
     text-decoration: none;
   }
 
@@ -131,7 +144,7 @@
 
   .copyright {
     margin-top: 35px;
-    color: white;
+    color: #4A4A4A;
   }
 
   .content {
@@ -206,19 +219,6 @@
     text-align: center;
   }
 
-  .link-header a {
-    color: #2c3e50;
-    text-decoration: none;
-  }
-
-  .link-header a:focus {
-    color: #577DA2;
-  }
-
-  .post h1, .post h2, .post h3, .post h4 {
-    color: #2c3e50;
-  }
-
   .meta {
     color: #72767D;
   }
@@ -250,6 +250,10 @@
     display: none;
   }
 
+  .link-header a {
+    color: #3E3E3E;
+  }
+
   @media only screen and (max-width: 750px) {
     footer {
       display: block;
@@ -267,7 +271,6 @@
       flex-grow: 0;
       flex-shrink: 1;
       padding-left: 0;
-      background: #375EAB;
     }
 
     .sidebar-content {
@@ -282,7 +285,7 @@
       text-align: center;
     }
 
-    .brand h1 {
+    .sidebar-header h1 {
       display: inline;
       margin: 0;
       width: auto;
