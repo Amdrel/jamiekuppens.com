@@ -10,8 +10,8 @@ pygmentsStyle = "trac"
   author = "Walter Kuppens"
   copyright = "© 2016 Walter Kuppens. CC BY-SA 3.0"
 
-  primaryColor = "#375EAB"
-  secondaryColor = "#1847A3"
+  primaryColor = "#EFEFEF"
+  secondaryColor = "#EFEFEF"
 
   analytics = "UA-72614951-1"
   favicon = "/favicon.ico?v=1"
