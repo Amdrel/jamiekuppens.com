@@ -30,8 +30,9 @@
 
   <!-- Critical css. The css is quite small so it can all be inline and as an
        added bonus it is still cached since the site is static. -->
-  {{ partial "billboard-css.html" . }}
+  {{ partial "css.html" . }}
 
+  <!-- CSS used for styling source code. -->
   {{ partial "trac.html" . }}
 
   <!-- Blocking fonts (when cached they no longer block afaik). -->
