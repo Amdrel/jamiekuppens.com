@@ -3,7 +3,7 @@
   <div class="flex-container">
     {{ partial "sidebar.html" . }}
 
-    <main class="content">
+    <main class="content container">
       {{ range first 5 .Site.Pages }}
         {{ .Render "summary" }}
       {{ end }}
