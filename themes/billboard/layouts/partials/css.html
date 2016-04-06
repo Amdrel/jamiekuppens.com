@@ -64,11 +64,12 @@
   }
 
   .topbar-hr hr {
-    border-color: #fff;
+    border: 0;
+    border-top: 1px solid #ddd;
   }
 
   .sidebar a {
-    color: #222;
+    color: #444;
   }
 
   .sidebar a:focus {
@@ -87,8 +88,8 @@
   }
 
   .sidebar {
-    height: 50px;
-    margin-top: 24px;
+    height: 36px;
+    margin-top: 12px;
     font-family: 'Open Sans';
   }
 
@@ -96,25 +97,25 @@
      the sidebar anchor color from overwriting the brand color, while still
      keeping the focus colors. */
   .sidebar .brand {
-    color: #222;
+    color: #444;
     text-decoration: none;
   }
 
   .brand {
-    font-size: 32px;
-    line-height: 50px;
+    font-size: 26px;
+    line-height: 36px;
     text-decoration: none;
   }
 
   .sidebar-link {
     text-decoration: none;
     margin: 0 15px 15px 0;
-    line-height: 50px;
+    line-height: 36px;
     color: #184988;
   }
 
   .sidebar-link-lg {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .copyright {
@@ -236,6 +237,12 @@
 
   .desktop-right {
     float: right;
+  }
+
+  @media only screen and (max-width: 1250px) {
+    .container {
+      width: 750px;
+    }
   }
 
   @media only screen and (max-width: 800px) {

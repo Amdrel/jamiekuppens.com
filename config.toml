@@ -14,7 +14,7 @@ pygmentsStyle = "trac"
   secondaryColor = "#EFEFEF"
 
   analytics = "UA-72614951-1"
-  favicon = "/favicon.ico?v=1"
+  favicon = "/favicon.ico?v=2"
 
   # Social urls.
   github = "https://github.com/Reshurum"

@@ -20,6 +20,13 @@
       {{ range sort .Site.Params.links "weight" "desc" }}
         <span class="sidebar-link sidebar-link-lg"><a href="{{ $.Site.BaseURL }}{{ .url }}">{{ .title }}</a></span>
       {{ end }}
+
+      <span class="desktop">
+        {{ if .Site.Params.googleplus }}
+          <span class="sidebar-link sidebar-link-lg"><a href="{{ .Site.Params.github }}">Github</a></span>
+          <span class="sidebar-link sidebar-link-lg"><a href="{{ .Site.Params.twitter }}">Twitter</a></span>
+        {{ end }}
+      </span>
     </span>
 
   </div>
