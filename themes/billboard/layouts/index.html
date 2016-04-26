@@ -4,9 +4,11 @@
     {{ partial "sidebar.html" . }}
 
     <main class="container content">
-      {{ range first 5 .Site.Pages }}
-        {{ .Render "summary" }}
-      {{ end }}
+      <div class="container-pad">
+        {{ range first 5 .Site.Pages }}
+          {{ .Render "summary" }}
+        {{ end }}
+      </div>
 
       {{ partial "footer.html" . }}
     </main>

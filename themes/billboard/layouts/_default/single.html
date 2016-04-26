@@ -5,13 +5,15 @@
 
     <main class="container content">
       <article class="post">
-        <h1>{{ .Title }}</h1>
+        <div class="container-pad">
+          <h1>{{ .Title }}</h1>
 
-        {{ if eq .Type "post" }}
-          <div class="meta">{{ .Date.Format "Mon, Jan 2, 2006" }}</div>
-        {{ end }}
+          {{ if eq .Type "post" }}
+            <div class="meta">{{ .Date.Format "Mon, Jan 2, 2006" }}</div>
+          {{ end }}
 
-        {{ .Content }}
+          {{ .Content }}
+        </div>
       </article>
 
       {{ partial "footer.html" . }}

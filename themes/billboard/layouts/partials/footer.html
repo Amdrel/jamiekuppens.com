@@ -1,4 +1,4 @@
-<footer>
+<footer class="container-pad">
   {{ if isset .Site.Params "analytics" }}
     <script>
       var doNotTrackSupported = navigator.doNotTrack !== undefined ||
@@ -27,9 +27,8 @@
 
   <hr>
 
-  <div class="footer-text">
+  <div class="footer-text container">
     <span>{{ .Site.Params.copyright }}</span>
-
     <span class="copyright desktop">
       - Built with <a href="https://gohugo.io/">Hugo</a>
     </span>

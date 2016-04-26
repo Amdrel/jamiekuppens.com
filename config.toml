@@ -7,11 +7,12 @@ pygmentsStyle = "trac"
 
 [params]
   description = "Software development and technology blog written by Walter Kuppens."
+  tagline = "A place for me to spout about technology"
   author = "Walter Kuppens"
   copyright = "© 2016 Walter Kuppens. CC BY-SA 3.0"
 
-  primaryColor = "#EFEFEF"
-  secondaryColor = "#EFEFEF"
+  primaryColor = "#3845A0"
+  secondaryColor = "#26338E"
 
   analytics = "UA-72614951-1"
   favicon = "/favicon.ico?v=2"

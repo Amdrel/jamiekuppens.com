@@ -1,6 +1,7 @@
 <style>
   body {
     margin: 0;
+    background-color: #EEE;
   }
 
   a {
@@ -22,8 +23,8 @@
   }
 
   footer {
-    bottom: 0;
-    width: 100%;
+    padding: 12px 0;
+    font-family: 'Open Sans';
   }
 
   code {
@@ -34,7 +35,90 @@
 
   hr {
     border: 0;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid #DDD;
+  }
+
+  .highlight code {
+    background: inherit;
+  }
+
+  .footer-text {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .topbar-hr {
+    margin-top: 12px;
+  }
+
+  .sidebar a {
+    color: #FFF;
+  }
+
+  .sidebar a:focus {
+    color: #9ED9FF;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .container-pad {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  .flex-container {
+    width: 100%;
+  }
+
+  .sidebar {
+    background-color: #3845A0;
+    font-family: 'Open Sans';
+    color: #FFF;
+  }
+
+  .sidebar-content {
+    display: inline-block;
+    width: 100%;
+  }
+
+  /* Evil CSS hack for accessibility. Querying starting from sidebar prevents
+     the sidebar anchor color from overwriting the brand color, while still
+     keeping the focus colors. */
+  .sidebar .brand {
+    color: #FFF;
+    text-decoration: none;
+  }
+
+  .sidebar .brand-container {
+    margin-bottom: 0;
+  }
+
+  .brand {
+    font-size: 26px;
+    line-height: 36px;
+    text-decoration: none;
+  }
+
+  .sidebar-tagline {
+    margin: 12px 0;
+  }
+
+  .sidebar-links {
+    background-color: #26338E;
+  }
+
+  .sidebar-link {
+    text-decoration: none;
+    margin: 0 15px 15px 0;
+    line-height: 36px;
+    color: #184988;
+  }
+
+  .sidebar-link-lg {
+    font-size: 18px;
   }
 
   .social-icons {
@@ -49,86 +133,29 @@
   }
 
   .social-icons a svg {
-    fill: #222;
+    fill: #FFF;
   }
 
   .social-icons a:focus svg {
-    fill: #486B92
+    fill: #9ED9FF;
   }
 
-  .highlight code {
-    background: inherit;
-  }
-
-  .footer-text {
-    font-size: 14px;
-  }
-
-  .topbar-hr {
-    margin-top: 12px;
-  }
-
-  .sidebar a {
-    color: #444;
-  }
-
-  .sidebar a:focus {
-    color: #486B92;
-  }
-
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 50px;
-  }
-
-  .flex-container {
-    width: 100%;
-  }
-
-  .sidebar {
-    height: 36px;
-    margin-top: 12px;
-    font-family: 'Open Sans';
-  }
-
-  /* Evil CSS hack for accessibility. Querying starting from sidebar prevents
-     the sidebar anchor color from overwriting the brand color, while still
-     keeping the focus colors. */
-  .sidebar .brand {
-    color: #444;
-    text-decoration: none;
-  }
-
-  .brand {
-    font-size: 26px;
-    line-height: 36px;
-    text-decoration: none;
-  }
-
-  .sidebar-link {
-    text-decoration: none;
-    margin: 0 15px 15px 0;
-    line-height: 36px;
-    color: #184988;
-  }
-
-  .sidebar-link-lg {
-    font-size: 18px;
+  .text-links {
   }
 
   .copyright {
     margin-top: 35px;
-    color: #222;
   }
 
   .content {
-    padding-bottom: 24px;
     font-family: "Open Sans", "Arial", "sans-serif";
     font-size: 16px;
+    background-color: #FFF;
   }
 
   .content article {
+    display: inline-block;
+    width: 100%;
     margin-bottom: 25px;
   }
 
@@ -235,6 +262,14 @@
   }
 
   @media (max-width: 800px) {
+    .mobile {
+      display: initial;
+    }
+
+    .desktop {
+      display: none;
+    }
+
     footer {
       display: block;
     }
@@ -253,11 +288,15 @@
       padding-right: 0;
     }
 
+    .container-pad {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
     .sidebar {
       display: block;
       height: auto;
       margin-top: 0;
-      background: #f5f5f5;
     }
 
     .sidebar-content {
@@ -268,7 +307,6 @@
 
     .sidebar-header {
       display: block;
-      padding: 7px 15px 0 15px;
       text-align: center;
     }
 
@@ -281,8 +319,6 @@
 
     .social-icons {
       display: block;
-      margin: 0;
-      text-align: center;
     }
 
     .social-icons img {
@@ -292,7 +328,8 @@
 
     .sidebar-links {
       display: block;
-      padding: 0 0 7px 0;
+      padding-top: 5px;
+      padding-bottom: 5px;
       text-align: center;
     }
 
@@ -307,11 +344,9 @@
     }
 
     .content hr {
-      width: 90%;
     }
 
     .content article {
-      width: 90%;
       margin: 0 auto;
       margin-bottom: 25px;
     }
@@ -325,19 +360,11 @@
     }
 
     .footer-text {
-      width: 90%;
       margin: 0 auto;
     }
 
     .date-group {
       width: auto;
-    }
-
-    .mobile {
-    }
-
-    .desktop {
-      display: none;
     }
   }
 </style>
