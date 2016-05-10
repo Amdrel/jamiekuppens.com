@@ -1,7 +1,7 @@
 +++
 date = "2016-05-09T11:49:37-07:00"
 draft = true
-title = "Writing a CHIP-8 virtual machine in Rust"
+title = "Writing a CHIP-8 Virtual Machine in Rust"
 +++
 
 A few months ago after a tiring day at work, I came across a post on
