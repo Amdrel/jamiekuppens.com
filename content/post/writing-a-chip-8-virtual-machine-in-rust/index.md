@@ -58,14 +58,56 @@ Here are some good references to read if you want to learn more about CHIP-8 in 
 CHIP-8 is very simple, execution is done through a main loop which iterates over opcodes and performs their documented
 action. Before starting the loop, fonts are loading into reserved memory for the application to use. Originally
 the reserved space was created to store the interpreter's executable code, but for modern programs this is no longer
-the case and it's simply used for fonts.
+the case so it's only used for fonts.
+
+Here is a snippet from my code to demonstrates all the functions a main loop has to perform:
+
+{{< highlight rust >}}
+/// Execute instructions from ram.
+pub fn run(&mut self) {
+    loop {
+        // Interconnect can signal the emulator to halt.
+        // This is because interconnect works with the native window system
+        // and handles close events.
+        if self.interconnect.halt {
+            break
+        }
+
+        // Read a word from ram where the program counter currently points
+        // to execute.
+        let word = self.interconnect.read_word(self.pc);
+
+        // Execute until the subroutine ends if we are in one.
+        if self.execute_instruction(word) {
+            break
+        }
+
+        // Poll for input and set the input state.
+        self.interconnect.handle_input();
+    }
+}
+
+...
+
+/// Reads a 16 bit word from ram. This function is used mainly to read and
+/// execute instructions.
+#[inline(always)]
+pub fn read_word(&self, addr: u16) -> u16 {
+    BigEndian::read_u16(&self.ram[addr as usize..])
+}
+{{< /highlight >}}
+
+In my interpreter I use the [byteorder](https://crates.io/crates/byteorder) crate to get proper values
+from the ram. The loop reads instructions from ram and calls an execution function that checks the opcodes
+and performs their tasks. Most of the work that went into the project was implementing the opcodes and interfacing
+with the operating system for sound and display.
 
 ### Summary
 
-CHIP-8 is a great way to get introduced to emulation and I highly recommend implementing your own if this interests you.
-You should be able to implement CHIP-8 with any modern programming language, but I recommend using a language that has
-a good type system to avoid frustration. Feel free to check out my source code on
+CHIP-8 is a great way to get introduced to emulation and I highly recommend implementing your own interpreter if this
+interests you. You should be able to implement CHIP-8 with any modern programming language, but I recommend using a
+language that has a good type system to avoid frustration. Feel free to check out my source code on
 [Github](https://github.com/Reshurum/notch), but I highly recommend doing this yourself.
 
 Many thanks to [yupferris](https://github.com/yupferris) for inspiring me to
-take on this endeavor and I feel like this project has made me a better engineer.
+take on this endeavor as I feel like this project has made me a better engineer.
