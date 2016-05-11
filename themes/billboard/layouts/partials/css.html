@@ -27,7 +27,7 @@
 
   footer {
     padding: 12px 0;
-    font-family: 'Open Sans';
+    font-family: "Arial";
   }
 
   code {
@@ -39,6 +39,38 @@
   hr {
     border: 0;
     border-top: 1px solid #DDD;
+  }
+
+  table {
+    border: 1px solid #e2e2e2;
+    border-spacing: 0;
+    border-radius: 5px;
+  }
+
+  th {
+    padding: 12px;
+    text-align: left;
+    background-color: #EEE;
+    border-right: 1px solid #e2e2e2;
+    border-bottom: 1px solid #e2e2e2;
+  }
+
+  td {
+    padding: 12px;
+    border-right: 1px solid #e2e2e2;
+    border-bottom: 1px solid #e2e2e2;
+  }
+
+  td:last-child {
+    border-right: none;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  li {
+    margin: 6px 0;
   }
 
   .highlight code {
@@ -78,7 +110,7 @@
 
   .sidebar {
     background-color: #3845A0;
-    font-family: 'Open Sans';
+    font-family: "Arial";
     color: #FFF;
   }
 
@@ -155,7 +187,7 @@
   }
 
   .content {
-    font-family: "Open Sans", "Arial", "sans-serif";
+    font-family: "Arial", "sans-serif";
     font-size: 16px;
   }
 
@@ -167,13 +199,13 @@
 
   .content article p {
     color: rgba(0, 0, 0, 0.8);
-    font-family: "Open Sans", "Arial", "sans-serif";
+    font-family: "Arial", "sans-serif";
     font-size: 16px;
     line-height: 32px;
   }
 
   .content h1, .content h2, .content h3, .content h4 {
-    font-family: 'Open Sans';
+    font-family: "Arial";
     font-weight: bold;
     text-rendering: optimizeLegibility;
   }
@@ -200,7 +232,6 @@
 
   .content figure img {
     display: block;
-    width: 80%;
     margin: 0 auto;
   }
 
@@ -225,7 +256,7 @@
 
   .meta {
     color: #72767D;
-    font-family: "Open Sans", "Arial", "sans-serif";
+    font-family: "Arial", "sans-serif";
     font-size: 14px;
   }
 
@@ -356,7 +387,7 @@
     }
 
     .content figure img {
-      width: 100%;
+      max-width: 100%;
     }
 
     .archive {
