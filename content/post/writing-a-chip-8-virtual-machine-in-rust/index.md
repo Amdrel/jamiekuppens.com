@@ -98,16 +98,17 @@ pub fn read_word(&self, addr: u16) -> u16 {
 {{< /highlight >}}
 
 In my interpreter I use the [byteorder](https://crates.io/crates/byteorder) crate to get proper values
-from the ram. The loop reads instructions from ram and calls an execution function that checks the opcodes
+from ram. The loop reads instructions from ram and calls an execution function that checks the opcodes
 and performs their tasks. Most of the work that went into the project was implementing the opcodes and interfacing
-with the operating system for sound and display.
+with the operating system for input, sound, and display.
 
 ### Summary
 
 CHIP-8 is a great way to get introduced to emulation and I highly recommend implementing your own interpreter if this
-interests you. You should be able to implement CHIP-8 with any modern programming language, but I recommend using a
+interests you. The project took me a week to complete in my free time and I learned a lot during this journey.
+You should be able to implement CHIP-8 with any modern programming language, but I recommend using a
 language that has a good type system to avoid frustration. Feel free to check out my source code on
 [Github](https://github.com/Reshurum/notch), but I highly recommend doing this yourself.
 
-Many thanks to [yupferris](https://github.com/yupferris) for inspiring me to
-take on this endeavor as I feel like this project has made me a better engineer.
+Many thanks to [yupferris](https://github.com/yupferris) for inspiring me to take on this endeavor as I feel like this
+endeavor has made me a better engineer.
