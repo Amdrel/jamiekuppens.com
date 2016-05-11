@@ -1,11 +1,11 @@
 BUNDLE = "bundle.tar.gz"
 
-all: build serve
+all: build
 
 $(BUNDLE): build
 	tar -zcf $(BUNDLE) public/
 
-.PHONY build bundle:
+.PHONY build bundle serve:
 
 build:
 	hugo --theme=billboard

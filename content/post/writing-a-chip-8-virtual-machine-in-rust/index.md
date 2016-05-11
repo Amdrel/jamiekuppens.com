@@ -17,7 +17,7 @@ the emulation scene was to write a [CHIP-8 virtual machine](https://en.wikipedia
 To the uninitiated, CHIP-8 is an interpreted programming language developed by Joseph Weisbecker
 in the mid-1970s. The goal of CHIP-8 was to allow video games to be easily programmed and portable
 across computers having CHIP-8 implementations. A CHIP-8 virtual machine resembles a very basic computer as it has
-addressable memory, registers, opcodes, a stack, and sound.
+addressable memory, a CPU, and basic input and output.
 
 I also made the decision to use [Rust](https://www.rust-lang.org/) which was used on the stream.
 I was interested in Rust at the time and decided using it in this project would be a good excuse to
@@ -28,14 +28,14 @@ on [Github](https://github.com/Reshurum/notch).
 
 ### Brief Overview of CHIP-8
 
-Do note that I may use the terms _emulator_, _interpreter_, and _virtual machine_ interchangeably. In the context of
+Note that I use the terms _emulator_, _interpreter_, and _virtual machine_ interchangeably. In the context of
 this article they are the same thing.
 
 CHIP-8 supports 16 keys for input and has 4kB of memory (512 bytes are reserved for the interpreter). For the processor
-CHIP-8 supports 35 opcodes which are used meant to be interpreted as instructions for our interpreter to perform.
+CHIP-8 supports 35 opcodes which are meant to be interpreted as instructions for the interpreter to perform.
 Opcodes are 2 bytes long and are stored in big-endian; this is important when reading the opcodes
-(or else data will appear malformed). CHIP-8 also has 16 8-bit registers labeled V0 through VF which are used for
-temporary storage or to be ready by certain instructions. The VF register is a carry flag and is typically used for
+or else data will appear malformed. CHIP-8 also has 16 8-bit registers labeled V0 through VF which are used for
+temporary storage or to be read by certain instructions. The VF register is a carry flag and is typically used for
 collision detection.
 
 There are also 5 important registers that serve very specific purposes listed here:
@@ -43,7 +43,7 @@ There are also 5 important registers that serve very specific purposes listed he
 | Register             | Purpose                                                                       |
 | ---------------------|-------------------------------------------------------------------------------|
 | Program Counter (pc) | The current location in memory where code is being executed.                  |
-| Stack Pointer (sp)   | A pointer to the address of the current subroutine in the call stack.         |
+| Stack Pointer (sp)   | A pointer to the address that called the current subroutine.                  |
 | Index Register (i)   | A 16 bit address typically used for operations involving memory.              |
 | Delay Timer (dt)     | A counter that counts down at 60Hz and halts execution until it reaches 0.    |
 | Sound Timer (st)     | A counter that counts down at 60Hz and plays a beep sound until it reaches 0. |

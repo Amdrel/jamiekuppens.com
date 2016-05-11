@@ -9,7 +9,10 @@
           <h1>{{ .Title }}</h1>
 
           {{ if eq .Type "post" }}
-            <div class="meta">{{ .Date.Format "Mon, Jan 2, 2006" }}</div>
+            <div class="meta">
+              {{ .Date.Format "Mon, Jan 2, 2006" }} •
+              {{ .ReadingTime }} min read
+            </div>
           {{ end }}
 
           {{ .Content }}
