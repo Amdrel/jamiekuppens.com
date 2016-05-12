@@ -1,6 +1,6 @@
 +++
 date = "2016-05-11T11:49:37-07:00"
-draft = true
+draft = false
 title = "Writing a CHIP-8 Virtual Machine in Rust"
 +++
 
