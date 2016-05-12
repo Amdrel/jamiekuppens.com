@@ -1,7 +1,12 @@
 {{ if eq .Type "post" }}
   <article>
-    <h1 class="link-header"><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
-    <div class="meta">{{ .Date.Format "Mon, Jan 2, 2006" }}</div>
+    <h1 class="link-header">
+      <a href="{{ .Permalink }}">{{ .Title }}</a>
+    </h1>
+    <div class="meta">
+      {{ .Date.Format "Mon, Jan 2, 2006" }} •
+      {{ .ReadingTime }} min read
+    </div>
 
     {{ if .Truncated }}
       <div class="summary">{{ .Summary }}</div>
