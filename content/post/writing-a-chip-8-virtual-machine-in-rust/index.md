@@ -55,10 +55,10 @@ Here are some good references to read if you want to learn more about CHIP-8 in 
 
 ### Program Flow
 
-CHIP-8 is very simple, execution is done through a main loop which iterates over opcodes and performs their documented
-action. Before starting the loop, fonts are loading into reserved memory for the application to use. Originally
-the reserved space was created to store the interpreter's executable code, but for modern programs this is no longer
-the case so it's only used for fonts.
+Execution of a CHIP-8 program is done through a main loop which iterates over opcodes where the program counter is
+currently at and performs their documented action. Before starting the loop, fonts are loading into reserved memory for
+the application to use. Originally the reserved space was created to store the interpreter's executable code, but for
+modern programs this is no longer the case so it's only used for fonts.
 
 Here is a snippet from my code to demonstrates all the functions a main loop has to perform:
 
@@ -101,6 +101,40 @@ In my interpreter I use the [byteorder](https://crates.io/crates/byteorder) crat
 from ram. The loop reads instructions from ram and calls an execution function that checks the opcodes
 and performs their tasks. Most of the work that went into the project was implementing the opcodes and interfacing
 with the operating system for input, sound, and display.
+
+### Implementing an Opcode
+
+Before processing, the opcode is extracted from the first 4 bits of the current word being read. After that the opcode
+is compared in a switch case to determine how to parse the last 12 bits and perform that opcode's function.
+
+{{< highlight rust >}}
+// The opcode is the first 4-bit value in the word
+let opcode = (instr >> 12) as u8;
+
+match opcode {
+    ...
+
+    0x7 => {
+        // 7XNN - ADD VX, NN
+        //
+        // Adds NN to VX.
+
+        let regx = ((instr << 4) >> 12) as u8;
+        let byte = ((instr << 8) >> 8) as u8;
+        let result = self.get_reg(regx).wrapping_add(byte);
+        self.set_reg(regx, result);
+    },
+
+    ...
+}
+{{< /highlight >}}
+
+This specific opcode gets an 8-bit value stored in the last 8 bits of the
+word (NN) and adds it to the value of the register specified 4 bits to the left (X). The result then overwrites the
+previous value in the register that was used for the initial addition. One interesting thing to note is the
+`wrapping_add` call; this is there since Rust will panic in debug builds if it catches an
+[integer overflow](https://en.wikipedia.org/wiki/Integer_overflow). This is not a problem for CHIP-8 applications as
+integers are expected to wrap when they overflow/underflow.
 
 ### Summary
 
