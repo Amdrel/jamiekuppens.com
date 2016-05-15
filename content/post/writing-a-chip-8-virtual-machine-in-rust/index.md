@@ -58,7 +58,7 @@ Here are some good references to read if you want to learn more about CHIP-8 in 
 Execution of a CHIP-8 program is done through a main loop which iterates over words where the program counter is
 currently at, extracts the opcode, and performs it's documented action. Before starting the loop, fonts are loading
 into reserved memory for the application to use. Originally the reserved space was created to store the interpreter's
-executable code, but for modern programs this is no longer the case so it's only used for fonts.
+executable code, but for modern interpreters this is no longer the case so it's only used for fonts.
 
 Here is a snippet from my code that demonstrates all the functions a main loop has to perform:
 
