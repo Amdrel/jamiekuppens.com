@@ -2,6 +2,7 @@
 date = "2016-05-11T11:49:37-07:00"
 draft = false
 title = "Writing a CHIP-8 Virtual Machine in Rust"
+description = "A few months ago after a tiring day at work, I came across a post on /r/programming about livecoding a N64 emulator in rust and instantly became hooked. That stream piqued my interest in the subject of emulation, along with giving me that wonderful feeling I had when I first got into programming."
 +++
 
 {{< figure src="/post/writing-a-chip-8-virtual-machine-in-rust/pong.png" alt="Pong running in an SDL window." >}}

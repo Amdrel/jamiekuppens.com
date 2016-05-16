@@ -8,6 +8,12 @@ description = "This is an aggregated list of many open source programs I've writ
 This is an aggregated list of many open source programs I've worked on, however most of them are
 one-offs.
 
+### Notch
+
+[Notch](https://github.com/Reshurum/notch) is a CHIP-8 virtual machine written in Rust. I wrote it after getting
+interested in emulation from the [Ferris Makes Emulators stream](https://www.twitch.tv/ferrisstreamsstuff).
+It has worked with all games I threw at it so far, but can use a little polishing and refactoring.
+
 ### LoL CSV
 
 LoL CSV is a simple web application for League of Legends players wishing to track their match
