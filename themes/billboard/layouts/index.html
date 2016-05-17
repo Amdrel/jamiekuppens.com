@@ -1,17 +1,16 @@
 {{ partial "head.html" . }}
+
 <body>
-  <div class="flex-container">
-    {{ partial "sidebar.html" . }}
+  {{ partial "sidebar.html" . }}
 
-    <main class="container content">
-      <div class="container-pad">
-        {{ range first 5 .Site.Pages }}
-          {{ .Render "summary" }}
-        {{ end }}
-      </div>
+  <main class="content container">
+    <div class="container-pad">
+      {{ range first 5 .Site.Pages }}
+        {{ .Render "summary" }}
+      {{ end }}
+    </div>
+  </main>
 
-      {{ partial "footer.html" . }}
-    </main>
-  </div>
+  {{ partial "footer.html" . }}
 </body>
 </html>

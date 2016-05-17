@@ -1,26 +1,29 @@
 {{ partial "head.html" . }}
+
 <body>
-  <div class="flex-container">
-    {{ partial "sidebar.html" . }}
+  {{ partial "sidebar.html" . }}
 
-    <main class="container content">
-      <article class="post">
-        <div class="container-pad">
-          <h1>{{ .Title }}</h1>
+  <main class="content container">
+    <article>
+      <div itemscope="" itemtype="http://schema.org/BlogPosting" class="container-pad">
+        <h1 itemprop="name headline">{{ .Title }}</h1>
 
-          {{ if eq .Type "post" }}
-            <div class="meta">
-              {{ .Date.Format "Mon, Jan 2, 2006" }} •
-              {{ .ReadingTime }} min read
-            </div>
-          {{ end }}
+        {{ if eq .Type "post" }}
+          <div class="meta">
+            <time datetime="{{ .Date.Format "2006-01-02" }}" itemprop="datePublished">{{ .Date.Format "Mon, Jan 2, 2006" }}</time> •
+            {{ .ReadingTime }} min read
+            <br>
+            Written by <a href="https://twitter.com/Reshurum" itemprop="author" rel="author">Walter Kuppens</a>
+          </div>
+        {{ end }}
 
+        <div itemprop="articleBody">
           {{ .Content }}
         </div>
-      </article>
+      </div>
+    </article>
+  </main>
 
-      {{ partial "footer.html" . }}
-    </main>
-  </div>
+  {{ partial "footer.html" . }}
 </body>
 </html>

@@ -1,25 +1,22 @@
 {{ partial "head.html" . }}
+
 <body>
-  <div class="flex-container">
-    {{ partial "sidebar.html" . }}
+  {{ partial "sidebar.html" . }}
 
-    <main class="container content">
-      <article>
-        <div class="container-pad">
-          <div class="not-found">
-            <h1>404 - This is not the page you're looking for...</h1>
-            <h3>but you may find what you are looking for here.</h3>
-            <hr>
-          </div>
+  <main class="content container">
+    <div class="container-pad">
+      <div class="not-found">
+        <h1>404 - This is not the page you're looking for...</h1>
+        <h3>but you may find what you are looking for here.</h3>
+        <hr>
+      </div>
 
-          {{ range first 5 .Site.Pages }}
-            {{ .Render "summary" }}
-          {{ end }}
-        </div>
-      </article>
+      {{ range first 5 .Site.Pages }}
+        {{ .Render "summary" }}
+      {{ end }}
+    </div>
+  </main>
 
-      {{ partial "footer.html" . }}
-    </main>
-  </div>
+  {{ partial "footer.html" . }}
 </body>
 </html>

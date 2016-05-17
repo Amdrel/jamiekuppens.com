@@ -1,45 +1,44 @@
 {{ partial "head.html" . }}
+
 <body>
-  <div class="flex-container">
-    {{ partial "sidebar.html" . }}
+  {{ partial "sidebar.html" . }}
 
-    <main class="container content">
-      <article>
-        <div class="container-pad">
-          <h1>{{ .Title }}</h1>
+  <main class="content container">
+    <article>
+      <div class="container-pad">
+        <h1>{{ .Title }}</h1>
 
-          <div class="archive">
-            {{ range .Site.Pages.GroupByDate "2006-01-02" }}
-              {{ $.Scratch.Set "count" 0 }}
+        <div class="archive">
+          {{ range .Site.Pages.GroupByDate "2006" }}
+            {{ $.Scratch.Set "count" 0 }}
 
-              <!-- Get the count of *valid* pages for the group. -->
-              {{ range .Pages }}
-                {{ if eq .Type "post" }}
-                  {{ $.Scratch.Set "count" (add ($.Scratch.Get "count") 1) }}
-                {{ end }}
-              {{ end }}
-
-              <!-- If there are valid pages, render. This is meant to prevent lone
-                   dates that belong to groups that do not contain any posts.-->
-              {{ if gt ($.Scratch.Get "count") 0 }}
-                <div class="date-group">
-                  <span class="meta">{{ .Key }}</span>
-
-                  <!-- Render all pages in the group that are posts. -->
-                  {{ range .Pages }}
-                    {{ if eq .Type "post" }}
-                      <h4><a class="header" href="{{ .Permalink }}">{{ .Title }}</a></h4>
-                    {{ end }}
-                  {{ end }}
-                </div>
+            <!-- Get the count of *valid* pages for the group. -->
+            {{ range .Pages }}
+              {{ if eq .Type "post" }}
+                {{ $.Scratch.Set "count" (add ($.Scratch.Get "count") 1) }}
               {{ end }}
             {{ end }}
-          </div>
-        </div>
-      </article>
 
-      {{ partial "footer.html" . }}
-    </main>
-  </div>
+            <!-- If there are valid pages, render. This is meant to prevent lone
+                 dates that belong to groups that do not contain any posts.-->
+            {{ if gt ($.Scratch.Get "count") 0 }}
+              <div class="date-group">
+                <span class="meta">{{ .Key }}</span>
+
+                <!-- Render all pages in the group that are posts. -->
+                {{ range .Pages }}
+                  {{ if eq .Type "post" }}
+                    <h4><a class="header" href="{{ .Permalink }}">{{ .Title }}</a></h4>
+                  {{ end }}
+                {{ end }}
+              </div>
+            {{ end }}
+          {{ end }}
+        </div>
+      </div>
+    </article>
+
+    {{ partial "footer.html" . }}
+  </main>
 </body>
 </html>
