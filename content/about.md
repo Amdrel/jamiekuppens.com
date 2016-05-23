@@ -10,7 +10,7 @@ backend, although I also have an interst in making games and embedded
 applications. I am currently employed at Stickman Ventures, Inc. and have been
 working there since 2013.
 
-### Contact
+## Contact
 
 You can contact me by emailing [reshurum@gmail.com](mailto:reshurum@gmail.com)
 or through any of the social media links on the navbar.

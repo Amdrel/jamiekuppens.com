@@ -10,7 +10,7 @@ Traditionally, Go has handled dependencies by installing them all in the same di
 about; but if the project is large or has lots of developers, version locking dependencies becomes a
 must, lest library version mismatches will ruin your day.
 
-### The Problem
+## The Problem
 
 Version locking dependencies is typically not a problem for the more popular
 languages; however since Go keeps all dependencies in one area, you could not have more than
@@ -32,7 +32,7 @@ import (
 )
 {{< /highlight >}}
 
-### The Solution
+## The Solution
 
 With the release of Go 1.5, an experimental environment variable called `GO15VENDOREXPERIMENT` was
 added to solve this problem. The only problem is that it's not enabled by default so you have to

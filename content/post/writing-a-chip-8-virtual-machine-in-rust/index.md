@@ -27,7 +27,7 @@ on [Github](https://github.com/Reshurum/notch).
 
 <!--more-->
 
-### Brief Overview of CHIP-8
+## Brief Overview of CHIP-8
 
 Note that I use the terms _emulator_, _interpreter_, and _virtual machine_ interchangeably. In the context of
 this article they are the same thing.
@@ -54,7 +54,7 @@ Here are some good references to read if you want to learn more about CHIP-8 in 
 * [Mastering CHIP-8](http://mattmik.com/files/chip8/mastering/chip8.html)
 * [Cowgod's CHIP-8 Technical Reference](http://devernay.free.fr/hacks/chip8/C8TECH10.HTM)
 
-### Program Flow
+## Program Flow
 
 Execution of a CHIP-8 program is done through a main loop which iterates over words where the program counter is
 currently at, extracts the opcode, and performs it's documented action. Before starting the loop, fonts are loading
@@ -103,7 +103,7 @@ from ram. The loop reads instructions from ram and calls an execution function t
 and performs their tasks. Most of the work that went into the project was implementing the opcodes and interfacing
 with the operating system for input, sound, and display.
 
-### Implementing an Opcode
+## Implementing an Opcode
 
 Before processing, the opcode is extracted from the first 4 bits of the current word being read. After that the opcode
 is compared in a switch case to determine how to parse the last 12 bits and perform that opcode's function.
@@ -137,7 +137,7 @@ the `wrapping_add` call; this is there since Rust will panic in debug builds if 
 [integer overflow](https://en.wikipedia.org/wiki/Integer_overflow). This is not a problem for CHIP-8 applications as
 integers are expected to wrap when they overflow/underflow.
 
-### Summary
+## Summary
 
 CHIP-8 is a great way to get introduced to emulation and I highly recommend implementing your own interpreter if this
 interests you. The project took me a week to complete in my free time and I learned a lot during this journey.
