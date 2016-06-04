@@ -31,7 +31,13 @@
           <div class="meta">
             <time datetime="{{ .Date.Format "2006-01-02" }}" itemprop="datePublished">{{ .Date.Format "Mon, Jan 2, 2006" }}</time>
             <span>• {{ .ReadingTime }} min read</span><br>
-            <span>Written by <a href="https://twitter.com/Reshurum" itemprop="author" rel="author">Walter Kuppens</a></span>
+
+            <span>Written by</span>
+            <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+              <span itemprop="name">
+                <a href="https://twitter.com/Reshurum" itemprop="url" rel="author">Walter Kuppens</a>
+              </span>
+            </span>
           </div>
         {{ end }}
 
