@@ -3,6 +3,9 @@ date = "2016-02-06T18:10:11-08:00"
 draft = false
 title = "Dependency Management in Go 1.6 is No Longer Painful"
 description = "Traditionally, Go has handled dependencies by installing them all in the same directory; but with Go 1.6, vendoring is now offical."
+image = "images/touch/icon-128x128.png"
+imagewidth = "128"
+imageheight = "128"
 +++
 
 Traditionally, Go has handled dependencies by installing them all in the same directory under

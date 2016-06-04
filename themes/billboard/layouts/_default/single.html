@@ -10,17 +10,17 @@
 
         <!-- Blog post image if available. -->
         <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
-          <meta itemprop="url" content="{{ .Site.BaseURL }}images/touch/icon-128x128.png">
-          <meta itemprop="width" content="128">
-          <meta itemprop="height" content="128">
+          <meta itemprop="url" content="{{ .Site.BaseURL }}{{ $.Params.image }}">
+          <meta itemprop="width" content="{{ $.Params.imagewidth }}">
+          <meta itemprop="height" content="{{ $.Params.imageheight }}">
         </div>
 
         <!-- Publisher information as defined by schema.org. -->
         <div itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
           <div itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-            <meta itemprop="url" content="{{ .Site.BaseURL }}images/touch/icon-128x128.png">
-            <meta itemprop="width" content="128">
-            <meta itemprop="height" content="128">
+            <meta itemprop="url" content="{{ .Site.BaseURL }}{{ $.Params.image }}">
+            <meta itemprop="width" content="{{ $.Params.imagewidth }}">
+            <meta itemprop="height" content="{{ $.Params.imageheight }}">
           </div>
           <meta itemprop="name" content="Walter Kuppens">
         </div>
