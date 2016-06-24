@@ -13,4 +13,4 @@ working there since 2013.
 ## Contact
 
 You can contact me by emailing [reshurum@gmail.com](mailto:reshurum@gmail.com)
-or through any of the social media links on the navbar.
+or through social media.

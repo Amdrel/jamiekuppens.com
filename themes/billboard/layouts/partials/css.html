@@ -7,6 +7,9 @@
 
   body {
     margin: 0;
+    color: #3A4145;
+    text-rendering: geometricPrecision;
+    letter-spacing: 0.01rem;
   }
 
   a {
@@ -24,8 +27,7 @@
   }
 
   h1, h2, h3, h4 {
-    color: #222;
-    font-weight: lighter;
+    color: #4A4A4A;
   }
 
   h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover {
@@ -38,7 +40,7 @@
     bottom: 0;
     width: 100%;
     height: 50px;
-    font-family: "Arial";
+    font-family: 'Open Sans', sans-serif;
     color: #909ba7;
     background-color: #242b32;
   }
@@ -55,6 +57,7 @@
   }
 
   table {
+    margin: 0 auto;
     border: 1px solid #e2e2e2;
     border-spacing: 0;
     border-radius: 5px;
@@ -128,7 +131,7 @@
 
   .sidebar {
     background-color: #242b32;
-    font-family: "Arial";
+    font-family: 'Open Sans', sans-serif;
     color: #FFF;
   }
 
@@ -180,13 +183,21 @@
 
   .social-icons {
     display: inline-block;
-    height: 40px;
+    height: 36px;
+    margin-left: 12px;
   }
 
   .social-icons svg {
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
     margin-right: 4px;
+  }
+
+  .social-icons a {
+    display: inline-block;
+    position: relative;
+    top: 5px;
+    height: 36px;
   }
 
   .social-icons a svg {
@@ -206,7 +217,7 @@
 
   .content {
     margin-bottom: 50px;
-    font-family: "Arial", "sans-serif";
+    font-family: 'Merriweather', serif;
     font-size: 16px;
   }
 
@@ -217,14 +228,14 @@
   }
 
   .content article p {
-    color: rgba(0, 0, 0, 0.8);
-    font-family: "Arial", "sans-serif";
+    color: #3A4145;
+    font-family: 'Merriweather', serif;
     font-size: 16px;
-    line-height: 32px;
+    line-height: 1.7em;
   }
 
   .content h1, .content h2, .content h3, .content h4 {
-    font-family: "Arial";
+    font-family: 'Open Sans', sans-serif;
     text-rendering: optimizeLegibility;
   }
 
@@ -254,7 +265,7 @@
   }
 
   .not-found h1, .not-found h2, .not-found h3, .not-found h4 {
-    color: #222
+    color: #4A4A4A
   }
 
   .highlight {
@@ -274,7 +285,7 @@
 
   .meta {
     color: #72767D;
-    font-family: "Arial", "sans-serif";
+    font-family: 'Merriweather', serif;
     font-size: 14px;
     line-height: 22px;
   }
@@ -304,7 +315,12 @@
   }
 
   .link-header a {
-    color: #222;
+    color: #4A4A4A;
+  }
+
+  .link-header a:hover,
+  .link-header a:focus {
+    color: #313131;
   }
 
   .desktop-left {
@@ -372,7 +388,7 @@
     }
 
     .social-icons {
-      display: block;
+      display: none;
     }
 
     .social-icons img {
