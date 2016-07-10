@@ -7,7 +7,7 @@
       <time datetime="{{ .Date.Format "2006-01-02" }}" itemprop="datePublished">{{ .Date.Format "Mon, Jan 2, 2006" }}</time> •
       {{ .ReadingTime }} min read
       <br>
-      Written by <a href="https://twitter.com/Reshurum" itemprop="author" rel="author">Walter Kuppens</a>
+      Written by <a href="{{ .Site.Params.github }}" itemprop="author" rel="author">{{ .Site.Params.author }}</a>
     </div>
 
     {{ if .Truncated }}

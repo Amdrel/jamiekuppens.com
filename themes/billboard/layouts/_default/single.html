@@ -22,7 +22,7 @@
             <meta itemprop="width" content="{{ $.Params.imagewidth }}">
             <meta itemprop="height" content="{{ $.Params.imageheight }}">
           </div>
-          <meta itemprop="name" content="Walter Kuppens">
+          <meta itemprop="name" content="{{ .Site.Params.author }}">
         </div>
 
         <h1 itemprop="headline">{{ .Title }}</h1>
@@ -35,7 +35,7 @@
             <span>Written by</span>
             <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
               <span itemprop="name">
-                <a href="https://twitter.com/Reshurum" itemprop="url" rel="author">Walter Kuppens</a>
+                <a href="{{ .Site.Params.github }}" itemprop="url" rel="author">{{ .Site.Params.author }}</a>
               </span>
             </span>
           </div>
