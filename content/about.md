@@ -5,12 +5,15 @@ title = "About"
 description = "Contact information for Walter Kuppens. Email me at reshurum@gmail.com."
 +++
 
-I am a software developer primarily interested in web development and the
-backend, although I also have an interst in making games and embedded
-applications. I am currently employed at Stickman Ventures, Inc. and have been
-working there since 2013.
+Hello, I'm Walter. I'm a software engineer with an interest in web development
+and some more esoteric things like emulator development. My interest in software
+sparked from a natural curiosity of how things work, and it's what drives me to
+learn new and amazing things.
+
+I am currently employed at [Stickman
+Ventures](https://www.stickmanventures.com/) and I've been there since 2013.
 
 ## Contact
 
 You can contact me by emailing [reshurum@gmail.com](mailto:reshurum@gmail.com)
-or through social media.
+or PM me on Reddit [/u/Reshurum](https://www.reddit.com/user/Reshurum).
