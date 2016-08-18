@@ -50,6 +50,7 @@
     background: #F3F3F3;
     padding: 3px;
     border-radius: 3px;
+    line-height: normal;
   }
 
   hr {
@@ -96,6 +97,18 @@
 
   .highlight code {
     background: inherit;
+  }
+
+  .aside-left {
+    display: inline;
+    float: left;
+    margin-right: 16px;
+  }
+
+  .aside-right {
+    display: inline;
+    float: right;
+    margin-left: 16px;
   }
 
   .footer-text {
@@ -218,8 +231,12 @@
 
   .content {
     margin-bottom: 50px;
+    font-size: 1.1em;
     font-family: 'Arial', serif;
-    font-size: 16px;
+  }
+
+  .content p {
+    line-height: 1.7em;
   }
 
   .content article {
@@ -228,28 +245,22 @@
     margin-bottom: 25px;
   }
 
-  .content article p {
-    color: #3A4145;
-    font-family: 'Arial', serif;
-    font-size: 1.1em;
-    line-height: 1.7em;
-  }
-
   .content h1, .content h2, .content h3, .content h4 {
+    line-height: normal;
     font-family: 'Arial', sans-serif;
     text-rendering: optimizeLegibility;
   }
 
   .content h1 {
-    font-size: 2.4em;
+    font-size: 2.2em;
   }
 
   .content h2 {
-    font-size: 2em;
+    font-size: 1.8em;
   }
 
   .content h3 {
-    font-size: 1.6em;
+    font-size: 1.4em;
   }
 
   .content h4 {
@@ -330,6 +341,11 @@
 
   .desktop-right {
     float: right;
+  }
+
+  .about-portrait {
+    width: 250px;
+    border-radius: 50%;
   }
 
   @media (max-width: 800px) {
@@ -436,6 +452,12 @@
 
     .date-group {
       width: auto;
+    }
+
+    .about-portrait {
+      width: 150px;
+      margin: 0 auto;
+      border-radius: 50%;
     }
   }
 </style>

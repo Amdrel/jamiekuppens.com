@@ -1,0 +1,10 @@
+{{ if eq (.Get "aside") "right" }}
+  {{ $.Scratch.Set "aside-class" "aside-right" }}
+{{ else if eq (.Get "aside") "left" }}
+  {{ $.Scratch.Set "aside-class" "aside-left" }}
+{{ end }}
+
+<img
+  src="{{ .Get "src" }}"
+  alt="{{ .Get "alt" }}"
+  class="{{ $.Scratch.Get "aside-class" }} {{ .Get "class" }}">
