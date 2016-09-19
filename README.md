@@ -1,7 +1,8 @@
 # walterkuppens.com
 
 This repo contains the content of my blog hosted at
-[walterkuppens.com](walterkuppens.com). The site requires Hugo to build.
+[walterkuppens.com](https://walterkuppens.com). The site requires Hugo to
+build.
 
 ## License
 
