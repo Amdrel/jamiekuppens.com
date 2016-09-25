@@ -4,17 +4,19 @@
   {{ partial "topbar.html" . }}
 
   <main class="content container">
-    <div class="container-pad">
-      <div class="not-found">
-        <h1>404 - This is not the page you're looking for...</h1>
-        <h3>but you may find what you are looking for here.</h3>
-        <hr>
-      </div>
+    <article>
+      <div class="container-pad">
+        <div class="not-found">
+          <h1>404 - This is not the page you're looking for...</h1>
+          <h3>...but you may find what you are looking for here.</h3>
+          <hr>
+        </div>
 
-      {{ range first 5 .Site.Pages }}
-        {{ .Render "summary" }}
-      {{ end }}
-    </div>
+        {{ range first 5 .Site.Pages }}
+          {{ .Render "summary" }}
+        {{ end }}
+      </div>
+    </article>
   </main>
 
   {{ partial "footer.html" . }}
