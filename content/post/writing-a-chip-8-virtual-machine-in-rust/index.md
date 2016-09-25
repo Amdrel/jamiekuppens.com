@@ -8,8 +8,6 @@ imagewidth = "640"
 imageheight = "350"
 +++
 
-{{< figure src="/post/writing-a-chip-8-virtual-machine-in-rust/pong.png" alt="Pong running in an SDL window." >}}
-
 A few months ago after a tiring day at work, I came across a post on
 [/r/programming](https://www.reddit.com/r/programming/) about
 [livecoding a N64 emulator in rust](https://www.reddit.com/r/programming/comments/41bo7h/ive_started_livecoding_an_n64_emulator_in_rust/)

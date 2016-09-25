@@ -1,36 +1,47 @@
 <footer>
   {{ if isset .Site.Params "analytics" }}
-    <script>
-      var doNotTrackSupported = navigator.doNotTrack !== undefined ||
-        navigator.msDoNotTrack !== undefined ||
-        window.doNotTrack !== undefined;
+    <script data-analytics-id="{{ .Site.Params.analytics }}">
+      (function() {
+        'use strict';
 
-      var doNotTrackEnabled = doNotTrackSupported &&
-        (navigator.doNotTrack == 'yes' || navigator.doNotTrack == '1' ||
-        navigator.msDoNotTrack == '1' || window.doNotTrack == '1');
+        // All browsers that matter decided they wanted to hide DoNotTrack in
+        // three separate locations.
+        var doNotTrackSupported = navigator.doNotTrack !== undefined ||
+          navigator.msDoNotTrack !== undefined ||
+          window.doNotTrack !== undefined;
 
-      if (doNotTrackEnabled) {
-        console.log('It appears you have Do Not Track enabled! Since I ' +
-            'somewhat respect other\'s privacy, you will not be ' +
-            'tracked by Google Analytics!');
-      } else {
+        // DoNotTrack should return a number formatted as a string (why?), but
+        // if you're using NoScript (no blocking), it will return "yes" instead
+        // for some mystical magical reason.
+        var doNotTrackEnabled = doNotTrackSupported &&
+          (navigator.doNotTrack == 'yes' || navigator.doNotTrack == '1' ||
+          navigator.msDoNotTrack == '1' || window.doNotTrack == '1');
+
+        // Bail if DoNotTrack is enabled.
+        if (doNotTrackEnabled) {
+          console.log('It appears you have Do Not Track enabled! Since I ' +
+              'somewhat respect other\'s privacy, you will not be ' +
+              'tracked by Google Analytics!');
+          return;
+        }
+
+        // Load Google Analytics and beam all user activity directly to the NSA,
+        // CIA, and FBI for a thorough investigation.
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-        ga('create', {{ .Site.Params.analytics }}, 'auto');
+        var id = document.currentScript.getAttribute('data-analytics-id');
+        ga('create', id, 'auto');
         ga('send', 'pageview');
-      }
+      })();
     </script>
   {{ end }}
 
   <div class="container">
     <div class="container-pad footer-text">
       <span>{{ .Site.Params.copyright }}</span>
-      <span class="copyright desktop">
-        - Built with <a href="https://gohugo.io/">Hugo</a>
-      </span>
     </div>
   </div>
 </footer>

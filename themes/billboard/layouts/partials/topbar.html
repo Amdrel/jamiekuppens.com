@@ -1,0 +1,15 @@
+<div class="topbar">
+  <div class="topbar-content container">
+    <div class="container-pad">
+      <span class="brand-container">
+        <a href="{{ .Site.BaseURL }}" class="brand">{{ .Site.Title }}</a>
+      </span>
+
+      <div class="topbar-links">
+        {{ range sort .Site.Params.links "weight" "desc" }}
+          <span class="topbar-link topbar-link-lg"><a href="{{ $.Site.BaseURL }}{{ .url }}">{{ .title }}</a></span>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>

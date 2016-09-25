@@ -1,7 +1,5 @@
 <style>
   html {
-    position: relative;
-    min-height: 100%;
     background-color: #FEFFFF;
   }
 
@@ -22,7 +20,7 @@
     text-decoration: underline;
   }
 
-  a:focus {
+  a:active {
     color: #0f9c84;
   }
 
@@ -36,14 +34,9 @@
   }
 
   footer {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 50px;
+    margin-bottom: 16px;
     font-family: 'Arial', sans-serif;
-    color: #909ba7;
-    background-color: #242b32;
+    color: #4c4c4c;
   }
 
   code {
@@ -112,21 +105,9 @@
   }
 
   .footer-text {
-    line-height: 50px;
-    font-size: 16px;
+    font-size: 1em;
     font-weight: 500;
-  }
-
-  .topbar-hr {
-    margin-top: 12px;
-  }
-
-  .sidebar a {
-    color: #FFF;
-  }
-
-  .sidebar a:focus {
-    color: #8bd8ca;
+    text-align: center;
   }
 
   .container {
@@ -143,27 +124,44 @@
     width: 100%;
   }
 
-  .sidebar {
-    background-color: #242b32;
+  .topbar {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 52px;
+    padding: 8px 0;
+    box-sizing: border-box;
+    background-color: #f5f5f5;
     font-family: 'Arial', sans-serif;
-    color: #FFF;
+    color: #4c4c4c;
   }
 
-  .sidebar-content {
-    display: inline-block;
+  .topbar a {
+    text-decoration: none;
+    color: #4c4c4c;
+  }
+
+  .topbar a:active {
+    color: #13C4A5;
+  }
+
+  .topbar-content {
     width: 100%;
   }
 
-  /* Evil CSS hack for accessibility. Querying starting from sidebar prevents
-     the sidebar anchor color from overwriting the brand color, while still
+  .topbar-hr {
+    margin-top: 12px;
+  }
+
+  /* Evil CSS hack for accessibility. Querying starting from topbar prevents
+     the topbar anchor color from overwriting the brand color, while still
      keeping the focus colors. */
-  .sidebar .brand {
-    color: #FFF;
+  .brand {
     text-decoration: none;
   }
 
-  .sidebar .brand-container {
-    margin-bottom: 0;
+  .brand-container {
+    margin: 6px 0;
   }
 
   .brand {
@@ -172,27 +170,28 @@
     text-decoration: none;
   }
 
-  .sidebar-tagline {
+  .topbar-tagline {
     margin: 12px 0;
   }
 
-  .sidebar-links {
-    background-color: #37424c;
+  .topbar-links {
+    display: inline-block;
+    float: right;
   }
 
-  .sidebar-link {
+  .topbar-link {
     text-decoration: none;
     margin: 0 15px 15px 0;
     line-height: 36px;
     color: #8bd8ca;
   }
 
-  .sidebar-link>a:hover {
+  .topbar-link>a:hover {
     text-decoration: none;
   }
 
-  .sidebar-link-lg {
-    font-size: 18px;
+  .topbar-link-lg {
+    font-size: 1.2em;
   }
 
   .social-icons {
@@ -218,11 +217,8 @@
     fill: #FFF;
   }
 
-  .social-icons a:focus svg {
+  .social-icons a:active svg {
     fill: #8bd8ca;
-  }
-
-  .text-links {
   }
 
   .copyright {
@@ -230,13 +226,13 @@
   }
 
   .content {
-    margin-bottom: 50px;
-    font-size: 1.1em;
+    margin-top: 52px;
+    font-size: 1.2em;
     font-family: 'Arial', serif;
   }
 
   .content p {
-    line-height: 1.7em;
+    line-height: 1.9em;
   }
 
   .content article {
@@ -252,19 +248,20 @@
   }
 
   .content h1 {
-    font-size: 2.2em;
+    font-size: 1.8em;
+    margin: 24px 0;
   }
 
   .content h2 {
-    font-size: 1.8em;
+    font-size: 1.4em;
   }
 
   .content h3 {
-    font-size: 1.4em;
+    font-size: 1.2em;
   }
 
   .content h4 {
-    font-size: 1.4em;
+    font-size: 1.2em;
   }
 
   .content figure {
@@ -331,7 +328,7 @@
   }
 
   .link-header a:hover,
-  .link-header a:focus {
+  .link-header a:active {
     color: #313131;
   }
 
@@ -380,28 +377,29 @@
       padding-right: 15px;
     }
 
-    .sidebar {
+    .brand-container {
       display: block;
+    }
+
+    .brand {
+      display: block;
+      text-align: center;
+      font-size: 1.6em;
+    }
+
+    .topbar {
+      position: static;
+      display: inline-block;
       height: auto;
+      padding: 4px 0;
+      box-sizing: border-box;
       margin-top: 0;
     }
 
-    .sidebar-content {
+    .topbar-content {
       max-width: none;
       top: auto;
       bottom: auto;
-    }
-
-    .sidebar-header {
-      display: block;
-      text-align: center;
-    }
-
-    .sidebar-header h1 {
-      display: block;
-      margin: 0;
-      width: auto;
-      font-size: 28px;
     }
 
     .social-icons {
@@ -413,24 +411,30 @@
       height: auto;
     }
 
-    .sidebar-links {
+    .topbar-links {
       display: block;
       padding-top: 5px;
       padding-bottom: 5px;
       text-align: center;
+      float: none;
     }
 
-    .sidebar-link {
+    .topbar-link {
       display: inline;
       margin: 0 7px 0 7px;
       line-height: 26px;
+    }
+
+    .topbar-link-lg {
+      font-size: 1.2em;
     }
 
     .topbar-hr {
       display: none;
     }
 
-    .content hr {
+    .content {
+      margin-top: 0;
     }
 
     .content article {
