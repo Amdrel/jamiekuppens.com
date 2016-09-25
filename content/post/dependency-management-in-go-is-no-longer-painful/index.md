@@ -13,6 +13,8 @@ Traditionally, Go has handled dependencies by installing them all in the same di
 about; but if the project is large or has lots of developers, version locking dependencies becomes a
 must, lest library version mismatches will ruin your day.
 
+<!--more-->
+
 ## The Problem
 
 Version locking dependencies is typically not a problem for the more popular
@@ -21,8 +23,6 @@ one version of the same dependency installed. How the community got around this 
 abuse go subpackages to store dependencies using tools like [Godep](https://github.com/tools/godep).
 The problem with this approach is that you end up with ridiculously long import paths that are a
 pain to manage and make vim scream.
-
-<!--more-->
 
 {{< highlight go >}}
 import (

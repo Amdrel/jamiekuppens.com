@@ -3,47 +3,56 @@
 <body>
   {{ partial "topbar.html" . }}
 
-  <main class="content container">
-    <article>
-      <div itemscope itemtype="http://schema.org/BlogPosting" class="container-pad">
-        <meta itemprop="name" itemtype="http://schema.org/Text" content="{{ .Title }}">
+  <main class="content">
+    {{ if eq $.Params.hero true }}
+      <div class="hero-wrapper" {{ with $.Params.herocolor }}style="background-color: {{.}};"{{ end }}>
+        <div class="hero" {{ with $.Params.image }}style="background-image: url({{.}});"{{ end }}></div>
+      </div>
+    {{ end }}
 
-        <!-- Blog post image if available. -->
-        <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
-          <meta itemprop="url" content="{{ .Site.BaseURL }}{{ $.Params.image }}">
-          <meta itemprop="width" content="{{ $.Params.imagewidth }}">
-          <meta itemprop="height" content="{{ $.Params.imageheight }}">
-        </div>
+    <!-- Article body containing post content. -->
+    <div class="container">
+      <article class="{{ if eq $.Params.hero true }}cardup{{ end }}">
+        <div itemscope itemtype="http://schema.org/BlogPosting" class="container-pad">
+          <meta itemprop="name" itemtype="http://schema.org/Text" content="{{ .Title }}">
 
-        <!-- Publisher information as defined by schema.org. -->
-        <div itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-          <div itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+          <!-- Blog post image if available. -->
+          <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
             <meta itemprop="url" content="{{ .Site.BaseURL }}{{ $.Params.image }}">
             <meta itemprop="width" content="{{ $.Params.imagewidth }}">
             <meta itemprop="height" content="{{ $.Params.imageheight }}">
           </div>
-          <meta itemprop="name" content="{{ .Site.Params.author }}">
-        </div>
 
-        <h1 itemprop="headline">{{ .Title }}</h1>
-
-        {{ if eq .Type "post" }}
-          <div class="meta">
-            <time datetime="{{ .Date.Format "2006-01-02" }}" itemprop="datePublished">{{ .Date.Format "Mon, Jan 2, 2006" }}</time>
-            <span>• {{ .ReadingTime }} min read</span><br>
-
-            <span>Written by</span>
-            <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-              <span itemprop="name">
-                <a href="{{ .Site.Params.github }}" itemprop="url" rel="author">{{ .Site.Params.author }}</a>
-              </span>
-            </span>
+          <!-- Publisher information as defined by schema.org. -->
+          <div itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+            <div itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+              <meta itemprop="url" content="{{ .Site.BaseURL }}{{ $.Params.image }}">
+              <meta itemprop="width" content="{{ $.Params.imagewidth }}">
+              <meta itemprop="height" content="{{ $.Params.imageheight }}">
+            </div>
+            <meta itemprop="name" content="{{ .Site.Params.author }}">
           </div>
-        {{ end }}
 
-        <div itemprop="articleBody">{{ .Content }}</div>
-      </div>
-    </article>
+          <h1 itemprop="headline">{{ .Title }}</h1>
+
+          {{ if eq .Type "post" }}
+            <div class="meta">
+              <time datetime="{{ .Date.Format "2006-01-02" }}" itemprop="datePublished">{{ .Date.Format "Mon, Jan 2, 2006" }}</time>
+              <span>• {{ .ReadingTime }} min read</span><br>
+
+              <span>Written by</span>
+              <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+                <span itemprop="name">
+                  <a href="{{ .Site.Params.github }}" itemprop="url" rel="author">{{ .Site.Params.author }}</a>
+                </span>
+              </span>
+            </div>
+          {{ end }}
+
+          <div itemprop="articleBody">{{ .Content }}</div>
+        </div>
+      </article>
+    </div>
   </main>
 
   {{ partial "footer.html" . }}

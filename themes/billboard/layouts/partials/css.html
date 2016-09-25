@@ -4,6 +4,7 @@
   }
 
   body {
+    overflow-y: scroll;
     margin: 0;
     color: #3A4145;
     text-rendering: geometricPrecision;
@@ -34,7 +35,7 @@
   }
 
   footer {
-    margin-bottom: 16px;
+    margin: 32px 0;
     font-family: 'Arial', sans-serif;
     color: #4c4c4c;
   }
@@ -127,13 +128,14 @@
   .topbar {
     position: fixed;
     top: 0;
-    width: 100vw;
+    width: 100%;
     height: 52px;
     padding: 8px 0;
     box-sizing: border-box;
     background-color: #f5f5f5;
     font-family: 'Arial', sans-serif;
     color: #4c4c4c;
+    z-index: 100;
   }
 
   .topbar a {
@@ -219,6 +221,11 @@
 
   .social-icons a:active svg {
     fill: #8bd8ca;
+  }
+
+  .cardup {
+    transform: translateY(-125px);
+    background-color: white;
   }
 
   .copyright {
@@ -342,7 +349,13 @@
 
   .about-portrait {
     width: 250px;
+    height: 250px;
     border-radius: 50%;
+  }
+
+  .hero {
+    height: 500px;
+    background-size: cover;
   }
 
   @media (max-width: 800px) {
@@ -460,6 +473,7 @@
 
     .about-portrait {
       width: 150px;
+      height: 150px;
       margin: 0 auto;
       border-radius: 50%;
     }

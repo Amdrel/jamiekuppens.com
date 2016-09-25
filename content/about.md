@@ -22,5 +22,8 @@ Ventures](https://www.stickmanventures.com/) and I've been there since 2013.
 
 ## Contact
 
-You can contact me by emailing [reshurum@gmail.com](mailto:reshurum@gmail.com)
-or PM me on Reddit [/u/Reshurum](https://www.reddit.com/user/Reshurum).
+You can find me on [Twitter,](https://twitter.com/Reshurum)
+[GitHub,](https://github.com/Reshurum)
+[Google+,](https://plus.google.com/+WalterKuppens)
+[Reddit,](https://www.reddit.com/user/Reshurum) or by emailing me at
+[reshurum@gmail.com](mailto:reshurum@gmail.com)
