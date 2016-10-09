@@ -93,16 +93,45 @@
     background: inherit;
   }
 
+  .aside {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .aside figcaption {
+    max-width: 240px;
+  }
+
+  .aside figcaption p {
+    margin: 0;
+    line-height: 1.6em;
+    font-size: 1.1em;
+  }
+
+  .aside figcaption p::before {
+    content: "“";
+    font-size: 1.6em;
+    font-weight: bold;
+  }
+
+  .aside figcaption p::after {
+    content: "”";
+    font-size: 1.6em;
+    font-weight: bold;
+  }
+
   .aside-left {
     display: inline;
     float: left;
     margin-right: 16px;
+    margin-left: 0;
   }
 
   .aside-right {
     display: inline;
     float: right;
     margin-left: 16px;
+    margin-right: 0;
   }
 
   .footer-text {
@@ -272,7 +301,8 @@
   }
 
   .content figure {
-    margin: 15px 0 15px 0;
+    margin-top: 15px;
+    margin-bottom: 15px;
   }
 
   .content figure img {

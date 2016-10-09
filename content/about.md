@@ -6,7 +6,7 @@ description = "Contact information for Walter Kuppens. Email me at reshurum@gmai
 +++
 
 {{< aside-image src="/images/me.jpg" alt="My face" aside="right"
-class="about-portrait" >}}
+img-class="about-portrait" >}}{{< /aside-image >}}
 
 Hello, I'm Walter. I'm a software engineer with an interest in web development
 and some more esoteric things like emulator development. My interest in software

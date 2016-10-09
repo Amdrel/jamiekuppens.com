@@ -4,7 +4,14 @@
   {{ $.Scratch.Set "aside-class" "aside-left" }}
 {{ end }}
 
-<img
-  src="{{ .Get "src" }}"
-  alt="{{ .Get "alt" }}"
-  class="{{ $.Scratch.Get "aside-class" }} {{ .Get "class" }}">
+<figure class="aside desktop {{ .Get "class" }} {{ $.Scratch.Get "aside-class" }} ">
+  {{ if ne (.Get "src") "" }}
+    <img
+      src="{{ .Get "src" }}"
+      alt="{{ .Get "alt" }}"
+      class="{{ .Get "img-class" }}">
+  {{ end }}
+  {{ if ne .Inner "" }}
+    <figcaption>{{ .Inner }}</figcaption>
+  {{ end }}
+</figure>
