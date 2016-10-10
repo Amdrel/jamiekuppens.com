@@ -12,9 +12,9 @@ herocolor = "#24242e"
 
 With the rise of cloud computing and the proliferation of new users to the web, it has become a
 necessity for successful web applications to be able to serve thousands of users whilst being
-reliable, fast, and secure. People depend on web services in their day-to-day lives much more than
-they did during the internet's infancy and it's expected that applications meet user expectations in
-order to stay relevant.
+reliable, fast, and secure. People depend on web services for their day-to-day lives much more than
+they did during the internet's infancy, and it's expected that applications meet user expectations
+in order to stay relevant.
 
 <!--more-->
 
@@ -22,8 +22,8 @@ order to stay relevant.
 
 *Multitenancy* is a software architecture in which one application serves multiple *tenants*.
 Multi-Tenant applications can easily provision access to tenants with minimal effort from the
-service provider which makes it ideal for modern applications as the web continues to grow.
-Multitenancy is regarded as an important feature of cloud computing.
+service provider which makes it ideal for modern applications. Multitenancy is regarded as an
+important feature of cloud computing.
 
 ### Tenants
 
@@ -31,11 +31,12 @@ Multitenancy is regarded as an important feature of cloud computing.
 *A tenant can refer to either a user, a client, or an organization.*
 {{% /aside-image %}}
 
-*Tenant* is loosely defined, but it's typically used to describe either a **user**, a **client**, or
-an **organization**.  For example an organization on GitHub with it's own set of repositories can be
-regarded as a tenant, while a GitHub user may also be considered one. Another example can be of a
-SaaS application where the tenant is a *client* and users are owned by the tenant rather than being
-the tenant themselves.
+*Tenant* is a loosely defined term, but it's typically used to describe either a **user**, a
+**client**, or an **organization**. For example an organization on GitHub with it's own set of
+repositories can be regarded as a tenant, while a GitHub user may also be considered one. Another
+example can be of a SaaS application where the tenant is a *client* and users are owned by the
+tenant rather than being the tenant themselves. In paid applications it is typically the tenant who
+pays, which in it of itself is the true definition of a tenant.
 
 ### Data Isolation
 
@@ -69,11 +70,11 @@ implementing Multi-Tenant applications easy. Multitenancy in App Engine revolves
 
 ### Namespaces
 
-*Namespaces* allow you to separate data into their own isolated silos through a nice simple to use
-API which can be used with minimal effort. Namespaces can be used by passing a *namespace id* are
-created implicitly without having to create them yourself. For example, if I try to store a file in
+*Namespaces* allow you to separate data into their own isolated silos through a simple API which can
+be used with minimal effort. Namespaces are accessed through a *namespace id* which are created
+implicitly without having to create them manually. For example, if you try to store a file in
 blobstore with the namespace `profile_pictures` and it does not exist, App Engine will happily
-create it for me and place my file in with no questions asked.
+create it for you and place the file in with no questions asked.
 
 {{< highlight python >}}
 print("I'm python code that does absolutely nothing!")
@@ -89,3 +90,9 @@ implement multi-tenancy. You can try the demo [here](https://github.com/Reshurum
 the final result before continuing (note that data is wiped on a weekly basis). This application
 allows users to sign up through a public signup interface and from there they can create teams and
 invite other users to them.
+
+### Authentication and Namespace Creation
+
+### Storing Team Goals in Datastore
+
+### Storing Profile Pictures in Blobstore
