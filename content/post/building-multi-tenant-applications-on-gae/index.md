@@ -22,8 +22,8 @@ stay relevant.
 
 *Multitenancy* is a software architecture in which one application serves multiple *tenants*.
 Multi-Tenant applications can easily provision access to tenants with minimal effort from the
-service provider which makes it ideal for modern applications with an evergrowing web. Multitenancy
-is regarded as an important feature of cloud computing.
+service provider which makes it ideal for modern applications as the web continues to grow.
+Multitenancy is regarded as an important feature of cloud computing.
 
 ### Tenants
 
