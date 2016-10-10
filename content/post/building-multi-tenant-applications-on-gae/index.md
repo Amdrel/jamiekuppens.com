@@ -87,4 +87,5 @@ namespace, resources are stored and retrieved from a default unnamed namespace.
 I've created a Goal tracking application that showcases using namespace enabled APIs effectively to
 implement multi-tenancy. You can try the demo [here](https://github.com/Reshurum) if you want to see
 the final result before continuing (note that data is wiped on a weekly basis). This application
-will allow users to sign up through a public
+allows users to sign up through a public signup interface and from there they can create teams and
+invite other users to them.
