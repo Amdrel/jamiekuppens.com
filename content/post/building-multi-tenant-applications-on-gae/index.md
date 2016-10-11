@@ -85,13 +85,15 @@ namespace, resources are stored and retrieved from a default unnamed namespace.
 
 ## Let's Build a Team Goal Tracking App
 
-I've created a Goal tracking application that showcases using namespace enabled APIs effectively to
-implement multi-tenancy. You can try the demo [here](https://github.com/Reshurum) if you want to see
-the final result before continuing (note that data is wiped on a weekly basis). This application
-allows users to sign up through a public signup interface and from there they can create teams and
-invite other users to them.
+I've created a Goal tracking application on App Engine Standard Environment that showcases using
+namespace enabled APIs effectively to implement multi-tenancy. You can try the demo
+[here](https://github.com/Reshurum) if you want to see the final result before continuing (note that
+data is wiped on a weekly basis). This application allows users to sign up through a public signup
+interface and from there they can create teams and invite other users to them.
 
 ### Authentication and Namespace Creation
+
+
 
 ### Storing Team Goals in Datastore
 
