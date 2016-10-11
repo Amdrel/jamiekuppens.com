@@ -86,14 +86,22 @@ namespace, resources are stored and retrieved from a default unnamed namespace.
 ## Let's Build a Team Goal Tracking App
 
 I've created a Goal tracking application on App Engine Standard Environment that showcases using
-namespace enabled APIs effectively to implement multi-tenancy. You can try the demo
-[here](https://github.com/Reshurum) if you want to see the final result before continuing (note that
-data is wiped on a weekly basis). This application allows users to sign up through a public signup
-interface and from there they can create teams and invite other users to them.
+namespaces effectively to implement multi-tenancy. You can try the demo
+[here](https://github.com/Reshurum) if you want to see the final result before continuing. This
+application allows users to sign up through a public signup interface and from there they can create
+teams and invite other users to them. Do note that data is wiped on a daily basis.
 
 ### Authentication and Namespace Creation
 
+For simplicity, we're going to be using the [Users
+API](https://cloud.google.com/appengine/docs/python/users/) for authentication. To create namespaces
+for users, we must have a unique identifier to separate it from other users. The Users API exposes a
+user id which can be used in namespace names when querying data specific to that user. Since user
+ids are unique, we don't ever have to worry about leaking information.
 
+{{< highlight python >}}
+print("I'm python code that does absolutely nothing!")
+{{< /highlight >}}
 
 ### Storing Team Goals in Datastore
 
