@@ -77,19 +77,19 @@ blobstore with the namespace `profile_pictures` and it does not exist, App Engin
 create it for you and place the file in with no questions asked.
 
 {{< highlight python >}}
-print("I'm python code that does absolutely nothing!")
+print('I\'m python code that does absolutely nothing!')
 {{< /highlight >}}
 
 One thing to note is that when you use a namespace enabled API under App Engine without specifying a
 namespace, resources are stored and retrieved from a default unnamed namespace.
 
-## Let's Build a Team Goal Tracking App
+## Let's Build a Group Goal Tracking App
 
 I've created a Goal tracking application on App Engine Standard Environment that showcases using
 namespaces effectively to implement multi-tenancy. You can try the demo
 [here](https://github.com/Reshurum) if you want to see the final result before continuing. This
 application allows users to sign up through a public signup interface and from there they can create
-teams and invite other users to them. Do note that data is wiped on a daily basis.
+groups that other users can join. Do note that data is wiped on a daily basis.
 
 ### Authentication and Namespace Creation
 
@@ -97,12 +97,18 @@ For simplicity, we're going to be using the [Users
 API](https://cloud.google.com/appengine/docs/python/users/) for authentication. To create namespaces
 for users, we must have a unique identifier to separate it from other users. The Users API exposes a
 user id which can be used in namespace names when querying data specific to that user. Since user
-ids are unique, we don't ever have to worry about leaking information.
+ids are unique, we don't ever have to worry about leaking information to the wrong user.
 
 {{< highlight python >}}
-print("I'm python code that does absolutely nothing!")
+print('I\'m python code that does absolutely nothing!')
 {{< /highlight >}}
 
-### Storing Team Goals in Datastore
+### Storing Goals in Datastore
+
+In this demo goals are set for a group so the namespace must be unique to a group.
+
+{{< highlight python >}}
+print('I\'m python code that does absolutely nothing!')
+{{< /highlight >}}
 
 ### Storing Profile Pictures in Blobstore
