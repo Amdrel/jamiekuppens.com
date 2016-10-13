@@ -52,7 +52,7 @@ guarantee data does not leak, though relationships cannot be made between databa
 Each of these approaches have their use case and it's not one or the other, in fact a mixture of
 both approaches can be used. For example if your application is a simple public facing web service
 where the tenants are users, then you may only need to isolate private user data that would never be
-shared into separate databases, but store user credentials and relational data in a single database
+shared into separate databases, but store user credentials and relational data in a shared database
 for quick access.
 
 ### Availability
@@ -91,4 +91,5 @@ Since user ids are unique, we don't ever have to worry about leaking information
 First things first we need to allow authentication with the Users API.
 
 {{< highlight python >}}
+print('I\'m python code that does absolutely nothing!')
 {{< /highlight >}}
