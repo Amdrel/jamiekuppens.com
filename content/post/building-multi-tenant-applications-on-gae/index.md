@@ -1,6 +1,6 @@
 +++
-date = "2016-10-08T23:57:56-07:00"
-draft = true
+date = "2016-10-13T23:50:33-07:00"
+draft = false
 title = "Building Multi-Tenant Applications on App Engine"
 description = "Learn how to use Google App Engine to build hardened Multi-Tenant web applications."
 image = "/post/building-multi-tenant-applications-on-gae/text-editor-tilted.jpg"
