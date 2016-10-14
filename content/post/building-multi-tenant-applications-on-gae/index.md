@@ -62,25 +62,19 @@ application goes down all tenants will be denied service. This differs from a si
 where the application is provisioned individually for each tenant, in which case if the application
 stops working it affects only the one tenant.
 
-## App Engine makes Multitenancy Easy
+### Namespaces
 
 For quite a while now, App Engine has included options with their various APIs that makes
 implementing Multi-Tenant applications easy. Multitenancy in App Engine revolves around the use of
 [Namespace](https://cloud.google.com/appengine/docs/python/multitenancy/) enabled APIs.
 
-### Namespaces
-
 *Namespaces* allow you to separate data into their own isolated silos through a simple API which can
 be used with minimal effort. Namespaces are accessed through a *namespace id* which are created
-implicitly without having to create them manually. For example, if you try to store a file in
-blobstore with the namespace `profile_pictures` and it does not exist, App Engine will happily
-create it for you and place the file in with no questions asked. One thing to note is that when you
-use a namespace enabled API under App Engine without specifying a namespace, resources are stored
-and retrieved from a default unnamed namespace.
-
-{{< highlight python >}}
-print('I\'m python code that does absolutely nothing!')
-{{< /highlight >}}
+implicitly when accessed. For example, if you try to store notes in datastore with the namespace
+`my_notes` and it does not exist, App Engine will happily create it for you and place the data in
+with no questions asked. One thing to note is that when you use a namespace enabled API under app
+engine without specifying a namespace, resources are stored and retrieved from a default unnamed
+namespace.
 
 Let's use namespaces for storing private user data. For simplicity, we're going to be using the
 [Users API](https://cloud.google.com/appengine/docs/python/users/) for authentication. To create
@@ -88,8 +82,105 @@ namespaces for users, we must have a unique identifier to separate data from oth
 API exposes a user id which can be used in namespace names when querying data specific to that user.
 Since user ids are unique, we don't ever have to worry about leaking information to the wrong user.
 
-First things first we need to allow authentication with the Users API.
+Note that this is not a tutorial about the basics of App Engine and I'll gloss over alot here. First
+things first we need to allow authentication with the Users API. Here is a basic App Engine app that
+lets a user login and obtain a user id with `user.user_id()`.
 
 {{< highlight python >}}
-print('I\'m python code that does absolutely nothing!')
+import webapp2
+
+from google.appengine.api import users
+
+class MainPage(webapp2.RequestHandler):
+    def get(self):
+        body = ''
+        user = users.get_current_user()
+        if user:
+            nickname = user.nickname()
+            logout_url = users.create_logout_url('/')
+            body = 'Welcome, {}! (<a href="{}">Sign Out</a>), ID: {}'.format(
+                nickname, logout_url, user.user_id())
+        else:
+            login_url = users.create_login_url('/')
+            body = '<a href="{}">Sign in</a>'.format(login_url)
+
+        self.response.headers['Content-Type'] = 'text/html'
+        self.response.write('<html><body>{}</body></html>'.format(body))
+
+app = webapp2.WSGIApplication([
+    ('/', MainPage),
+], debug=True)
 {{< /highlight >}}
+
+Now that we have an id we can start using namespaces. The App Engine python library uses global
+state for keeping track of the current namespace used by namespace enabled APIs. I'll create a
+counter to keep track of how many times the current user has loaded the page that only the current
+user can see.
+
+{{< highlight python >}}
+from google.appengine.api import users
+from google.appengine.api import namespace_manager
+from google.appengine.ext import ndb
+
+class MainPage(webapp2.RequestHandler):
+    def get(self):
+        ...
+
+        if user:
+            nickname = user.nickname()
+            logout_url = users.create_logout_url('/')
+            body = 'Welcome, {}! (<a href="{}">Sign Out</a>), ID: {}'.format(
+                nickname, logout_url, user.user_id())
+
+            # Save the current namespace so it can be reset. It's good practice
+            # to reset the namespace to the previous state so code that uses no
+            # namespaces does not write to the wrong place.
+            previous_namespace = namespace_manager.get_namespace()
+            try:
+                # Create a namespace name with the user's id appended to it
+                # before running the update counter function.
+                namespace_manager.set_namespace('user_{}'.format(user.user_id()))
+                count = update_counter('counter')
+
+                body += '<br>Visit Count: {}'.format(count)
+            finally:
+                # Always restore the saved namespace. This will still run if the
+                # counter update fails.
+                namespace_manager.set_namespace(previous_namespace)
+
+...
+
+class VisitCounter(ndb.Model):
+    previous_namespace = namespace_manager
+    count = ndb.IntegerProperty()
+
+@ndb.transactional
+def update_counter(name='visits'):
+    """Increment a counter entity with a given name."""
+
+    counter = VisitCounter.get_by_id(name)
+    if counter is None:
+        counter = VisitCounter(id=name, count=0)
+    counter.count += 1
+    counter.put()
+
+    return counter.count
+{{< /highlight >}}
+
+Now the user visit count for the currently logged in user will be stored in datastore under a
+namespace specific to the user.
+
+{{< figure src="/post/building-multi-tenant-applications-on-gae/counter_demo.png" >}}
+
+If you log into another user, then you will get a different count as other users namespace names are
+not shared. There are many more APIs that use namespaces such as
+[Memcache](https://cloud.google.com/appengine/docs/python/multitenancy/multitenancy#Python_Using_namespaces_with_the_Memcache),
+[Task queue](https://cloud.google.com/appengine/docs/python/multitenancy/multitenancy#Python_Using_namespaces_with_the_Task_Queue),
+and [Search](https://cloud.google.com/appengine/docs/python/multitenancy/multitenancy#Python_Using_namespaces_with_Search).
+
+## Summary
+
+App Engine APIs make it easy to write scalable multi-tenant applications using namespaces. If you
+want to learn more about App Engine, I suggest you start with their python guide
+[here](https://cloud.google.com/appengine/docs/python/). You can get the source code of this demo on
+[GitHub](https://github.com/Reshurum/appengine-namespace-demo).
