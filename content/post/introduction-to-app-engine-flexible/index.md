@@ -22,15 +22,15 @@ resemblant to services like [Elastic Beanstalk](https://aws.amazon.com/elasticbe
 ## Some History on App Engine
 
 App Engine supports two different environments to run your application under, the Standard
-Environment and the Flexible Environment. Since App Engine's incpetion, the default and only
+Environment and the Flexible Environment. Since App Engine's inception, the default and only
 environment was the standard environment. App Engine Standard has one killer feature, it is able to
 scale up additional infrastructure in **_milliseconds_** which was unheard of at the time. However
-to achive this, appications must be run in a very contrained environment with very little to no
+to achieve this, applications must be run in a very constrained environment with very little to no
 customization by the developers.
 
-One of the largest limitations is you _cannot_ use libraries/code utilizing native code. This made the
-Python environment very limited as a very large number of Python libraries call C APIs to run
-performance critial and shared code (some libraries are written in C with bindings to other
+One of the largest limitations is you _cannot_ use libraries/code utilizing native code. This made
+the Python environment very limited as a very large number of Python libraries call C APIs to run
+performance critical and shared code (some libraries are written in C with bindings to other
 languages).
 
 Here is a quick rundown of some pros and cons of App Engine Standard:
@@ -80,10 +80,24 @@ your own. For the uninitiated, Docker allows the creation of reproducible isolat
 run your application inside of for both testing and deployment. You don't need to worry about
 messing with Docker if you plan on using any of the already supported runtimes.
 
+## Support
+
+At the moment, the flexible environment is currently in beta and is not covered by App Engine's [SLA
+Deprecation Policy](https://cloud.google.com/appengine/sla). App Engine Flexible is only supported
+in North American regions at this time.
+
+## Pricing
+
+App Engine Flexible currently uses [Compute Engine
+pricing](https://cloud.google.com/compute/pricing) as instances provisioned by App Engine run on top
+of Compute Engine. Google has stated that pricing may change in the future and should be finalized
+by the time flexible is out of beta.
+
+App Engine Flexible also requires that billing be enabled in the Google Cloud Console, however
+Google offers $300 of credit and a 60-day trial for testing purposes.
+
 ## Learning More
 
 If you want to learn more about App Engine Flexible or try it out, the [App Engine
 Documentation](https://cloud.google.com/appengine/docs/flexible/python/) has plenty of examples and
-literature to get you started. Note that use of App Engine Flexible requires that billing be enabled
-in the Google Cloud Console, however Google offers $300 of credit and a 60-day trial if you're
-interested.
+literature to get you started.
