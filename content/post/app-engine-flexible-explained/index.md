@@ -1,9 +1,9 @@
 +++
 date = "2016-11-17T11:17:59-08:00"
 draft = true
-title = "Introduction to App Engine Flexible"
-description = "Temporary description, please replace."
-image = "/post/introduction-to-app-engine-flexible/google-cloud-console.png"
+title = "App Engine Flexible Explained"
+description = "The App Engine Flexible Environment offers many benefits over the traditional App Engine, though there are pros and cons to both."
+image = "/post/app-engine-flexible-explained/google-cloud-console.png"
 imagewidth = "1920"
 imageheight = "1200"
 hero = true
