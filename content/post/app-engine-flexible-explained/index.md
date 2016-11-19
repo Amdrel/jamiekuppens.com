@@ -1,5 +1,5 @@
 +++
-date = "2016-11-17T11:17:59-08:00"
+date = "2016-11-18T11:17:59-08:00"
 draft = true
 title = "App Engine Flexible Explained"
 description = "The App Engine Flexible Environment offers many benefits over the traditional App Engine, though there are pros and cons to both."
