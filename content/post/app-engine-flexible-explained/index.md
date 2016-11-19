@@ -61,6 +61,7 @@ Engine Standard can scale to zero instances since it scales so fast).
 
 ## Runtimes
 
+{{% device formfactor="desktop" %}}
 The flexible environment supports many language runtimes out of the box. Here is a version table
 taken from the [App Engine Documentation](https://cloud.google.com/appengine/docs).
 
@@ -73,6 +74,13 @@ taken from the [App Engine Documentation](https://cloud.google.com/appengine/doc
 | Node            | —                    | Node v6.9.1 LTS      |
 | Ruby            | —                    | Ruby 2.3             |
 | Custom Runtimes | —                    | Docker               |
+{{% /device %}}
+
+{{% device formfactor="mobile" %}}
+The flexible environment supports many language runtimes out of the box. A version table for all
+supported languages can be found in the [App Engine
+Documentation](https://cloud.google.com/appengine/docs).
+{{% /device %}}
 
 One notable thing is that each runtime supported by the flexible environment is a Docker image. This
 allows extensive customizability as you are free to modify the provided Docker images, or create
