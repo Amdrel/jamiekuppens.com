@@ -26,6 +26,11 @@
   <link rel="apple-touch-icon" href="/images/touch/apple-touch-icon.png">
   <meta name="msapplication-TileImage" content="/images/touch/ms-touch-icon-144x144-precomposed.png">
 
+  {{ if .RSSLink }}
+    <link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
+    <link href="{{ .RSSLink }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" />
+  {{ end }}
+
   <title>{{ .Title }}</title>
 
   <!-- Critical css. The css is quite small so it can all be inline and as an
