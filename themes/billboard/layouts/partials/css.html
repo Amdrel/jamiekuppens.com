@@ -164,28 +164,20 @@
     text-decoration: none;
     color: #4c4c4c;
   }
-
   .topbar a:active {
     color: #13C4A5;
-  }
-
-  .topbar-content {
-    width: 100%;
   }
 
   .topbar-hr {
     margin-top: 12px;
   }
 
-  /* Evil CSS hack for accessibility. Querying starting from topbar prevents
-     the topbar anchor color from overwriting the brand color, while still
-     keeping the focus colors. */
   .brand {
     text-decoration: none;
   }
 
   .brand-container {
-    margin: 6px 0;
+    position: absolute;
   }
 
   .brand {
@@ -199,17 +191,16 @@
   }
 
   .topbar-links {
-    display: inline-block;
-    float: right;
+    display: flex;
+    height: 36px;
+    justify-content: flex-end;
+    align-items: center;
   }
 
   .topbar-link {
-    text-decoration: none;
-    margin: 0 15px 15px 0;
-    line-height: 36px;
+    margin-left: 16px;
     color: #8bd8ca;
   }
-
   .topbar-link>a:hover {
     text-decoration: none;
   }
@@ -218,29 +209,13 @@
     font-size: 1.2em;
   }
 
-  .social-icons {
-    display: inline-block;
-    height: 36px;
-    margin-left: 12px;
-  }
-
   .social-icons svg {
-    width: 28px;
-    height: 28px;
-    margin-right: 4px;
+    width: 24px;
+    height: 24px;
   }
-
-  .social-icons a {
-    display: inline-block;
-    position: relative;
-    top: 5px;
-    height: 36px;
-  }
-
   .social-icons a svg {
-    fill: #FFF;
+    fill: #4c4c4c;
   }
-
   .social-icons a:active svg {
     fill: #8bd8ca;
   }
@@ -428,6 +403,8 @@
 
     .brand-container {
       display: block;
+      position: static;
+      margin-bottom: 12px;
     }
 
     .brand {
@@ -440,15 +417,9 @@
       position: static;
       display: inline-block;
       height: auto;
-      padding: 4px 0;
+      padding: 8px 0;
       box-sizing: border-box;
       margin-top: 0;
-    }
-
-    .topbar-content {
-      max-width: none;
-      top: auto;
-      bottom: auto;
     }
 
     .social-icons {
@@ -461,17 +432,16 @@
     }
 
     .topbar-links {
-      display: block;
-      padding-top: 5px;
-      padding-bottom: 5px;
-      text-align: center;
-      float: none;
+      height: initial;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      justify-content: center;
     }
 
     .topbar-link {
       display: inline;
       margin: 0 7px 0 7px;
-      line-height: 26px;
+      line-height: 16px;
     }
 
     .topbar-link-lg {
