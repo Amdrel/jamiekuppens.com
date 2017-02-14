@@ -6,6 +6,8 @@ description = "Learn how to use Google App Engine to build hardened Multi-Tenant
 image = "/post/building-multi-tenant-applications-on-gae/text-editor-tilted.jpg"
 imagewidth = "2000"
 imageheight = "1335"
+imagesize = "302633"
+imagemimetype = "image/jpeg"
 hero = true
 herocolor = "#24242e"
 +++

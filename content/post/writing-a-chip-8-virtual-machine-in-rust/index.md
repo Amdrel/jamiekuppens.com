@@ -6,6 +6,8 @@ description = "A few months ago after a tiring day at work, I came across a post
 image = "/post/writing-a-chip-8-virtual-machine-in-rust/pong.jpg"
 imagewidth = "640"
 imageheight = "320"
+imagesize = "4184"
+imagemimetype = "image/jpeg"
 hero = true
 herocolor = "#000"
 +++

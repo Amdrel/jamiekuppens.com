@@ -3,9 +3,11 @@ date = "2016-11-18T11:17:59-08:00"
 draft = false
 title = "App Engine Flexible Explained"
 description = "The App Engine Flexible Environment offers many benefits over the traditional App Engine, though there are pros and cons to both."
-image = "/post/app-engine-flexible-explained/google-cloud-console.png"
+image = "/post/app-engine-flexible-explained/google-cloud-console.jpg"
 imagewidth = "1920"
 imageheight = "1200"
+imagesize = "144428"
+imagemimetype = "image/jpeg"
 hero = true
 herocolor = "#FFF"
 +++
