@@ -19,7 +19,7 @@
       {{ with .Site.Author.email }}<author>{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}</author>{{end}}
       <guid>{{ .Permalink }}</guid>
       <description>{{ .Content | html }}</description>
-      {{ if isset .Params "image" }}
+      {{ if (and (isset .Params "image") (isset .Params "imagesize") (isset .Params "imagemimetype")) }}
       <enclosure url="{{ .Params.image }}" length="{{ .Params.imagesize }}" type="{{ .Params.imagemimetype }}" />
       {{ end }}
     </item>

@@ -49,13 +49,7 @@
             </div>
           {{ end }}
 
-          <div itemprop="articleBody">
-            {{ with $.Params.image }}
-              <img style="display: none;" src="{{.}}">
-            {{ end }}
-
-            {{ .Content }}
-          </div>
+          <div itemprop="articleBody">{{ .Content }}</div>
         </div>
       </article>
     </div>
