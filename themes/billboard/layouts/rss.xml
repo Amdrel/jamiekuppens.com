@@ -20,7 +20,7 @@
       <guid>{{ .Permalink }}</guid>
       <description>{{ .Content | html }}</description>
       {{ if (and (isset .Params "image") (isset .Params "imagesize") (isset .Params "imagemimetype")) }}
-      <enclosure url="{{ .Site.BaseURL }}{{ .Params.image }}" length="{{ .Params.imagesize }}" type="{{ .Params.imagemimetype }}" />
+      <enclosure url="{{ .Site.Params.rssbaseurl }}{{ .Params.image }}" length="{{ .Params.imagesize }}" type="{{ .Params.imagemimetype }}" />
       {{ end }}
     </item>
     {{ end }}

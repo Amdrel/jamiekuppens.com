@@ -23,6 +23,9 @@ pygmentsStyle = "trac"
   twitter = "https://twitter.com/Reshurum"
   googleplus = "https://plus.google.com/+WalterKuppens"
 
+  # Similar to baseurl but with http and no trailing slash for RSS 2.0 spec.
+  rssbaseurl = "http://walterkuppens.com"
+
   [params.links]
     [params.links.Blog]
       url = ""
