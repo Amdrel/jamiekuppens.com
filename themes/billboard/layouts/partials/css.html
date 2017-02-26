@@ -25,12 +25,22 @@
     color: #0f9c84;
   }
 
-  h1, h2, h3, h4 {
+  h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 8px;
+    font-weight: bold;
     color: #4A4A4A;
-    font-weight: 300;
   }
 
-  h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover {
+  p {
+    margin: 12px 0;
+  }
+
+  h1 a:hover,
+  h2 a:hover,
+  h3 a:hover,
+  h4 a:hover,
+  h5 a:hover,
+  h5 a:hover {
     text-decoration: none;
   }
 
@@ -84,6 +94,12 @@
     margin: 6px 0;
   }
 
+  a.header {
+    font-family: 'Arial', serif;
+    font-weight: normal;
+    font-size: 1.3em;
+  }
+
   .hidden {
     display: none;
   }
@@ -116,15 +132,15 @@
   .aside-left {
     display: inline;
     float: left;
-    margin-right: 16px;
-    margin-left: 0;
+    margin-right: 16px !important;
+    margin-left: 0 !important;
   }
 
   .aside-right {
     display: inline;
     float: right;
-    margin-left: 16px;
-    margin-right: 0;
+    margin-left: 16px !important;
+    margin-right: 0 !important;
   }
 
   .footer-text {
@@ -232,11 +248,13 @@
   .content {
     margin-top: 52px;
     font-size: 1.2em;
-    font-family: 'Arial', serif;
+    font-family: serif;
   }
 
   .content p {
-    line-height: 1.9em;
+    font-family: 'Noto Serif', serif;
+    font-size: 1.0em;
+    line-height: 1.8em;
   }
 
   .content article {
@@ -247,7 +265,7 @@
 
   .content h1, .content h2, .content h3, .content h4 {
     line-height: normal;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Fjalla One', sans-serif;
     text-rendering: optimizeLegibility;
   }
 
@@ -257,15 +275,15 @@
   }
 
   .content h2 {
-    font-size: 1.4em;
+    font-size: 1.2em;
   }
 
   .content h3 {
-    font-size: 1.2em;
+    font-size: 1.0em;
   }
 
   .content h4 {
-    font-size: 1.2em;
+    font-size: 0.8em;
   }
 
   .content figure {
