@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html>
 {{ partial "head.html" . }}
 
 <body>
@@ -5,7 +7,7 @@
 
   <main class="content container">
     <div class="container-pad">
-      {{ range first 5 .Site.Pages }}
+      {{ range first 5 .Site.RegularPages }}
         {{ .Render "summary" }}
       {{ end }}
     </div>

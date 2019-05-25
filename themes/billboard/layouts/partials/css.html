@@ -53,7 +53,8 @@
   code {
     background: #F3F3F3;
     border-radius: 3px;
-    line-height: normal;
+    line-height: 1.5em;
+    font-family: "Lucida Console", Monaco, monospace;
   }
 
   hr {
@@ -247,13 +248,12 @@
 
   .content {
     margin-top: 52px;
-    font-size: 1.2em;
-    font-family: serif;
+    font-size: 1.1em;
+    font-family: 'Arial', sans-serif, serif;
   }
 
   .content p {
-    font-family: 'Noto Serif', serif;
-    font-size: 0.9em;
+    font-family: 'Arial', sans-serif, serif;
     line-height: 1.8em;
   }
 
@@ -265,7 +265,8 @@
 
   .content h1, .content h2, .content h3, .content h4 {
     line-height: normal;
-    font-family: 'Fjalla One', sans-serif;
+    font-family: 'Arial', sans-serif;
+    font-weight: 600;
     text-rendering: optimizeLegibility;
   }
 
@@ -293,7 +294,7 @@
     margin-right: 0;
   }
 
-  .content figure img {
+  .content .post figure img {
     display: block;
     max-width: 80%;
     margin: 0 auto;
@@ -356,6 +357,10 @@
   .link-header a:hover,
   .link-header a:active {
     color: #313131;
+  }
+
+  .link-header>a:nth-child(2) {
+    vertical-align: middle;
   }
 
   .desktop-left {

@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html>
 {{ partial "head.html" . }}
 
 <body>
@@ -12,7 +14,7 @@
 
     <!-- Article body containing post content. -->
     <div class="container">
-      <article class="{{ if eq $.Params.hero true }}cardup{{ end }}">
+      <article class="{{ if eq $.Params.hero true }}cardup{{ end }} {{ if eq .Type `post` }}post{{ end }}">
         <div itemscope itemtype="http://schema.org/BlogPosting" class="container-pad">
           <meta itemprop="name" itemtype="http://schema.org/Text" content="{{ .Title }}">
 
