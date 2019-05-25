@@ -359,8 +359,12 @@
     color: #313131;
   }
 
-  .link-header>a:nth-child(2) {
+  .link-header>a {
     vertical-align: middle;
+    line-height: 24px;
+  }
+  .link-header>a:first-child {
+    vertical-align: initial;
   }
 
   .desktop-left {
@@ -382,6 +386,10 @@
     background-size: cover;
     background-position-x: 50%;
     box-shadow: inset 0 0 20vw -5vw black;
+  }
+
+  a[href^="https://discordapp.com/api/oauth2/authorize"] {
+    color: #7289da;
   }
 
   @media (max-width: 800px) {

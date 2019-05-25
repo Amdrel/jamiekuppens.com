@@ -1,9 +1,21 @@
 <h2 class="link-header">
-  <a href="{{ .Get "href" }}">{{ .Inner }}</a>
+  <a href="{{ .Get `href` }}">{{ .Inner }}</a>
 
   {{ with .Get "travis" }}
     <a href="{{ . }}">
       <img src="{{ . }}.svg?branch=master">
     </a>
+  {{ end }}
+
+  {{ with .Get "license-badge" }}
+    {{ with $.Get "license-link" }}
+      <a href="{{ . }}">
+    {{ end }}
+
+    <img src="{{ . }}">
+
+    {{ with $.Get "license-link" }}
+      </a>
+    {{ end }}
   {{ end }}
 </h2>

@@ -7,7 +7,28 @@ description = "This is an aggregated list of many open source programs I've writ
 
 This is an aggregated list of many open source programs I've worked on, however most of them are one-offs.
 
-{{< projectheader href="https://github.com/Reshurum/nes-rs" travis="https://travis-ci.org/Reshurum/nes-rs" >}}
+{{< projectheader href="https://github.com/Reshurum/lorewalker-cho" license-badge="https://img.shields.io/badge/license-GPLv3-blue.svg" license-link="https://github.com/Reshurum/lorewalker-cho/blob/master/COPYING" >}}
+    Lorewalker Cho
+{{< /projectheader >}}
+
+[Lorewalker Cho](https://github.com/Reshurum/lorewalker-cho) is a fully functional Discord bot that plays games where it asks trivia questions related to the game World of Warcraft. The bot is written in Python 3 and uses the wonderful [discord.py](https://discordpy.readthedocs.io/en/latest/) library and uses PostgreSQL as a backend for storing Discord server configurations and scoreboards.
+
+Features:
+
+* Allows setting custom trivia channels and prefixes (admin only).
+* Is able to error correct misspelled words in answers.
+* Keeps track of player scores in the Discord server.
+
+Coming Soon:
+
+* Limiting selected questions to a specific topic.
+* On occasion say random blurbs when answering questions.
+
+Want to add questions to Lorewalker Cho? [Create an issue on GitHub](https://github.com/Reshurum/lorewalker-cho/issues/new) and use the `question-request` label. Include your question text, answer and topic of the question being submitted.
+
+[Click here to add the bot to your server.](https://discordapp.com/api/oauth2/authorize?client_id=378721268515602443&permissions=3136&scope=bot)
+
+{{< projectheader href="https://github.com/Reshurum/nes-rs" travis="https://travis-ci.org/Reshurum/nes-rs" license-badge="https://img.shields.io/badge/license-MIT%2FApache--2.0-blue.svg" license-link="https://github.com/Reshurum/nes-rs/blob/master/CONTRIBUTING.md" >}}
     nes-rs
 {{< /projectheader >}}
 
