@@ -81,7 +81,7 @@ Removing nodes is as simple as removing the parent’s shared pointer to the nod
 
 ## Making the Camera Work
 
-Generating the transforms for the camera mostly the same sans a few additions. A view and projection matrix are created alongside the local and world transforms. Generating the view matrix from the world transform is tricky when using `lookAt` to generate the matrix. The `lookAt` function requires an up vector and one needs to be calculated as the camera can have any arbitrary rotation and we can’t just make it point up (FPS style) like a lot of other guides do.
+Generating the transforms for the camera mostly the same sans a few additions. A view and projection matrix are created alongside the local and world transforms. Generating the view matrix from the world transform is tricky when using `lookAt` to generate the matrix. The `lookAt` function requires an up vector and one needs to be calculated as the camera can have any arbitrary rotation and we can’t just make it point up (FPS style) like a lot of other guides do. Lots of this code is based off of work from [A Camera Implementation in C](https://tuttlem.github.io/2013/12/30/a-camera-implementation-in-c.html).
 
 {{< highlight cpp >}}
 PerspectiveCamera::PerspectiveCamera(std::string name, glm::vec3 position,
@@ -189,10 +189,8 @@ Now our final matrices are pushed to the vertex shader and some spinning cubes a
 
 This implementation does not handle reparenting gracefully like most scene graphs do as local coordinates are not changed when the parent transform changes. Rendering is also managed outside the walker and is in the main loop to keep the code simple; in a production project this would be managed elsewhere. There is also much potential for optimization when it comes to caching values and generating the view matrix.
 
-Although very bare-bones, that’s a working scenegraph in action! Feel free to play around with the code or repurpose it as it’s licensed under the liberal CC0 license.
+Although very bare-bones, that’s a working scenegraph in action! Feel free to play around with the code or repurpose it as it’s licensed under the liberal CC0 license. You can get it on [GitHub](https://github.com/Reshurum/scenegraph-demo).
 
-## References
-
-[https://tuttlem.github.io/2013/12/30/a-camera-implementation-in-c.html](https://tuttlem.github.io/2013/12/30/a-camera-implementation-in-c.html)<br>
-[https://learnopengl.com/](https://learnopengl.com/)<br>
-[https://github.com/Reshurum/scenegraph-demo](https://github.com/Reshurum/scenegraph-demo)
+[1] [https://github.com/Reshurum/scenegraph-demo](https://github.com/Reshurum/scenegraph-demo)<br>
+[2] [https://learnopengl.com/](https://learnopengl.com/)<br>
+[3] [https://tuttlem.github.io/2013/12/30/a-camera-implementation-in-c.html](https://tuttlem.github.io/2013/12/30/a-camera-implementation-in-c.html)<br>
