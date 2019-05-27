@@ -2,7 +2,7 @@
 title: "The Anatomy of an Interactive Discord Bot"
 description: "I've messed with Discord bots in servers quite a bit and I've always had fun with the various game bots that I've encountered. I've played with complex bots that play Cards Against Humanity, and relatively simple bots like one that emulates an 8 ball. All the 8 ball did was respond with 'Yes' or 'No' at random, and even a bot that simple is very fun when played with friends. I wanted to get into the Discord bot creation game to see how these things tick."
 date: 2019-05-27T10:00:00-07:00
-draft: true
+draft: false
 image: "/post/the-anatomy-of-an-interactive-discord-bot/chat.jpg"
 imagewidth: 1920
 imageheight: 1080
