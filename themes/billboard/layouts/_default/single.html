@@ -8,7 +8,7 @@
   <main class="content">
     {{ if eq $.Params.hero true }}
       <div class="hero-wrapper" {{ with $.Params.herocolor }}style="background-color: {{.}};"{{ end }}>
-        <div class="hero" {{ with $.Params.image }}style="background-image: url({{.}});"{{ end }}></div>
+        <div class="hero" {{ with $.Params.image }}style="background-image: {{ with $.Params.imagefade }}linear-gradient(rgba(0, 0, 0, {{.}}), rgba(0, 0, 0, {{.}})),{{ end }} url({{.}});"{{ end }}></div>
       </div>
     {{ end }}
 
