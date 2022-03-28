@@ -81,9 +81,10 @@ taken from the [App Engine Documentation](https://cloud.google.com/appengine/doc
 {{% /device %}}
 
 {{% device formfactor="mobile" %}}
+
 The flexible environment supports many language runtimes out of the box. A version table for all
-supported languages can be found in the [App Engine
-Documentation](https://cloud.google.com/appengine/docs).
+supported languages can be found in the [App Engine Documentation](https://cloud.google.com/appengine/docs).
+
 {{% /device %}}
 
 One notable thing is that each runtime supported by the flexible environment is a Docker image. This
