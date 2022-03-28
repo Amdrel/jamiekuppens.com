@@ -5,11 +5,11 @@ name = "billboard"
 license = "BSD 2-clause Simplified"
 licenselink = "https://github.com/yourname/yourtheme/blob/master/LICENSE.md"
 description = ""
-homepage = "https://walterkuppens.com/"
+homepage = "https://jamiekuppens.com/"
 tags = ["", ""]
 features = ["", ""]
 min_version = 0.1
 
 [author]
-  name = "Walter Kuppens"
-  homepage = "https://walterkuppens.com/"
+  name = "Jamie Kuppens"
+  homepage = "https://jamiekuppens.com/"

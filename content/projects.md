@@ -47,15 +47,3 @@ This is a list of my long term goals for the project that I do not expect to be 
 {{< /projectheader >}}
 
 [Notch](https://github.com/Reshurum/notch) is a CHIP-8 virtual machine written in Rust. I wrote it after getting interested in emulation from the [Ferris Makes Emulators stream](https://www.twitch.tv/ferrisstreamsstuff).  It has worked with all games I threw at it so far, but can use a little polishing and refactoring.
-
-{{< projectheader href="https://github.com/StickmanVentures/lol-csv" >}}
-    LoL CSV
-{{< /projectheader >}}
-
-LoL CSV was a simple web application for League of Legends players wishing to track their match stats. Given a summoner name, a spreadsheet is generated with match data from the previous 10 matches. You can find the LoL CSV source code on [GitHub](https://github.com/StickmanVentures/lol-csv).
-
-{{< projectheader href="https://github.com/StickmanVentures/inquiry-bot">}}
-    Inquiry Bot
-{{< /projectheader >}}
-
-Inquiry Bot is a slackbot using Slack's webhook api that I created for the wonderful people at [Stickman Ventures](https://www.stickmanventures.com/). It's purpose is to instantly post contact information from the website directly to one of our slack channels through [Firebase](https://www.firebase.com/). You can find Inquiry Bot on [GitHub](https://github.com/StickmanVentures/inquiry-bot).

@@ -1,7 +1,7 @@
-# walterkuppens.com
+# jamiekuppens.com
 
 This repo contains the content of my blog hosted at
-[walterkuppens.com](https://walterkuppens.com). The site requires Hugo to
+[jamiekuppens.com](https://jamiekuppens.com). The site requires Hugo to
 build.
 
 ## License
