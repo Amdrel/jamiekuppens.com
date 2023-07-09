@@ -9,7 +9,7 @@ pygmentsUseClasses = true
 
 [params]
   brand = "Jamie Kuppens"
-  brand_image = "/images/me.png"
+  brand_image = "/images/me.jpg"
   description = "Yet another technology blog."
   author = "Jamie Kuppens"
   copyright = "© 2016-2023 Jamie Kuppens. CC BY-SA 3.0"
