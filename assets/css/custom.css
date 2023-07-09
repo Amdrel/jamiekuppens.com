@@ -1,0 +1,20 @@
+code, pre {
+  font-family: consolas, Monaco, monospace;
+  font-size: 0.7em;
+}
+
+.nf {
+  color: #0cf;
+}
+
+.s2 {
+  color: #60b34f;
+}
+
+.k, .kn {
+  color: #0082c4;
+}
+
+.bp, .nb {
+  color: #389b9b;
+}

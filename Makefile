@@ -8,9 +8,9 @@ $(BUNDLE): build
 .PHONY build bundle serve:
 
 build:
-	hugo --theme=billboard
+	hugo --theme=poison
 
 serve:
-	hugo server --theme=billboard --buildDrafts -w
+	hugo server --theme=poison --buildDrafts -w
 
 bundle: $(BUNDLE)
