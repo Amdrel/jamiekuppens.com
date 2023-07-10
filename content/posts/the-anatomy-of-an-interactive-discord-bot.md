@@ -128,8 +128,6 @@ If I want to cheat in regards to sharding I can even use [auto sharding](https:/
 
 The experience of creating this bot was a lot of fun and taught me quite a bit. I've never worked with modern python async/await in a serious capacity until I decided to make this bot as most of the python work I've done up to this point has been working on legacy applications written in Python 2 or earlier versions of Python 3. Check out the source code on [GitHub](https://github.com/amdrel/lorewalker-cho) if you're curious about how this bot works! Just keep in mind that if you want to get it working under Windows you may need to do some additional work as I don't provide instructions for it, but the bot itself should work in Windows.
 
-[Click here if you want to add my bot to your server!](https://discordapp.com/api/oauth2/authorize?client_id=378721268515602443&permissions=3136&scope=bot)
-
 [1] [https://en.wikipedia.org/wiki/Levenshtein_distance](https://en.wikipedia.org/wiki/Levenshtein_distance)<br>
 [2] [https://pypi.org/project/jellyfish/](https://pypi.org/project/jellyfish/)<br>
 [3] [https://discordpy.readthedocs.io/en/latest/migrating.html#sharding](https://discordpy.readthedocs.io/en/latest/migrating.html#sharding)<br>
