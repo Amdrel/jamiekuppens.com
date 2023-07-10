@@ -2,7 +2,7 @@
 Date = "2021-04-21T02:00:00-08:00"
 Title = "Introduction to Testing in Node.js with Mocha and Chai"
 AffiliateLink = "https://labs.thisdot.co/blog/introduction-to-testing-in-node-js-with-mocha-and-chai/"
-Tags = ["affiliate", "javascript", "node", "mocha", "chai"]
+Tags = ["affiliate", "javascript", "node", "mocha", "chai", "testing"]
 Categories = ["Development", "Affiliate"]
 menu = "main"
 +++
