@@ -19,4 +19,4 @@ I am currently employed at [This Dot](https://labs.thisdot.co/).
 ## Contact
 
 You can find me on [GitHub,](https://github.com/Amdrel) or by emailing me at
-[reshurum@gmail.com](mailto:reshurum@gmail.com)
+[reshurum@gmail.com](mailto:reshurum@gmail.com).
