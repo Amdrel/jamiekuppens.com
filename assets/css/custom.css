@@ -3,6 +3,10 @@ code, pre {
   font-size: 0.7em;
 }
 
+.affiliate-post .post-content {
+  mask-image: linear-gradient(black,transparent 75%, transparent);
+}
+
 .nf {
   color: #0cf;
 }
