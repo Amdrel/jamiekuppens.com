@@ -1,10 +1,11 @@
-code, pre {
+code,
+pre {
   font-family: consolas, Monaco, monospace;
   font-size: 0.7em;
 }
 
 .affiliate-post .post-content {
-  mask-image: linear-gradient(black,transparent 75%, transparent);
+  mask-image: linear-gradient(black, transparent 75%, transparent);
 }
 
 .nf {
@@ -15,10 +16,28 @@ code, pre {
   color: #60b34f;
 }
 
-.k, .kn {
+.k,
+.kn {
   color: #0082c4;
 }
 
-.bp, .nb {
+.bp,
+.nb {
   color: #389b9b;
+}
+
+.wrapper {
+  justify-content: space-between;
+}
+
+.container.content {
+  overflow-y: auto;
+  flex: 1;
+  max-width: 100vw;
+}
+
+.content > * {
+  max-width: 44rem;
+  margin-left: auto;
+  margin-right: auto;
 }

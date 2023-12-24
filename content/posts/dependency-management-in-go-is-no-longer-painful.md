@@ -10,7 +10,7 @@ Tags = ["development", "golang", "software update"]
 Categories = ["Development"]
 +++
 
-**NOTICE: This article was written several years ago and is likely out of date.**
+**⚠️NOTICE: This article was written several years ago and is likely out of date.**
 
 Traditionally, Go has handled dependencies by installing them all in the same directory under
 `$GOPATH/src`. This works fine if you're working on a small application you do not care too much

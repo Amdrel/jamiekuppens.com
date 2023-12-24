@@ -14,7 +14,7 @@ Tags = ["development", "app engine", "cloud"]
 Categories = ["Development"]
 +++
 
-**NOTICE: This article was written several years ago and is likely out of date.**
+**⚠️NOTICE: This article was written several years ago and is likely out of date.**
 
 App Engine is a service by Google that provides hosting for web applications. Depending on how much
 traffic your application receives, App Engine will dynamically allocate resources to your

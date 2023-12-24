@@ -14,7 +14,7 @@ Tags = ["development", "python", "app engine", "cloud"]
 Categories = ["Development"]
 +++
 
-**NOTICE: This article was written several years ago and is likely out of date.**
+**⚠️NOTICE: This article was written several years ago and is likely out of date.**
 
 With the rise of cloud computing and the proliferation of new users to the web, it has become a
 necessity for successful web applications to be able to serve thousands of users whilst being
