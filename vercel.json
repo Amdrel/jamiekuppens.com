@@ -1,0 +1,12 @@
+{
+  "redirects": [
+    {
+      "source": "/post/:path(.*)",
+      "destination": "/posts/:path"
+    },
+    {
+      "source": "/archive",
+      "destination": "/posts"
+    }
+  ]
+}
