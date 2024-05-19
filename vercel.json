@@ -2,11 +2,13 @@
   "redirects": [
     {
       "source": "/post/:path(.*)",
-      "destination": "/posts/:path"
+      "destination": "/posts/:path",
+      "permanent": true
     },
     {
-      "source": "/archive",
-      "destination": "/posts"
+      "source": "/(archive\\/?.*)",
+      "destination": "/posts",
+      "permanent": true
     }
   ]
 }
