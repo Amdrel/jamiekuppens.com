@@ -18,10 +18,11 @@ pygmentsUseClasses = true
 
   github_url = "https://github.com/amdrel"
   gitlab_url = "https://gitlab.com/amdrel"
-  email_url = "mailto://reshurum@gmail.com"
+  email_url = "mailto://jamie@amdrel.net"
+  bluesky_url = "https://bsky.app/profile/amdrel.bsky.social"
 
   rssbaseurl = "http://jamiekuppens.com"
-  rss_icon = true
+  rss_icon = false
 
   menu = [
     # Dict keys:
