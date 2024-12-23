@@ -1,7 +1,7 @@
 # jamiekuppens.com
 
 This repo contains the content of my blog hosted at
-[jamiekuppens.com](https://jamiekuppens.com). The site requires Hugo to
+[www.jamiekuppens.com](https://www.jamiekuppens.com). The site requires Hugo to
 build.
 
 ## Build Commands
