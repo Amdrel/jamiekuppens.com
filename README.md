@@ -1,15 +1,11 @@
 # jamiekuppens.com
 
-This repo contains the content of my blog hosted at
-[www.jamiekuppens.com](https://www.jamiekuppens.com). The site requires Hugo to
-build.
+This is the repository that my website is built from and contains all of its content. This website is hosted on Vercel at [www.jamiekuppens.com](https://www.jamiekuppens.com).
 
-## Build Commands
+## Build
 
-- `make`: Builds the site with Hugo.
-- `make serve`: Serves the site with Hugo, drafts and live reload enabled.
-- `make bundle`: Builds the site with Hugo and packages it up in a tarball for deployment.
-- `contrib/deploy.sh <tarball>`: Deploys the specified tarball.
+- `npm run dev`: Starts a development server with hot-reloading.
+- `npm run build`: Creates a production build of the site.
 
 ## License
 
