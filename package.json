@@ -1,0 +1,18 @@
+{
+  "name": "blah",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "format": "prettier . --write"
+  },
+  "dependencies": {
+    "astro": "^5.1.1"
+  },
+  "devDependencies": {
+    "prettier": "^3.4.2"
+  }
+}
