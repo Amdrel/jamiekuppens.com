@@ -32,6 +32,38 @@ const schema: WithContext<BlogPosting> = {
 };
 ---
 
+<script>
+  const COPY_TEXT = "Copy";
+
+  async function copy(element: Element, button: HTMLButtonElement) {
+    const code = element.querySelector("code");
+    if (!code) {
+      return;
+    }
+
+    await navigator.clipboard.writeText(code.innerText);
+
+    button.innerText = "Copied";
+
+    setTimeout(() => {
+      button.innerText = COPY_TEXT;
+    }, 3000);
+  }
+
+  document.querySelectorAll(".astro-code").forEach((element) => {
+    if (navigator.clipboard) {
+      const button = document.createElement("button");
+      button.innerText = COPY_TEXT;
+
+      button.addEventListener("click", async () => {
+        await copy(element, button);
+      });
+
+      element.appendChild(button);
+    }
+  });
+</script>
+
 <BaseLayout
   schemas={[schema]}
   redirectUrl={frontmatter.affiliateLink ?? null}
