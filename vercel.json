@@ -3,7 +3,7 @@
   "outputDirectory": "dist",
   "headers": [
     {
-      "source": "/images/*",
+      "source": "/images/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
@@ -12,7 +12,7 @@
       ]
     },
     {
-      "source": "/*",
+      "source": "/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
