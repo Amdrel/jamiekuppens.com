@@ -22,19 +22,19 @@ in order to stay relevant.
 
 ## What is Multitenancy?
 
-*Multitenancy* is a software architecture in which one application serves multiple *tenants*.
+_Multitenancy_ is a software architecture in which one application serves multiple _tenants_.
 Multi-Tenant applications can easily provision access to tenants with minimal effort from the
 service provider which makes it ideal for modern applications. Multitenancy is regarded as an
 important feature of cloud computing.
 
 ### Tenants
 
-*A tenant can refer to either a user, a client, or an organization.*
+_A tenant can refer to either a user, a client, or an organization._
 
-*Tenant* is a loosely defined term, but it's typically used to describe either a **user**, a
+_Tenant_ is a loosely defined term, but it's typically used to describe either a **user**, a
 **client**, or an **organization**. For example an organization on GitHub with it's own set of
 repositories can be regarded as a tenant, while a GitHub user may also be considered one. Another
-example can be of a SaaS application where the tenant is a *client* and users are owned by the
+example can be of a SaaS application where the tenant is a _client_ and users are owned by the
 tenant rather than being the tenant themselves. In paid applications it is typically the tenant who
 pays, which in it of itself is the true definition of a tenant.
 
@@ -43,8 +43,8 @@ pays, which in it of itself is the true definition of a tenant.
 Each tenant may have private information that they don't want exposed without giving **explicit
 permission**. How data is isolated depends on how data is actually stored. For example if the
 developers choose to use one database for all tenants, they would have to tread carefully when
-writing queries so data from other tenants is not accidentally leaked. This is known as the *Shared
-Schema* approach and is common when dealing with relational data.
+writing queries so data from other tenants is not accidentally leaked. This is known as the _Shared
+Schema_ approach and is common when dealing with relational data.
 
 Another approach to dealing with data is to create **separate databases for each tenant** to
 guarantee data does not leak, though relationships cannot be made between databases when isolated.
@@ -68,8 +68,8 @@ For quite a while now, App Engine has included options with their various APIs t
 implementing Multi-Tenant applications easy. Multitenancy in App Engine revolves around the use of
 [Namespace](https://cloud.google.com/appengine/docs/python/multitenancy/) enabled APIs.
 
-*Namespaces* allow you to separate data into their own isolated silos through a simple API which can
-be used with minimal effort. Namespaces are accessed through a *namespace id* which are created
+_Namespaces_ allow you to separate data into their own isolated silos through a simple API which can
+be used with minimal effort. Namespaces are accessed through a _namespace id_ which are created
 implicitly when accessed. For example, if you try to store notes in datastore with the namespace
 `my_notes` and it does not exist, App Engine will happily create it for you and place the data in
 with no questions asked. One thing to note is that when you use a namespace enabled API under app
@@ -170,7 +170,12 @@ def update_counter(name='visits'):
 Now the user visit count for the currently logged in user will be stored in datastore under a
 namespace specific to the user.
 
-<Image src="/images/content/counter_demo.webp" alt='A webpage that displays: "Welcome, test@example.com! (Sign Out), ID: 185804764220139124118, Visit Count: 32"' width="1271" height="608" />
+<Image
+  src="/images/content/counter_demo.webp"
+  alt='A webpage that displays: "Welcome, test@example.com! (Sign Out), ID: 185804764220139124118, Visit Count: 32"'
+  width="1271"
+  height="608"
+/>
 
 If you log into another user, then you will get a different count as other users namespace names are
 not shared. There are many more APIs that use namespaces such as

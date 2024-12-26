@@ -14,7 +14,7 @@ tags: ["development", "app-engine", "cloud"]
 
 App Engine is a service by Google that provides hosting for web applications. Depending on how much
 traffic your application receives, App Engine will dynamically allocate resources to your
-infrastructure.  App Engine has historically been somewhat limited in functionality when it comes to
+infrastructure. App Engine has historically been somewhat limited in functionality when it comes to
 language support and control over your infrastructure; however this has changed with the advent of
 [App Engine Flexible Environment](https://cloud.google.com/appengine/docs/flexible/) which is more
 resemblant to services like [Elastic Beanstalk](https://aws.amazon.com/elasticbeanstalk/).
@@ -37,16 +37,16 @@ Here is a quick rundown of some pros and cons of App Engine Standard:
 
 ### Pros
 
-* Infrastructure scales almost instantly
-* Pricing is very cheap
-* Includes a generous free tier
+- Infrastructure scales almost instantly
+- Pricing is very cheap
+- Includes a generous free tier
 
 ### Cons
 
-* Cannot run native code over FFI (C/C++)
-* Can only open TCP sockets to supported services (Cloud SQL)
-* Threads are not run in parallel (IO excluded)
-* Limited language support (Python 2, Java 7, PHP 5, Go 1.6)
+- Cannot run native code over FFI (C/C++)
+- Can only open TCP sockets to supported services (Cloud SQL)
+- Threads are not run in parallel (IO excluded)
+- Limited language support (Python 2, Java 7, PHP 5, Go 1.6)
 
 ## Enter the Flexible Environment
 
@@ -65,7 +65,7 @@ The flexible environment supports many language runtimes out of the box. Here is
 taken from the [App Engine Documentation](https://cloud.google.com/appengine/docs).
 
 | Language        | Standard Environment | Flexible Environment |
-|-----------------|----------------------|----------------------|
+| --------------- | -------------------- | -------------------- |
 | Python          | Python 2.7           | Python 2.7 / 3.4     |
 | Java            | Java 7               | Java 8               |
 | PHP             | PHP 5                | —                    |
