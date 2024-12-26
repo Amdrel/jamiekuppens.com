@@ -1,12 +1,35 @@
 ---
 import BaseLayout from "../layouts/base-layout.astro";
+import type { PostLayoutProps } from "../types";
+import type { BlogPosting, WithContext } from "schema-dts";
 
-const { frontmatter } = Astro.props as PostLayoutProps;
+const { url, frontmatter } = Astro.props as PostLayoutProps;
+
+const canonicalUrl = new URL(url, Astro.site);
+const publishedDate = frontmatter.pubDate.split("T")[0];
+
+const schema: WithContext<BlogPosting> = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": `${canonicalUrl}`,
+  },
+  url: `${canonicalUrl}`,
+  headline: frontmatter.title,
+  description: frontmatter.description,
+  author: { "@type": "Person", name: frontmatter.author },
+  datePublished: publishedDate,
+};
 ---
 
-<BaseLayout redirectUrl={frontmatter.affiliateLink ?? null} {...Astro.props}>
+<BaseLayout
+  schemas={[schema]}
+  redirectUrl={frontmatter.affiliateLink ?? null}
+  {...Astro.props}
+>
   <p>{frontmatter.author}</p>
-  <p>{frontmatter.pubDate}</p>
+  <p>{publishedDate}</p>
   <p>{frontmatter.tags.join(", ")}</p>
 
   <slot />

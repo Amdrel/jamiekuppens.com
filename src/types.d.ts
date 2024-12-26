@@ -1,4 +1,7 @@
-type BaseLayoutProps = {
+import type { BlogPosting, Thing, WithContext } from "schema-dts";
+
+export type BaseLayoutProps = {
+  site: string;
   url: string;
   frontmatter: {
     layout: string;
@@ -10,9 +13,10 @@ type BaseLayoutProps = {
     };
   };
   redirectUrl?: boolean;
+  schemas?: WithContext<Thing>[];
 };
 
-type PostLayoutProps = BaseLayoutProps & {
+export type PostLayoutProps = BaseLayoutProps & {
   frontmatter: {
     pubDate: string;
     author: string;

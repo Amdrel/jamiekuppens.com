@@ -1,19 +1,26 @@
 ---
+import PostCard from "./post-card.astro";
+
 const posts: PostLayoutProps[] = Object.values(
   import.meta.glob("../pages/posts/*.mdx", { eager: true }),
 );
 ---
 
-{
-  posts
-    .sort(
-      (a, b) =>
-        new Date(b.frontmatter.pubDate).getTime() -
-        new Date(a.frontmatter.pubDate).getTime(),
-    )
-    .map((post) => (
-      <li>
-        <a href={post.url}>{post.frontmatter.title}</a>
-      </li>
-    ))
-}
+<ul>
+  {
+    posts
+      .sort(
+        (a, b) =>
+          new Date(b.frontmatter.pubDate).getTime() -
+          new Date(a.frontmatter.pubDate).getTime(),
+      )
+      .map((post) => (
+        <PostCard
+          title={post.frontmatter.title}
+          url={post.frontmatter.affiliateLink ?? post.url}
+          description={post.frontmatter.description}
+          image={post.frontmatter.image}
+        />
+      ))
+  }
+</ul>

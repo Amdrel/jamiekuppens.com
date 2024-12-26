@@ -2,25 +2,85 @@
 import "../styles/global.css";
 
 import Navigation from "../components/navigation.astro";
+import type { BaseLayoutProps } from "../types";
+import type { WebSite, WithContext } from "schema-dts";
 
-const { frontmatter, redirectUrl } = Astro.props as BaseLayoutProps;
+const { url, frontmatter, redirectUrl, schemas } =
+  Astro.props as BaseLayoutProps;
+
+const siteName = "Jamie Kuppens";
+const siteDescription =
+  "Jamie Kuppens is a software engineer with over 10 years of experience building for the web.";
+const canonicalUrl = new URL(url, Astro.site);
+
+const websiteSchema: WithContext<WebSite> = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: siteName,
+  description: siteDescription,
+  url: `${Astro.site}`,
+};
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+
     {
+      // Affiliate blog post pages inject a redirect URL since those pages are
+      // meant to be viewed on an external site.
       redirectUrl && (
         <meta http-equiv="refresh" content={`3;url=${redirectUrl}`} />
       )
     }
-    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
+
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="apple-mobile-web-app-title" content="Jamie Kuppens" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
     <title>{frontmatter.title}</title>
+    <meta property="og:title" content={frontmatter.title} />
+    <meta name="twitter:title" content={frontmatter.title} />
+    <meta itemprop="name" content={frontmatter.title} />
+    <meta name="application-name" content={frontmatter.title} />
+    <meta property="og:site_name" content={siteName} />
+
+    <meta name="description" content={frontmatter.description} />
+    <meta itemprop="description" content={frontmatter.description} />
+    <meta property="og:description" content={frontmatter.description} />
+    <meta name="twitter:description" content={frontmatter.description} />
+
+    <base href={`${canonicalUrl}`} />
+    <link rel="canonical" href={`${canonicalUrl}`} itemprop="url" />
+    <meta name="url" content={`${canonicalUrl}`} />
+    <meta name="twitter:url" content={`${canonicalUrl}`} />
+    <meta property="og:url" content={`${canonicalUrl}`} />
+
+    <link
+      rel="sitemap"
+      type="application/xml"
+      title="Sitemap"
+      href={`${new URL("sitemap.xml", Astro.site)}`}
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="googlebot" content="index,follow" />
+
+    <meta name="generator" content={Astro.generator} />
+
+    {
+      // Add page-specific schemas (e.g. BlogPosting) alongside WebSite schema.
+      [websiteSchema, ...(schemas ?? [])].map((schema) => (
+        <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+      ))
+    }
   </head>
   <body>
     <Navigation />
-    <slot />
+
+    <main>
+      <slot />
+    </main>
   </body>
 </html>

@@ -1,0 +1,20 @@
+---
+type PostCardProps = {
+  title: string;
+  url: string;
+  description: string;
+  image?: {
+    url: string;
+    alt?: string;
+  };
+};
+
+const { title, url, description, image } = Astro.props as PostCardProps;
+---
+
+<li>
+  <a href={url}>
+    <strong>{title}</strong>
+    <p>{description}</p>
+  </a>
+</li>
