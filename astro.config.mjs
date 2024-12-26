@@ -9,5 +9,7 @@ export default defineConfig({
   site: process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`
     : "http://localhost:4321",
+  prefetch: {
+    prefetchAll: true,
+  },
 });
-
