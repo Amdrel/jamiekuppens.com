@@ -13,7 +13,7 @@ const { title, url, description, image } = Astro.props as PostCardProps;
 ---
 
 <li>
-  <a href={url}>
+  <a class="text-gray-300" href={url}>
     <strong>{title}</strong>
     <p>{description}</p>
   </a>

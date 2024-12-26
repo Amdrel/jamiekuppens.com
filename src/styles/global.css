@@ -1,21 +1,61 @@
-html {
-  background-color: #f1f5f9;
-  font-family: sans-serif;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-body {
-  margin: 0 auto;
-  width: 100%;
-  max-width: 80ch;
-  padding: 1rem;
-  line-height: 1.5;
-}
+@layer base {
+  html {
+    @apply bg-slate-900;
+    @apply text-gray-300;
+    @apply font-sans;
+  }
 
-* {
-  box-sizing: border-box;
-}
+  body {
+    @apply w-full;
+    @apply p-4;
+    @apply leading-6;
+  }
 
-h1 {
-  margin: 1rem 0;
-  font-size: 2.5rem;
+  * {
+    @apply box-border;
+  }
+
+  h1 {
+    @apply text-4xl;
+    @apply mb-8;
+  }
+
+  h2 {
+    @apply text-3xl;
+    @apply my-4;
+  }
+
+  h3 {
+    @apply text-2xl;
+    @apply my-4;
+  }
+
+  h4 {
+    @apply text-xl;
+    @apply my-4;
+  }
+
+  h5 {
+    @apply text-lg;
+    @apply my-4;
+  }
+
+  h6 {
+    @apply text-base;
+    @apply my-4;
+  }
+
+  p {
+    @apply my-4;
+  }
+
+  a {
+    @apply text-blue-300;
+    @apply hover:text-blue-500;
+    @apply focus:text-blue-500;
+  }
 }

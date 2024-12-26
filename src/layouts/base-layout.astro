@@ -97,10 +97,14 @@ const websiteSchema: WithContext<WebSite> = {
     }
   </head>
   <body>
-    <Navigation />
+    <div class="flex mt-12">
+      <div class="basis-80">
+        <Navigation />
+      </div>
 
-    <main>
-      <slot />
-    </main>
+      <main class="w-full max-w-7xl mx-auto">
+        <slot />
+      </main>
+    </div>
   </body>
 </html>

@@ -1,8 +1,34 @@
-<ul>
-  <li><a href="/">Home</a></li>
-  <li><a href="/posts">Posts</a></li>
-  <li><a href="/work-experience">Work Experience</a></li>
-  <li><a href="/about">About</a></li>
-  <li><a href="/projects">Projects</a></li>
-  <li><a href="/tags">Tags</a></li>
-</ul>
+---
+import { Image } from "astro:assets";
+
+export type NavigationProps = {
+  links: {
+    url: string;
+    label: string;
+  }[];
+};
+
+const { links } = Astro.props as NavigationProps;
+---
+
+<nav>
+  <a class="flex gap-3.5 mb-6" href="/">
+    <Image
+      class="rounded-full"
+      src="/images/me.webp"
+      alt=""
+      width="48"
+      height="48"
+    />
+    <h1 class="my-0 text-gray-300">Jamie Kuppens</h1>
+  </a>
+
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/posts">Posts</a></li>
+    <li><a href="/work-experience">Work Experience</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/projects">Projects</a></li>
+    <li><a href="/tags">Tags</a></li>
+  </ul>
+</nav>
