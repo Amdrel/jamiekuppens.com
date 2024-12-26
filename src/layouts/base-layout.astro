@@ -62,7 +62,7 @@ const websiteSchema: WithContext<WebSite> = {
       rel="sitemap"
       type="application/xml"
       title="Sitemap"
-      href={`${new URL("sitemap.xml", Astro.site)}`}
+      href={`${new URL("sitemap-index.xml", Astro.site)}`}
     />
     <meta name="robots" content="index,follow" />
     <meta name="googlebot" content="index,follow" />
