@@ -2,8 +2,28 @@
 import "../styles/global.css";
 
 import Navigation from "../components/navigation.astro";
-import type { BaseLayoutProps } from "../types";
-import type { WebSite, WithContext } from "schema-dts";
+import type { Thing, WebSite, WithContext } from "schema-dts";
+
+export type BaseLayoutProps = {
+  site: string;
+  url: string;
+  frontmatter: {
+    layout?: string;
+    title: string;
+    description: string;
+    image?: {
+      url: string;
+      alt?: string;
+    };
+  };
+  headings?: {
+    depth: number;
+    text: string;
+    slug: string;
+  }[];
+  redirectUrl?: boolean;
+  schemas?: WithContext<Thing>[];
+};
 
 const { url, frontmatter, redirectUrl, schemas } =
   Astro.props as BaseLayoutProps;

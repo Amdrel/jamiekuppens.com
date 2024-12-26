@@ -1,9 +1,18 @@
 ---
-import BaseLayout from "../layouts/base-layout.astro";
-import type { PostLayoutProps } from "../types";
+import BaseLayout, { type BaseLayoutProps } from "../layouts/base-layout.astro";
+import TableOfContents from "../components/table-of-contents.astro";
 import type { BlogPosting, WithContext } from "schema-dts";
 
-const { url, frontmatter } = Astro.props as PostLayoutProps;
+export type PostLayoutProps = BaseLayoutProps & {
+  frontmatter: {
+    pubDate: string;
+    author: string;
+    tags: string[];
+    affiliateLink?: string;
+  };
+};
+
+const { url, frontmatter, headings } = Astro.props as PostLayoutProps;
 
 const canonicalUrl = new URL(url, Astro.site);
 const publishedDate = frontmatter.pubDate.split("T")[0];
@@ -30,6 +39,8 @@ const schema: WithContext<BlogPosting> = {
 >
   <p>{frontmatter.author}</p>
   <p>{publishedDate}</p>
+  <p>{headings?.length}</p>
+  <TableOfContents headings={headings} />
   <p>
     {
       frontmatter.tags.map((tag) => (
