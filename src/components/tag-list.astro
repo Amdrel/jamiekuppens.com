@@ -1,0 +1,18 @@
+---
+import type { PostLayoutProps } from "../types";
+
+const posts: PostLayoutProps[] = Object.values(
+  import.meta.glob("../pages/posts/*.mdx", { eager: true }),
+);
+const uniqueTags = [
+  ...new Set(posts.map((post) => post.frontmatter.tags).flat()),
+].sort((a, b) => a.localeCompare(b));
+---
+
+{
+  uniqueTags.map((tag) => (
+    <li>
+      <a href={`${new URL(`/tags/${tag}`, Astro.site)}`}>{tag}</a>
+    </li>
+  ))
+}

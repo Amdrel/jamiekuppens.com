@@ -4,7 +4,7 @@ export type BaseLayoutProps = {
   site: string;
   url: string;
   frontmatter: {
-    layout: string;
+    layout?: string;
     title: string;
     description: string;
     image?: {

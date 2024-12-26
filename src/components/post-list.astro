@@ -1,9 +1,10 @@
 ---
 import PostCard from "./post-card.astro";
+import type { PostLayoutProps } from "../types";
 
-const posts: PostLayoutProps[] = Object.values(
-  import.meta.glob("../pages/posts/*.mdx", { eager: true }),
-);
+const posts: PostLayoutProps[] =
+  Astro.props.posts ??
+  Object.values(import.meta.glob("../pages/posts/*.mdx", { eager: true }));
 ---
 
 <ul>

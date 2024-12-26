@@ -30,7 +30,16 @@ const schema: WithContext<BlogPosting> = {
 >
   <p>{frontmatter.author}</p>
   <p>{publishedDate}</p>
-  <p>{frontmatter.tags.join(", ")}</p>
+  <p>
+    {
+      frontmatter.tags.map((tag) => (
+        <>
+          <a href={`${new URL(`/tags/${tag}`, Astro.site)}`}>{tag}</a>
+          <br />
+        </>
+      ))
+    }
+  </p>
 
   <slot />
 </BaseLayout>

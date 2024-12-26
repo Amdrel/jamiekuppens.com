@@ -1,0 +1,40 @@
+---
+import PostList from "../../components/post-list.astro";
+import BaseLayout from "../../layouts/base-layout.astro";
+import type { PostLayoutProps } from "../../types";
+
+export async function getStaticPaths() {
+  const posts: PostLayoutProps[] = Object.values(
+    import.meta.glob("../posts/*.mdx", { eager: true }),
+  );
+  const uniqueTags = [
+    ...new Set(posts.map((post) => post.frontmatter.tags).flat()),
+  ];
+
+  return uniqueTags.map((tag) => {
+    const filteredPosts = posts.filter((post) =>
+      post.frontmatter.tags.includes(tag),
+    );
+
+    return {
+      params: { tag },
+      props: {
+        frontmatter: {
+          title: tag,
+          description: "",
+        },
+        posts: filteredPosts,
+      },
+    };
+  });
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+---
+
+<BaseLayout {...Astro.props}>
+  <h1>{tag}</h1>
+
+  <PostList posts={posts} />
+</BaseLayout>
