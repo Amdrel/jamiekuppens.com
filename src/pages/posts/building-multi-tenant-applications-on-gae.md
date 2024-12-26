@@ -1,18 +1,14 @@
-+++
-date = "2016-10-13T23:50:33-07:00"
-draft = false
-title = "Building Multi-Tenant Applications on App Engine"
-description = "Learn how to use Google App Engine to build hardened Multi-Tenant web applications."
-image = "/images/text-editor-tilted.jpg"
-imagewidth = "2000"
-imageheight = "1335"
-imagesize = "302633"
-imagemimetype = "image/jpeg"
-hero = true
-herocolor = "#24242e"
-Tags = ["development", "python", "app engine", "cloud"]
-Categories = ["Development"]
-+++
+---
+layout: "../../layouts/post-layout.astro"
+title: "Building Multi-Tenant Applications on App Engine"
+pubDate: 2016-10-13
+description: "With the rise of cloud computing and the proliferation of new users to the web, it has become a necessity for successful web applications to be able to serve thousands of users whilst being reliable, fast, and secure. People depend on web services for their day-to-day lives much more than they did during the internet's infancy, and it's expected that applications meet user expectations in order to stay relevant."
+author: "Jamie Kuppens"
+image:
+  url: "/images/text-editor-tilted.jpg"
+  alt: "A computer monitor with some code being displayed."
+tags: ["development", "python", "app-engine", "cloud"]
+---
 
 **⚠️NOTICE: This article was written several years ago and is likely out of date.**
 
@@ -90,7 +86,7 @@ Note that this is not a tutorial about the basics of App Engine and I'll gloss o
 things first we need to allow authentication with the Users API. Here is a basic App Engine app that
 lets a user login and obtain a user id with `user.user_id()`.
 
-{{< highlight python >}}
+```python
 import webapp2
 
 from google.appengine.api import users
@@ -114,14 +110,14 @@ class MainPage(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/', MainPage),
 ], debug=True)
-{{< /highlight >}}
+```
 
 Now that we have an id we can start using namespaces. The App Engine python library uses global
 state for keeping track of the current namespace used by namespace enabled APIs. I'll create a
 counter to keep track of how many times the current user has loaded the page that only the current
 user can see.
 
-{{< highlight python >}}
+```python
 from google.appengine.api import users
 from google.appengine.api import namespace_manager
 from google.appengine.ext import ndb
@@ -169,12 +165,12 @@ def update_counter(name='visits'):
     counter.put()
 
     return counter.count
-{{< /highlight >}}
+```
 
 Now the user visit count for the currently logged in user will be stored in datastore under a
 namespace specific to the user.
 
-{{< figure src="/images/counter_demo.png" >}}
+<Image src="/images/counter_demo.png" />
 
 If you log into another user, then you will get a different count as other users namespace names are
 not shared. There are many more APIs that use namespaces such as

@@ -1,11 +1,12 @@
-+++
-Date = "2024-02-02T02:00:00-08:00"
-Title = "How to Implement Soft Delete with Prisma using Partial Indexes"
-AffiliateLink = "https://www.thisdot.co/blog/how-to-implement-soft-delete-with-prisma-using-partial-indexes"
-Tags = ["affiliate", "javascript", "postgresql", "prisma"]
-Categories = ["Development", "Affiliate"]
-menu = "main"
-+++
+---
+layout: "../../layouts/post-layout.astro"
+title: "How to Implement Soft Delete with Prisma using Partial Indexes"
+pubDate: 2024-02-02
+description: "Most APIs and applications that allow you to manage content have some form of deletion functionality. Sometimes you may want to make something recoverable after it’s been deleted, or perform the actual deletion later, and soft deletion is a way to accomplish this."
+author: "Jamie Kuppens"
+tags: ["affiliate", "javascript", "postgresql", "prisma"]
+affiliateLink: "https://www.thisdot.co/blog/how-to-implement-soft-delete-with-prisma-using-partial-indexes"
+---
 
 Most APIs and applications that allow you to manage content have some form of
 deletion functionality. Sometimes you may want to make something recoverable

@@ -1,15 +1,16 @@
-+++
-Date = "2020-08-04T02:00:00-08:00"
-Title = "Performance: Optimizing Images on Gatsby Sites"
-AffiliateLink = "https://labs.thisdot.co/blog/performance-optimizing-images-on-gatsby-sites/"
-Tags = ["affiliate", "gatsby", "web performance", "javascript"]
-Categories = ["Development", "Affiliate"]
-menu = "main"
-+++
+---
+layout: "../../layouts/post-layout.astro"
+title: "Performance: Optimizing Images on Gatsby Sites"
+pubDate: 2020-08-04
+description: "Our Labs website is written using Gatsby, and uses images in many places. We have images that are both statically hosted, and images that are hosted in Contentful. However, we found that many of our static images weren't compressed as optimally as they could be and were inflating page sizes."
+author: "Jamie Kuppens"
+tags: ["affiliate", "gatsby", "web-performance", "javascript"]
+affiliateLink: "https://www.thisdot.co/blog/performance-optimizing-images-on-gatsby-sites"
+---
 
-Our Labs website is written using Gatsby, and uses images in many places. We
-have images that are both statically hosted, and images that are hosted in
-Contentful.
+Our Labs website is written using Gatsby, and uses images in many places. We have images that are
+both statically hosted, and images that are hosted in Contentful. However, we found that many of our
+static images weren't compressed as optimally as they could be and were inflating page sizes.
 
 <!--more-->
 

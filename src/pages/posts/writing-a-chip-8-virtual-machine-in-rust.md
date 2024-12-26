@@ -1,18 +1,14 @@
-+++
-date = "2016-05-11T11:49:37-07:00"
-draft = false
-title = "Writing a CHIP-8 Virtual Machine in Rust"
-description = "A few months ago after a tiring day at work, I came across a post on /r/programming about livecoding a N64 emulator in rust and instantly became hooked. That stream piqued my interest in the subject of emulation, along with giving me that wonderful feeling I had when I first got into programming."
-image = "/images/pong.jpg"
-imagewidth = "640"
-imageheight = "320"
-imagesize = "4184"
-imagemimetype = "image/jpeg"
-hero = true
-herocolor = "#000"
-Tags = ["development", "rust", "emulation"]
-Categories = ["Development"]
-+++
+---
+layout: "../../layouts/post-layout.astro"
+title: "Writing a CHIP-8 Virtual Machine in Rust"
+pubDate: 2016-05-11
+description: "A few months ago after a tiring day at work, I came across a post on /r/programming about livecoding a N64 emulator in rust and instantly became hooked. That stream piqued my interest in the subject of emulation, along with giving me that wonderful feeling I had when I first got into programming. After reading some discussion in the stream comments, I decided the best way to get introduced into the emulation scene was to write a CHIP-8 virtual machine."
+author: "Jamie Kuppens"
+image:
+  url: "/images/pong.jpg"
+  alt: "A game of Pong being played on an emulator."
+tags: ["development", "rust", "emulation"]
+---
 
 A few months ago after a tiring day at work, I came across a post on
 [/r/programming](https://www.reddit.com/r/programming/) about
@@ -70,7 +66,7 @@ executable code, but for modern interpreters this is no longer the case so it's 
 
 Here is a snippet from my code that demonstrates all the functions a main loop has to perform:
 
-{{< highlight rust >}}
+```rust
 /// Execute instructions from ram.
 pub fn run(&mut self) {
     loop {
@@ -103,7 +99,7 @@ pub fn run(&mut self) {
 pub fn read_word(&self, addr: u16) -> u16 {
     BigEndian::read_u16(&self.ram[addr as usize..])
 }
-{{< /highlight >}}
+```
 
 In my interpreter I use the [byteorder](https://crates.io/crates/byteorder) crate to read the big-endian words
 from ram. The loop reads instructions from ram and calls an execution function that checks the opcodes
@@ -115,7 +111,7 @@ with the operating system for input, sound, and display.
 Before processing, the opcode is extracted from the first 4 bits of the current word being read. After that the opcode
 is compared in a switch case to determine how to parse the last 12 bits and perform that opcode's function.
 
-{{< highlight rust >}}
+```rust
 // The opcode is the first 4-bit value in the word
 let opcode = (instr >> 12) as u8;
 
@@ -135,7 +131,7 @@ match opcode {
 
     ...
 }
-{{< /highlight >}}
+```
 
 In order to parse the word, bitwise operations must be used. This specific opcode gets an 8-bit value stored in the
 last 8 bits of the word (NN) and adds it to the value of the register specified 4 bits to the left (X). The result then

@@ -1,18 +1,13 @@
 ---
+layout: "../../layouts/post-layout.astro"
 title: "The Anatomy of an Interactive Discord Bot"
+pubDate: 2019-05-27
 description: "I've messed with Discord bots in servers quite a bit and I've always had fun with the various game bots that I've encountered. I've played with complex bots that play Cards Against Humanity, and relatively simple bots like one that emulates an 8 ball. All the 8 ball did was respond with 'Yes' or 'No' at random, and even a bot that simple is very fun when played with friends. I wanted to get into the Discord bot creation game to see how these things tick."
-date: 2019-05-27T10:00:00-07:00
-draft: false
-image: "/images/chat.jpg"
-imagewidth: 1920
-imageheight: 1080
-imagesize: 179923
-imagemimetype: "image/jpeg"
-imagefade: 0.2
-hero: true
-herocolor: "#36393f"
-Tags: ["development", "python", "discord"]
-Categories: ["Development"]
+author: "Jamie Kuppens"
+image:
+  url: "/images/chat.jpg"
+  alt: "A short Discord conversation between a user and a bot."
+tags: ["development", "python", "discord"]
 ---
 
 I've messed with Discord bots in servers quite a bit and I've always had fun with the various game bots that I've encountered. I've played with complex bots that play Cards Against Humanity, and relatively simple bots like one that emulates an 8 ball. All the 8 ball did was respond with 'Yes' or 'No' at random, and even a bot that simple is very fun when played with friends. I wanted to get into the Discord bot creation game to see how these things tick.
@@ -39,7 +34,7 @@ Answers are compared with the [Levenshtein distance](https://en.wikipedia.org/wi
 
 In addition to using Levenshtein distance, I also calculate a ratio so longer answers allow for more forgiveness when it comes to misspellings. Trying to spell many elven names properly when in a rush can be a bit of a challenge.
 
-{{< highlight python >}}
+```python
 import jellyfish
 
 ...
@@ -71,8 +66,7 @@ def levenshtein_ratio(source, target, ignore_case=True):
     target_len = len(target)
 
     return (source_len + target_len - distance) / (source_len + target_len)
-{{< /highlight >}}
-
+```
 
 This method isn't without its flaws. The allowed ratios may need to be tweaked for certain answers and I plan on adding this option in the future. A good example of how this can be exploited is a question I have whose answer is 'Grond', but 'Gron' will also be accepted as a correct answer even though it's 100% incorrect. I chose 80% correctness as a reasonable default, but this isn't reasonable for _all_ answers.
 
@@ -80,7 +74,7 @@ This method isn't without its flaws. The allowed ratios may need to be tweaked f
 
 Game state is stored in memory and in a SQL database. The reason for storing it in SQL is so that games can be resumed when the bot is restarted. If the bot is shutdown for an update mid-game, it can be confusing to users when the bot stops asking them questions and forgets that a game was even playing. The code to resume games is actually fairly simple as all the active games are stored in a dictionary mapping guild ids to the game state.
 
-{{< highlight python >}}
+```python
 async def resume_incomplete_games(self):
     """Resumes all inactive games, usually caused by the bot going down."""
 
@@ -104,7 +98,7 @@ async def resume_incomplete_games(self):
             channel = guild.get_channel(existing_game_state.channel_id)
             asyncio.ensure_future(
                 self._ask_question(channel, existing_game_state))
-{{< /highlight >}}
+```
 
 If you have a watchful eye you might notice that there's no sharding logic in here. This is something I haven't gotten to yet.
 
@@ -112,15 +106,15 @@ If you have a watchful eye you might notice that there's no sharding logic in he
 
 The bot also uses the SQL backend to store server-specific configurations. It's able to keep track of custom prefixes and allows administrators to limit the bot to a certain channel so that users in the server can decide to mute game messages from the bot.
 
-{{< figure src="/images/angry-ping.gif" >}}
+<Image src="/images/angry-ping.gif" />
 
 ## Problems with the Bot
 
 This bot isn't without its flaws though. Currently it doesn't support running with more than one shard, however discord.py makes this easy to implement so I'm not worried about it right now. The hardest part to change if I decide to add sharding would probably be the incomplete game resumption logic, however it shouldn't be hard to apply the following sharding formula to the SQL query.
 
-{{< highlight cpp >}}
+```cpp
 (guild_id >> 22) % num_shards == shard_id
-{{< /highlight >}}
+```
 
 If I want to cheat in regards to sharding I can even use [auto sharding](https://discordpy.readthedocs.io/en/latest/migrating.html#sharding) if the instance is spec'd out and CPU processing power isn't a limiting factor when reaching the connection limit.
 

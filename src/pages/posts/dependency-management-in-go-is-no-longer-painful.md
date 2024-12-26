@@ -1,14 +1,11 @@
-+++
-date = "2016-02-06T18:10:11-08:00"
-draft = false
-title = "Dependency Management in Go 1.6 is No Longer Painful"
-description = "Traditionally, Go has handled dependencies by installing them all in the same directory; but with Go 1.6, vendoring is now offical."
-image = "images/touch/icon-128x128.png"
-imagewidth = "128"
-imageheight = "128"
-Tags = ["development", "golang", "software update"]
-Categories = ["Development"]
-+++
+---
+layout: "../../layouts/post-layout.astro"
+title: "Dependency Management in Go 1.6 is No Longer Painful"
+pubDate: 2016-02-06
+description: "Traditionally, Go has handled dependencies by installing them all in the same directory; but with Go 1.6, vendoring is now offical."
+author: "Jamie Kuppens"
+tags: ["development", "golang", "software-update"]
+---
 
 **⚠️NOTICE: This article was written several years ago and is likely out of date.**
 
@@ -28,7 +25,7 @@ abuse go subpackages to store dependencies using tools like [Godep](https://gith
 The problem with this approach is that you end up with ridiculously long import paths that are a
 pain to manage and make vim scream.
 
-{{< highlight go >}}
+```go
 import (
 	"html/template"
 	"net/http"
@@ -37,7 +34,7 @@ import (
 	"github.com/amdrel/really-long-app-name/Godeps/_workspace/src/github.com/gorilla/mux"
 	"github.com/amdrel/really-long-app-name/Godeps/_workspace/src/github.com/gorilla/sessions"
 )
-{{< /highlight >}}
+```
 
 ## The Solution
 
@@ -49,7 +46,7 @@ is now enabled by default and considered stable.
 Vendoring allows Go projects to put dependencies in directory called `vendor`, and these
 dependencies can be referenced using the traditional method.
 
-{{< highlight go >}}
+```go
 import (
 	"html/template"
 	"net/http"
@@ -59,7 +56,7 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/gorilla/sessions"
 )
-{{< /highlight >}}
+```
 
 `go get` will not manage vendor directories though and leaves that job to tools like
 [Glide](https://github.com/Masterminds/glide). Glide will set up lock files and keep track of

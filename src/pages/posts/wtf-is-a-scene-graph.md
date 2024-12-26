@@ -1,24 +1,20 @@
-+++
-date = "2017-09-17T13:00:00-08:00"
-draft = false
-title = "WTF is a Scene Graph?"
-description = "Not too long ago I started to dabble in low-level graphics programming again. I set a goal of creating a basic scene that can be defined in a similar way that production-grade game engines like Unity and friends. I felt comfortable with basic OpenGL at the time, however the guides that I followed never told me how to create a hierarchical scene."
-image = "/images/ship.jpg"
-imagewidth = "1900"
-imageheight = "980"
-imagesize = "182807"
-imagemimetype = "image/jpeg"
-hero = true
-herocolor = "#FFF"
-Tags = ["development", "c++", "graphics"]
-Categories = ["Development"]
-+++
+---
+layout: "../../layouts/post-layout.astro"
+title: "WTF is a Scene Graph?"
+pubDate: 2017-09-17
+description: "Not too long ago I started to dabble in low-level graphics programming again. I set a goal of creating a basic scene that can be defined in a similar way to production-grade game engines like Unity and friends. I felt comfortable with basic OpenGL at the time, however the guides that I followed never told me how to create a hierarchical scene."
+author: "Jamie Kuppens"
+image:
+  url: "/images/ship.jpg"
+  alt: "A 3D ship in a game engine editor."
+tags: ["development", "c++", "graphics"]
+---
 
 Not too long ago I started to dabble in low-level graphics programming again. I set a goal of creating a basic scene that can be defined in a similar way to production-grade game engines like Unity and friends. I felt comfortable with basic OpenGL at the time, however the guides that I followed never told me how to create a hierarchical scene.
 
 <!--more-->
 
-{{< figure src="/images/unity-scene-graph.jpg" >}}
+<Image src="/images/unity-scene-graph.jpg" />
 
 In addition to this many examples made assumptions about the 3D environment that cannot be made when using a scene graph. I will be glossing over implementation specific details related to the graphics pipeline in this article and focus on scene graph itself, you can view the full source on [GitHub](https://github.com/amdrel/scenegraph-demo) if you want to see how things fit together.
 
@@ -26,7 +22,7 @@ In addition to this many examples made assumptions about the 3D environment that
 
 A scene graph is a tree data structure with nodes. Each node contains transformation matrices that define their position in 3D space; these transformation matrices are generated using local position, rotation, and scale values and incorporating parent transformations to create a world transformation. To keep things brief, this article does not go over OpenGL or theory of how coordinate systems work; you can get a more detailed explanation of these things at [https://learnopengl.com/](learnopengl.com) if you’re not already familiar.
 
-{{< figure src="/images/scene-graph-visualization.png" >}}
+<Image src="/images/scene-graph-visualization.png" />
 
 This visualization shows a very basic scenegraph where there is a single car with spinning wheels. Each node in the tree has a local position, rotation, and scale. Each node’s position is relative to its parent so if the car moves (via any transform), the wheels and driver stay in the same position relative to the car. We’re going to go over a basic scene graph implementation that allows us to represent this kind of hierarchy.
 
@@ -34,7 +30,7 @@ This visualization shows a very basic scenegraph where there is a single car wit
 
 Each time a frame is being rendered, the `updateWorldTransform` method is called on the root node. This method will calculate the local and world transformation matrices if needed. First and foremost the local transform needs to be created using matrix translate, rotate, and scale functions from GLM. Once the local transform is acquired it can be multiplied against its parent’s world transform using the cross product, this being the actual location in world space where the node is located.
 
-{{< highlight cpp >}}
+```cpp
 void Node::updateWorldTransform() {
     if (dirty) {
         auto parent = this->parent.lock();
@@ -69,7 +65,7 @@ void Node::updateLocalTransform() {
         localTransform = transform;
     }
 }
-{{< /highlight >}}
+```
 
 You’ll see that children nodes are referenced and the `updateWorldTransform` method is called recursively on them. This is done because any changes to the current node’s world transform needs to change the child’s transform as children are positioned relative to their parents. If this code was omitted and we used the car example, the wheels would stay put if the car chassis moved forward.
 
@@ -85,7 +81,7 @@ Removing nodes is as simple as removing the parent’s shared pointer to the nod
 
 Generating the transforms for the camera mostly the same sans a few additions. A view and projection matrix are created alongside the local and world transforms. Generating the view matrix from the world transform is tricky when using `lookAt` to generate the matrix. The `lookAt` function requires an up vector and one needs to be calculated as the camera can have any arbitrary rotation and we can’t just make it point up (FPS style) like a lot of other guides do. Lots of this code is based off of work from [A Camera Implementation in C](https://tuttlem.github.io/2013/12/30/a-camera-implementation-in-c.html).
 
-{{< highlight cpp >}}
+```cpp
 PerspectiveCamera::PerspectiveCamera(std::string name, glm::vec3 position,
         glm::vec3 rotation, glm::vec3 scale, float fov, float aspect,
         float near, float far) {
@@ -150,17 +146,17 @@ void PerspectiveCamera::updateWorldTransform() {
         }
     }
 }
-{{< /highlight >}}
+```
 
 Forward, up, and right vectors are initially created using world transform data; however since the up and right vectors are created using the forward vector, the roll is not accounted for as a 3 dimensional vector has no concept of roll. To get around this a new right vector is created by rotating it using sin and cos, then the up vector can be recalculated by crossing the right and forward vectors since we know all the vectors should be perpendicular.
 
-{{< figure src="/images/camera-vectors-visualized.png" >}}
+<Image src="/images/camera-vectors-visualized.png" />
 
 A target vector is also used to generate the view matrix which is a point 1 unit in front of the camera. This position can be calculated by adding the forward vector to the world position (all values in forward sum up to 1). With that we have the information required to generate the view matrix with `lookAt`. The projection matrix is created in the constructor and the view-projection matrix is generated by multiplying the view and projection matrices. The view-projection matrix is cached so it doesn’t need to be recalculated every frame.
 
 In order to make objects appear from the camera’s point of view, their world transform needs to be multiplied with the camera’s view-projection matrix before drawing. This can be cached as well but is not done in this example to keep things simple.
 
-{{< highlight cpp >}}
+```cpp
 scenegraph.get()->updateWorldTransform();
 
 glEnable(GL_DEPTH_TEST);
@@ -181,11 +177,11 @@ basicShader.use();
 textureTest.bind();
 glBindVertexArray(vao);
 glDrawArrays(GL_TRIANGLES, 0, 36);
-{{< /highlight >}}
+```
 
 Now our final matrices are pushed to the vertex shader and some spinning cubes appear on-screen from the camera’s perspective.
 
-{{< figure src="/images/spinning-cubes.jpg" >}}
+<Image src="/images/spinning-cubes.jpg" />
 
 ## What’s Left?
 
