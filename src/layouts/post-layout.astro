@@ -1,10 +1,13 @@
 ---
 import BaseLayout from "../layouts/base-layout.astro";
 
-const { frontmatter } = Astro.props;
+const { frontmatter } = Astro.props as PostLayoutProps;
 ---
 
-<BaseLayout>
-  <p>Written by {frontmatter.author}</p>
+<BaseLayout redirectUrl={frontmatter.affiliateLink ?? null} {...Astro.props}>
+  <p>{frontmatter.author}</p>
+  <p>{frontmatter.pubDate}</p>
+  <p>{frontmatter.tags.join(", ")}</p>
+
   <slot />
 </BaseLayout>

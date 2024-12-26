@@ -3,16 +3,21 @@ import "../styles/global.css";
 
 import Navigation from "../components/navigation.astro";
 
-const { title } = { title: "Jamie Kuppens", ...Astro.props };
+const { frontmatter, redirectUrl } = Astro.props as BaseLayoutProps;
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    {
+      redirectUrl && (
+        <meta http-equiv="refresh" content={`3;url=${redirectUrl}`} />
+      )
+    }
     <link rel="icon" type="image/svg+xml" href="/favicon.png" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <title>{frontmatter.title}</title>
   </head>
   <body>
     <Navigation />

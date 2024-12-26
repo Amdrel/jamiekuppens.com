@@ -1,4 +1,4 @@
-type Page = {
+type BaseLayoutProps = {
   url: string;
   frontmatter: {
     layout: string;
@@ -9,9 +9,10 @@ type Page = {
       alt?: string;
     };
   };
+  redirectUrl?: boolean;
 };
 
-type Post = Page & {
+type PostLayoutProps = BaseLayoutProps & {
   frontmatter: {
     pubDate: string;
     author: string;
