@@ -50,7 +50,7 @@ const websiteSchema: WithContext<WebSite> = {
       // Affiliate blog post pages inject a redirect URL since those pages are
       // meant to be viewed on an external site.
       redirectUrl && (
-        <meta http-equiv="refresh" content={`3;url=${redirectUrl}`} />
+        <meta http-equiv="refresh" content={`1;url=${redirectUrl}`} />
       )
     }
 
