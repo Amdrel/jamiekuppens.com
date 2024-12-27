@@ -4,7 +4,7 @@
 
 @layer base {
   html {
-    @apply max-h-screen overflow-y-scroll bg-slate-900 font-sans text-gray-300;
+    @apply max-h-screen scroll-pt-6 overflow-y-scroll bg-slate-900 font-sans text-gray-300;
 
     color-scheme: dark;
 
