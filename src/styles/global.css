@@ -96,7 +96,7 @@
 }
 
 .astro-code {
-  @apply relative;
+  @apply relative bg-gray-950 !important;
 }
 
 .astro-code button {

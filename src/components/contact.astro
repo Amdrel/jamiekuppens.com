@@ -12,7 +12,7 @@ export type NavigationProps = {
 const { links } = Astro.props as NavigationProps;
 ---
 
-<ul class="flex justify-center gap-3 lg:justify-normal">
+<ul class="flex gap-3">
   {
     links.map((link) => (
       <li>
@@ -30,3 +30,9 @@ const { links } = Astro.props as NavigationProps;
     ))
   }
 </ul>
+
+<div class="mt-4 text-xs text-gray-400">
+  <p class="my-0 text-sm">Powered by Astro</p>
+  <p class="my-0 text-sm">© 2025 Jamie Kuppens. CC BY-SA 3.0.</p>
+  <p class="my-0 text-sm">Externally linked content is not owned by me.</p>
+</div>

@@ -4,6 +4,7 @@ import "../styles/global.css";
 import Contact from "../components/contact.astro";
 import Navigation from "../components/navigation.astro";
 import type { Thing, WebSite, WithContext } from "schema-dts";
+import { siteName, siteDescription, navLinks, contactLinks } from "../data";
 
 export type BaseLayoutProps = {
   site: string;
@@ -29,9 +30,6 @@ export type BaseLayoutProps = {
 const { url, frontmatter, redirectUrl, schemas } =
   Astro.props as BaseLayoutProps;
 
-const siteName = "Jamie Kuppens";
-const siteDescription =
-  "Jamie Kuppens is a software engineer with over 10 years of experience building for the web.";
 const canonicalUrl = new URL(url, Astro.site);
 
 const websiteSchema: WithContext<WebSite> = {
@@ -102,48 +100,21 @@ const websiteSchema: WithContext<WebSite> = {
       class="mx-auto flex min-h-screen max-w-7xl flex-col px-6 pb-6 lg:flex-row lg:gap-16 lg:px-12 lg:pb-0 xl:gap-32"
     >
       <header
-        class="mx-auto flex max-w-fit flex-col justify-between self-start pt-12 lg:sticky lg:top-0 lg:min-h-screen lg:w-full lg:min-w-80 lg:max-w-80 lg:py-12"
+        class="mx-auto flex w-full flex-col justify-between self-start pt-12 lg:sticky lg:top-0 lg:min-h-screen lg:w-full lg:min-w-80 lg:max-w-80 lg:max-w-fit lg:py-12"
       >
-        <Navigation
-          links={[
-            { url: "/experience", label: "Experience" },
-            { url: "/projects", label: "Projects" },
-            { url: "/contact", label: "Contact" },
-            { url: "/posts", label: "Blog" },
-          ]}
-        />
-        <div class="mt-6">
-          <Contact
-            links={[
-              {
-                url: "https://github.com/amdrel",
-                label: "GitHub",
-                iconUrl: "/images/icons/github.svg",
-              },
-              {
-                url: "https://bsky.app/profile/amdrel.bsky.social",
-                label: "Bluesky",
-                iconUrl: "/images/icons/bluesky.svg",
-              },
-              {
-                url: "mailto://jamie@amdrel.net",
-                label: "jamie@amdrel.net",
-                iconUrl: "/images/icons/email.svg",
-              },
-            ]}
-          />
-
-          <div class="mt-4 text-xs text-gray-400">
-            <p class="my-0 text-sm">Powered by Astro</p>
-            <p class="my-0 text-sm">© 2024 Jamie Kuppens. CC BY-SA 3.0.</p>
-            <p class="my-0 text-sm">External content is not owned by me.</p>
-          </div>
+        <Navigation links={navLinks} />
+        <div class="mt-4 hidden lg:block">
+          <Contact links={contactLinks} />
         </div>
       </header>
 
       <main class="mx-auto w-full pt-6 lg:min-w-0 lg:py-12">
         <slot />
       </main>
+
+      <footer class="mt-4 lg:hidden">
+        <Contact links={contactLinks} />
+      </footer>
     </div>
   </body>
 </html>
