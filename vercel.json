@@ -3,20 +3,20 @@
   "outputDirectory": "dist",
   "headers": [
     {
-      "source": "/images/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "max-age=86400"
-        }
-      ]
-    },
-    {
       "source": "/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
           "value": "max-age=900"
+        }
+      ]
+    },
+    {
+      "source": "/images/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "max-age=86400"
         }
       ]
     }
