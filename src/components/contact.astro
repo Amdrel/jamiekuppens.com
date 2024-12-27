@@ -12,13 +12,13 @@ export type NavigationProps = {
 const { links } = Astro.props as NavigationProps;
 ---
 
-<ul class="flex gap-3 justify-center lg:justify-normal">
+<ul class="flex justify-center gap-3 lg:justify-normal">
   {
     links.map((link) => (
       <li>
         <a href={link.url}>
           <Image
-            class="w-6 h-6 invert"
+            class="h-6 w-6 invert"
             src={link.iconUrl}
             alt={link.label}
             width="24"
