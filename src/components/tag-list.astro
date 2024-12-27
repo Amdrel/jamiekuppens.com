@@ -1,18 +1,35 @@
 ---
-import type { PostLayoutProps } from "../types";
+import type { PostLayoutProps } from "../layouts/post-layout.astro";
 
-const posts: PostLayoutProps[] = Object.values(
-  import.meta.glob("../pages/posts/*.mdx", { eager: true }),
-);
-const uniqueTags = [
-  ...new Set(posts.map((post) => post.frontmatter.tags).flat()),
-].sort((a, b) => a.localeCompare(b));
+export type TagListProps = {
+  tags?: string[];
+};
+
+const { tags } = Astro.props as TagListProps;
+
+function getUniqueTags(tags?: string[]) {
+  if (!tags) {
+    const posts: PostLayoutProps[] = Object.values(
+      import.meta.glob("../pages/posts/*.mdx", { eager: true }),
+    );
+    tags = posts.map((post) => post.frontmatter.tags).flat();
+  }
+
+  return [...new Set(tags)].sort((a, b) => a.localeCompare(b));
+}
 ---
 
-{
-  uniqueTags.map((tag) => (
-    <li>
-      <a href={`${new URL(`/tags/${tag}`, Astro.site)}`}>{tag}</a>
-    </li>
-  ))
-}
+<ul class="mx-0 flex list-none flex-wrap gap-2">
+  {
+    getUniqueTags(tags).map((tag) => (
+      <li class="">
+        <a
+          class="inline-block rounded-xl bg-green-950 px-2 py-1 text-green-500 hover:text-green-300 focus:text-green-300"
+          href={`${new URL(`/tags/${tag}`, Astro.site)}`}
+        >
+          {tag.replaceAll("-", " ")}
+        </a>
+      </li>
+    ))
+  }
+</ul>

@@ -1,7 +1,7 @@
 ---
 import PostList from "../../components/post-list.astro";
 import BaseLayout from "../../layouts/base-layout.astro";
-import type { PostLayoutProps } from "../../types";
+import type { PostLayoutProps } from "../../layouts/post-layout.astro";
 
 export async function getStaticPaths() {
   const posts: PostLayoutProps[] = Object.values(
@@ -34,7 +34,7 @@ const { posts } = Astro.props;
 ---
 
 <BaseLayout {...Astro.props}>
-  <h1>{tag}</h1>
+  <h1 class="capitalize">{tag.replaceAll("-", " ")}</h1>
 
   <PostList posts={posts} />
 </BaseLayout>

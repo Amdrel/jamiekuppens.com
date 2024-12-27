@@ -1,21 +1,30 @@
 ---
+import TagList from "./tag-list.astro";
+import { formatDate } from "../lib/date";
+
 export type PostCardProps = {
   title: string;
   url: string;
   description: string;
+  date: string;
+  tags: string[];
 };
 
-// TODO: ADD DATE AND TAGS HERE!!! AND ALSO IN THE POST ITSELF!!!
-
-const { title, url, description } = Astro.props as PostCardProps;
+const { title, url, description, date, tags } = Astro.props as PostCardProps;
 ---
 
 <article class="rounded-2xl bg-gray-950 xl:max-w-[22rem]">
-  <a class="text-gray-300 hover:text-blue-300 focus:text-blue-300" href={url}>
-    <div class="p-4">
+  <div class="flex h-full flex-col p-4">
+    <a class="text-gray-300 hover:text-blue-300 focus:text-blue-300" href={url}>
       <strong class="text-xl text-blue-200">{title}</strong>
-      <p class="max-h-48 truncate whitespace-normal text-base">{description}</p>
-      <p class="mb-0 text-blue-200">Read More →</p>
+    </a>
+    <p class="my-1">{formatDate(date)}</p>
+    <div class="mt-1">
+      <TagList tags={tags} />
     </div>
-  </a>
+    <a class="text-gray-300 hover:text-blue-300 focus:text-blue-300" href={url}>
+      <p class="max-h-48 truncate whitespace-normal text-base">{description}</p>
+      <p class="mb-0 mt-auto self-end text-blue-200">Read More →</p>
+    </a>
+  </div>
 </article>
