@@ -51,7 +51,7 @@
   }
 
   h1 {
-    @apply my-8 text-4xl leading-[3.35rem];
+    @apply text-4xl leading-[3.35rem];
   }
 
   h2 {
