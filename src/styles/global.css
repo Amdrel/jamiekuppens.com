@@ -93,16 +93,38 @@
   pre code {
     @apply flex flex-col p-2 font-mono;
   }
-}
 
-.astro-code {
-  @apply relative bg-gray-950 !important;
-}
+  .astro-code {
+    @apply relative bg-gray-950 !important;
+  }
 
-.astro-code button {
-  @apply absolute right-3 top-3 size-6 bg-cover bg-no-repeat contain-content;
-}
+  .astro-code button {
+    @apply absolute right-3 top-3 size-6 bg-cover bg-no-repeat contain-content;
+  }
 
-.line {
-  @apply min-h-5 text-xs leading-5;
+  .line {
+    @apply min-h-5 text-xs leading-5;
+  }
+
+  .slide-up {
+    animation: slideUp 0.75s;
+  }
+
+  @keyframes slideUp {
+    0% {
+      opacity: 0;
+      transform: translateY(2rem);
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @view-transition {
+    navigation: auto;
+  }
+
+  ::view-transition-group(root) {
+    animation-duration: 0.25s;
+  }
 }
