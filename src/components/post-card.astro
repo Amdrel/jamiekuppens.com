@@ -1,38 +1,21 @@
 ---
-import Image from "astro/components/Image.astro";
-
 export type PostCardProps = {
   title: string;
   url: string;
   description: string;
-  image?: {
-    url: string;
-    alt?: string;
-  };
 };
 
 // TODO: ADD DATE AND TAGS HERE!!! AND ALSO IN THE POST ITSELF!!!
 
-const { title, url, description, image } = Astro.props as PostCardProps;
+const { title, url, description } = Astro.props as PostCardProps;
 ---
 
 <article class="rounded-2xl bg-gray-950 xl:max-w-[22rem]">
   <a class="text-gray-300 hover:text-blue-300 focus:text-blue-300" href={url}>
-    {
-      image && (
-        <Image
-          class="h-full max-h-52 w-full rounded-b-none object-cover"
-          src={image.url}
-          alt={image.alt ?? ""}
-          width="320"
-          height="208"
-        />
-      )
-    }
     <div class="p-4">
-      <strong class="text-blue-200">{title}</strong>
-      <p class="mb-0 max-h-48 truncate whitespace-normal">{description}</p>
-      <p class="text-blue-200">Read More →</p>
+      <strong class="text-xl text-blue-200">{title}</strong>
+      <p class="max-h-48 truncate whitespace-normal text-base">{description}</p>
+      <p class="mb-0 text-blue-200">Read More →</p>
     </div>
   </a>
 </article>
