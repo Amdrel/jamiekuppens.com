@@ -26,8 +26,13 @@ const { links } = Astro.props as NavigationProps;
   <ul>
     {
       links.map((link) => (
-        <li class="my-1">
-          <a href={link.url}>{link.label}</a>
+        <li>
+          <a
+            class="flex items-center gap-2 py-2 text-lg before:inline-block before:w-6 before:h-0.5 before:bg-gray-300 hover:before:bg-gray-50 before:content-[''] text-gray-300 hover:text-gray-50"
+            href={link.url}
+          >
+            {link.label}
+          </a>
         </li>
       ))
     }

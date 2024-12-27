@@ -7,6 +7,18 @@
     @apply bg-slate-900;
     @apply text-gray-300;
     @apply font-sans;
+    @apply max-h-screen;
+    @apply overflow-y-scroll;
+
+    color-scheme: dark;
+
+    background: radial-gradient(
+      farthest-corner at 0 20vh,
+      #252d3d 0%,
+      #0f172a 50%,
+      #0f172a 100%
+    );
+    background-attachment: fixed;
   }
 
   body {
@@ -29,6 +41,7 @@
   h1 {
     @apply text-4xl;
     @apply my-8;
+    @apply leading-[3.35rem];
   }
 
   h2 {
@@ -58,11 +71,37 @@
 
   p {
     @apply my-4;
+    @apply text-lg;
   }
 
   a {
     @apply text-blue-300;
     @apply hover:text-blue-500;
     @apply focus:text-blue-500;
+    @apply break-words;
   }
+
+  pre {
+    @apply rounded-2xl;
+  }
+
+  code {
+    @apply p-1;
+    @apply text-sm;
+    @apply rounded-md;
+    @apply bg-gray-950;
+  }
+
+  pre code {
+    @apply font-mono;
+    @apply flex;
+    @apply flex-col;
+    @apply p-2;
+  }
+}
+
+.line {
+  @apply text-xs;
+  @apply leading-5;
+  @apply min-h-5;
 }

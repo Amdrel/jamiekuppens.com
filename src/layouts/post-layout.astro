@@ -69,20 +69,18 @@ const schema: WithContext<BlogPosting> = {
   redirectUrl={frontmatter.affiliateLink ?? null}
   {...Astro.props}
 >
-  <p>{frontmatter.author}</p>
-  <p>{publishedDate}</p>
-  <p>{headings?.length}</p>
-  <TableOfContents headings={headings} />
-  <p>
-    {
-      frontmatter.tags.map((tag) => (
-        <>
-          <a href={`${new URL(`/tags/${tag}`, Astro.site)}`}>{tag}</a>
-          <br />
-        </>
-      ))
-    }
-  </p>
+  <!--<p>{publishedDate}</p>-->
+  <!--<TableOfContents headings={headings} />-->
+  <!--<p>-->
+  <!--  {-->
+  <!--    frontmatter.tags.map((tag) => (-->
+  <!--      <>-->
+  <!--        <a href={`${new URL(`/tags/${tag}`, Astro.site)}`}>{tag}</a>-->
+  <!--        <br />-->
+  <!--      </>-->
+  <!--    ))-->
+  <!--  }-->
+  <!--</p>-->
 
   <h1>{frontmatter.title}</h1>
 

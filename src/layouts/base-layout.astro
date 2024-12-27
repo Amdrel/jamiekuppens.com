@@ -43,7 +43,7 @@ const websiteSchema: WithContext<WebSite> = {
 };
 ---
 
-<html lang="en" style="scrollbar-gutter: stable both-edges">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -99,19 +99,17 @@ const websiteSchema: WithContext<WebSite> = {
   </head>
   <body>
     <div
-      class="flex flex-col lg:flex-row xl:gap-32 lg:gap-16 max-w-7xl min-h-screen mx-auto px-12"
+      class="flex flex-col lg:flex-row xl:gap-32 lg:gap-16 max-w-7xl min-h-screen mx-auto px-6 pb-6 lg:pb-0 lg:px-12"
     >
       <header
         class="lg:sticky lg:top-0 self-start flex flex-col justify-between lg:min-w-80 lg:max-w-80 lg:w-full lg:min-h-screen pt-12 lg:py-12 mx-auto max-w-fit"
       >
         <Navigation
           links={[
-            { url: "/", label: "Home" },
-            { url: "/work-experience", label: "Work Experience" },
-            { url: "/contact", label: "Contact" },
+            { url: "/experience", label: "Experience" },
             { url: "/projects", label: "Projects" },
+            { url: "/contact", label: "Contact" },
             { url: "/posts", label: "Blog" },
-            { url: "/tags", label: "Tags" },
           ]}
         />
         <div class="mt-6">
@@ -136,14 +134,14 @@ const websiteSchema: WithContext<WebSite> = {
           />
 
           <div class="mt-4 text-gray-400 text-xs">
-            <p class="my-0">Powered by Astro</p>
-            <p class="my-0">© 2024 Jamie Kuppens. CC BY-SA 3.0.</p>
-            <p class="my-0">External content is not owned by me.</p>
+            <p class="my-0 text-sm">Powered by Astro</p>
+            <p class="my-0 text-sm">© 2024 Jamie Kuppens. CC BY-SA 3.0.</p>
+            <p class="my-0 text-sm">External content is not owned by me.</p>
           </div>
         </div>
       </header>
 
-      <main class="w-full mx-auto pt-6 lg:py-12">
+      <main class="w-full mx-auto pt-6 lg:py-12 lg:min-w-0">
         <slot />
       </main>
     </div>
