@@ -1,3 +1,3 @@
-[submodule "themes/poison"]
-	path = themes/poison
+[submodule "legacy-hugo/themes/poison"]
+	path = legacy-hugo/themes/poison
 	url = https://github.com/Amdrel/poison.git

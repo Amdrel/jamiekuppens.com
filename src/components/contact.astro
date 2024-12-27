@@ -1,0 +1,38 @@
+---
+import { Image } from "astro:assets";
+
+export type NavigationProps = {
+  links: {
+    iconUrl: string;
+    url: string;
+    label: string;
+  }[];
+};
+
+const { links } = Astro.props as NavigationProps;
+---
+
+<ul class="flex gap-3">
+  {
+    links.map((link) => (
+      <li>
+        <a href={link.url}>
+          <Image
+            class="h-6 w-6 invert"
+            src={link.iconUrl}
+            alt={link.label}
+            width="24"
+            height="24"
+            title={link.label}
+          />
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<div class="mt-4 text-xs text-gray-400">
+  <p class="my-0 text-sm">Powered by Astro</p>
+  <p class="my-0 text-sm">© 2025 Jamie Kuppens. CC BY-SA 3.0.</p>
+  <p class="my-0 text-sm">Externally linked content is not owned by me.</p>
+</div>

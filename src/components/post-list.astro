@@ -1,0 +1,37 @@
+---
+import PostCard from "./post-card.astro";
+import type { PostLayoutProps } from "../layouts/post-layout.astro";
+
+export type PostListProps = {
+  limit?: number;
+};
+
+const { limit } = Astro.props as PostListProps;
+
+const posts: PostLayoutProps[] =
+  Astro.props.posts ??
+  Object.values(import.meta.glob("../pages/posts/*.mdx", { eager: true }));
+---
+
+<ul class="mx-0 mt-4 flex flex-wrap justify-between gap-8">
+  {
+    posts
+      .sort(
+        (a, b) =>
+          new Date(b.frontmatter.pubDate).getTime() -
+          new Date(a.frontmatter.pubDate).getTime(),
+      )
+      .slice(0, limit)
+      .map((post) => (
+        <li class="contents">
+          <PostCard
+            title={post.frontmatter.title}
+            url={post.frontmatter.affiliateLink ?? post.url}
+            description={post.frontmatter.description}
+            date={post.frontmatter.pubDate}
+            tags={post.frontmatter.tags}
+          />
+        </li>
+      ))
+  }
+</ul>

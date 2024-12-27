@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply max-h-screen scroll-pt-6 overflow-y-scroll bg-slate-900 font-sans text-gray-300;
+
+    color-scheme: dark;
+
+    background: radial-gradient(
+      farthest-corner at 0 20vh,
+      #252d3d 0%,
+      #0f172a 50%,
+      #0f172a 100%
+    );
+    background-attachment: fixed;
+  }
+
+  body {
+    @apply w-full leading-6;
+  }
+
+  main > *:first-child {
+    @apply mt-0;
+  }
+
+  main > *:last-child {
+    @apply mb-0;
+  }
+
+  main ul {
+    @apply ml-4 list-disc;
+  }
+
+  main img {
+    @apply rounded-2xl border-2 border-slate-900 bg-clip-padding;
+  }
+
+  table {
+    @apply mx-auto w-full bg-gray-900;
+  }
+
+  th,
+  td {
+    @apply border-2 border-gray-600 px-3 py-1;
+  }
+
+  * {
+    @apply box-border;
+  }
+
+  h1 {
+    @apply text-4xl leading-[3.35rem];
+  }
+
+  h2 {
+    @apply my-6 text-3xl;
+  }
+
+  h3 {
+    @apply my-4 text-2xl;
+  }
+
+  h4 {
+    @apply my-4 text-xl;
+  }
+
+  h5 {
+    @apply my-4 text-lg;
+  }
+
+  h6 {
+    @apply my-4 text-base;
+  }
+
+  p {
+    @apply my-4 text-lg;
+  }
+
+  a {
+    @apply break-words text-blue-300 hover:text-blue-500 focus:text-blue-500;
+  }
+
+  pre {
+    @apply rounded-2xl;
+  }
+
+  code {
+    @apply rounded-md bg-gray-950 p-1 text-sm;
+  }
+
+  pre code {
+    @apply flex flex-col p-2 font-mono;
+  }
+
+  .astro-code {
+    @apply relative bg-gray-950 !important;
+  }
+
+  .astro-code button {
+    @apply absolute right-3 top-3 size-6 bg-cover bg-no-repeat contain-content;
+  }
+
+  .line {
+    @apply min-h-5 text-xs leading-5;
+  }
+
+  .slide-up {
+    animation: slideUp 0.75s;
+  }
+
+  @keyframes slideUp {
+    0% {
+      opacity: 0;
+      transform: translateY(2rem);
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @view-transition {
+    navigation: auto;
+  }
+
+  ::view-transition-group(root) {
+    animation-duration: 0.25s;
+  }
+}

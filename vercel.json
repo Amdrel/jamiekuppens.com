@@ -1,5 +1,26 @@
 {
-  "buildCommand": "hugo --gc --theme=poison",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "max-age=900"
+        }
+      ]
+    },
+    {
+      "source": "/images/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "max-age=86400"
+        }
+      ]
+    }
+  ],
   "redirects": [
     {
       "source": "/post/:path(.*)",
@@ -9,6 +30,11 @@
     {
       "source": "/(archive\\/?.*)",
       "destination": "/posts",
+      "permanent": true
+    },
+    {
+      "source": "/(about\\/?.*)",
+      "destination": "/",
       "permanent": true
     }
   ]

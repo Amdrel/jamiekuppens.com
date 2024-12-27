@@ -1,0 +1,96 @@
+---
+import BaseLayout, { type BaseLayoutProps } from "../layouts/base-layout.astro";
+import TagList from "../components/tag-list.astro";
+import TableOfContents from "../components/table-of-contents.astro";
+import { formatDate } from "../lib/date";
+import type { BlogPosting, WithContext } from "schema-dts";
+
+export type PostLayoutProps = BaseLayoutProps & {
+  frontmatter: {
+    pubDate: string;
+    author: string;
+    tags: string[];
+    affiliateLink?: string;
+  };
+};
+
+const { url, frontmatter, headings } = Astro.props as PostLayoutProps;
+
+const canonicalUrl = new URL(url, Astro.site);
+const publishedDate = frontmatter.pubDate.split("T")[0];
+
+const schema: WithContext<BlogPosting> = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": `${canonicalUrl}`,
+  },
+  url: `${canonicalUrl}`,
+  headline: frontmatter.title,
+  description: frontmatter.description,
+  author: { "@type": "Person", name: frontmatter.author },
+  datePublished: publishedDate,
+};
+---
+
+<script>
+  const COPY_BG = "/images/icons/copy_content.svg";
+  const COPIED_BG = "/images/icons/copy_success.svg";
+
+  async function copy(element: Element, button: HTMLButtonElement) {
+    const code = element.querySelector("code");
+    if (!code) {
+      return;
+    }
+
+    await navigator.clipboard.writeText(code.innerText);
+
+    button.style.backgroundImage = `url('${COPIED_BG}')`;
+
+    setTimeout(() => {
+      button.style.background = `url('${COPY_BG}')`;
+    }, 3000);
+  }
+
+  document.querySelectorAll(".astro-code").forEach((element) => {
+    if (navigator.clipboard) {
+      const button = document.createElement("button");
+      button.style.backgroundImage = `url('${COPY_BG}')`;
+
+      button.addEventListener("click", async () => {
+        await copy(element, button);
+      });
+
+      element.appendChild(button);
+    }
+  });
+</script>
+
+<BaseLayout
+  schemas={[schema]}
+  redirectUrl={frontmatter.affiliateLink ?? null}
+  {...Astro.props}
+>
+  <!--<p>{publishedDate}</p>-->
+  <!--<TableOfContents headings={headings} />-->
+  <!--<p>-->
+  <!--  {-->
+  <!--    frontmatter.tags.map((tag) => (-->
+  <!--      <>-->
+  <!--        <a href={`${new URL(`/tags/${tag}`, Astro.site)}`}>{tag}</a>-->
+  <!--        <br />-->
+  <!--      </>-->
+  <!--    ))-->
+  <!--  }-->
+  <!--</p>-->
+
+  <h1 class="my-0">{frontmatter.title}</h1>
+
+  <p class="my-1">{formatDate(frontmatter.pubDate)}</p>
+  <div class="my-3">
+    <TagList tags={frontmatter.tags} />
+  </div>
+
+  <slot />
+</BaseLayout>
