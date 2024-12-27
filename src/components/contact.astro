@@ -1,0 +1,32 @@
+---
+import { Image } from "astro:assets";
+
+export type NavigationProps = {
+  links: {
+    iconUrl: string;
+    url: string;
+    label: string;
+  }[];
+};
+
+const { links } = Astro.props as NavigationProps;
+---
+
+<ul class="flex gap-3 justify-center lg:justify-normal">
+  {
+    links.map((link) => (
+      <li>
+        <a href={link.url}>
+          <Image
+            class="w-6 h-6 invert"
+            src={link.iconUrl}
+            alt={link.label}
+            width="24"
+            height="24"
+            title={link.label}
+          />
+        </a>
+      </li>
+    ))
+  }
+</ul>

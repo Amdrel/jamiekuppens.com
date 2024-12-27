@@ -11,8 +11,15 @@
 
   body {
     @apply w-full;
-    @apply p-4;
     @apply leading-6;
+  }
+
+  main > *:first-child {
+    @apply mt-0;
+  }
+
+  main > *:last-child {
+    @apply mb-0;
   }
 
   * {
@@ -21,7 +28,7 @@
 
   h1 {
     @apply text-4xl;
-    @apply mb-8;
+    @apply my-8;
   }
 
   h2 {

@@ -12,23 +12,24 @@ const { links } = Astro.props as NavigationProps;
 ---
 
 <nav>
-  <a class="flex gap-3.5 mb-6" href="/">
+  <a class="flex items-center gap-3.5 mb-6" href="/">
     <Image
-      class="rounded-full"
+      class="rounded-full w-8 h-8 xs:w-12 xs:h-12"
       src="/images/me.webp"
       alt=""
       width="48"
       height="48"
     />
-    <h1 class="my-0 text-gray-300">Jamie Kuppens</h1>
+    <h1 class="text-3xl xs:text-4xl my-0 text-gray-300">Jamie Kuppens</h1>
   </a>
 
   <ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="/posts">Posts</a></li>
-    <li><a href="/work-experience">Work Experience</a></li>
-    <li><a href="/about">About</a></li>
-    <li><a href="/projects">Projects</a></li>
-    <li><a href="/tags">Tags</a></li>
+    {
+      links.map((link) => (
+        <li class="my-1">
+          <a href={link.url}>{link.label}</a>
+        </li>
+      ))
+    }
   </ul>
 </nav>

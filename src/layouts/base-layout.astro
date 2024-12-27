@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 
+import Contact from "../components/contact.astro";
 import Navigation from "../components/navigation.astro";
 import type { Thing, WebSite, WithContext } from "schema-dts";
 
@@ -42,7 +43,7 @@ const websiteSchema: WithContext<WebSite> = {
 };
 ---
 
-<html lang="en">
+<html lang="en" style="scrollbar-gutter: stable both-edges">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -97,12 +98,52 @@ const websiteSchema: WithContext<WebSite> = {
     }
   </head>
   <body>
-    <div class="flex mt-12">
-      <div class="basis-80">
-        <Navigation />
-      </div>
+    <div
+      class="flex flex-col lg:flex-row xl:gap-32 lg:gap-16 max-w-7xl min-h-screen mx-auto px-12"
+    >
+      <header
+        class="lg:sticky lg:top-0 self-start flex flex-col justify-between lg:min-w-80 lg:max-w-80 lg:w-full lg:min-h-screen pt-12 lg:py-12 mx-auto max-w-fit"
+      >
+        <Navigation
+          links={[
+            { url: "/", label: "Home" },
+            { url: "/work-experience", label: "Work Experience" },
+            { url: "/contact", label: "Contact" },
+            { url: "/projects", label: "Projects" },
+            { url: "/posts", label: "Blog" },
+            { url: "/tags", label: "Tags" },
+          ]}
+        />
+        <div class="mt-6">
+          <Contact
+            links={[
+              {
+                url: "https://github.com/amdrel",
+                label: "GitHub",
+                iconUrl: "/images/icons/github.svg",
+              },
+              {
+                url: "https://bsky.app/profile/amdrel.bsky.social",
+                label: "Bluesky",
+                iconUrl: "/images/icons/bluesky.svg",
+              },
+              {
+                url: "mailto://jamie@amdrel.net",
+                label: "jamie@amdrel.net",
+                iconUrl: "/images/icons/email.svg",
+              },
+            ]}
+          />
 
-      <main class="w-full max-w-7xl mx-auto">
+          <div class="mt-4 text-gray-400 text-xs">
+            <p class="my-0">Powered by Astro</p>
+            <p class="my-0">© 2024 Jamie Kuppens. CC BY-SA 3.0.</p>
+            <p class="my-0">External content is not owned by me.</p>
+          </div>
+        </div>
+      </header>
+
+      <main class="w-full mx-auto pt-6 lg:py-12">
         <slot />
       </main>
     </div>
