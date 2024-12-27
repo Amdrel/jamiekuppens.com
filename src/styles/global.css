@@ -4,11 +4,7 @@
 
 @layer base {
   html {
-    @apply bg-slate-900;
-    @apply text-gray-300;
-    @apply font-sans;
-    @apply max-h-screen;
-    @apply overflow-y-scroll;
+    @apply max-h-screen overflow-y-scroll bg-slate-900 font-sans text-gray-300;
 
     color-scheme: dark;
 
@@ -22,8 +18,7 @@
   }
 
   body {
-    @apply w-full;
-    @apply leading-6;
+    @apply w-full leading-6;
   }
 
   main > *:first-child {
@@ -34,51 +29,57 @@
     @apply mb-0;
   }
 
+  main ul {
+    @apply ml-4 list-disc;
+  }
+
+  main img {
+    @apply rounded-2xl border-2 border-slate-900 bg-clip-padding;
+  }
+
+  table {
+    @apply mx-auto w-full bg-gray-900;
+  }
+
+  th,
+  td {
+    @apply border-2 border-gray-600 px-3 py-1;
+  }
+
   * {
     @apply box-border;
   }
 
   h1 {
-    @apply text-4xl;
-    @apply my-8;
-    @apply leading-[3.35rem];
+    @apply my-8 text-4xl leading-[3.35rem];
   }
 
   h2 {
-    @apply text-3xl;
-    @apply my-4;
+    @apply my-4 text-3xl;
   }
 
   h3 {
-    @apply text-2xl;
-    @apply my-4;
+    @apply my-4 text-2xl;
   }
 
   h4 {
-    @apply text-xl;
-    @apply my-4;
+    @apply my-4 text-xl;
   }
 
   h5 {
-    @apply text-lg;
-    @apply my-4;
+    @apply my-4 text-lg;
   }
 
   h6 {
-    @apply text-base;
-    @apply my-4;
+    @apply my-4 text-base;
   }
 
   p {
-    @apply my-4;
-    @apply text-lg;
+    @apply my-4 text-lg;
   }
 
   a {
-    @apply text-blue-300;
-    @apply hover:text-blue-500;
-    @apply focus:text-blue-500;
-    @apply break-words;
+    @apply break-words text-blue-300 hover:text-blue-500 focus:text-blue-500;
   }
 
   pre {
@@ -86,22 +87,22 @@
   }
 
   code {
-    @apply p-1;
-    @apply text-sm;
-    @apply rounded-md;
-    @apply bg-gray-950;
+    @apply rounded-md bg-gray-950 p-1 text-sm;
   }
 
   pre code {
-    @apply font-mono;
-    @apply flex;
-    @apply flex-col;
-    @apply p-2;
+    @apply flex flex-col p-2 font-mono;
   }
 }
 
+.astro-code {
+  @apply relative;
+}
+
+.astro-code button {
+  @apply absolute right-3 top-3 size-6 bg-cover bg-no-repeat contain-content;
+}
+
 .line {
-  @apply text-xs;
-  @apply leading-5;
-  @apply min-h-5;
+  @apply min-h-5 text-xs leading-5;
 }

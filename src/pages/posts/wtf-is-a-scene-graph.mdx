@@ -28,6 +28,7 @@ In addition to this many examples made assumptions about the 3D environment that
 A scene graph is a tree data structure with nodes. Each node contains transformation matrices that define their position in 3D space; these transformation matrices are generated using local position, rotation, and scale values and incorporating parent transformations to create a world transformation. To keep things brief, this article does not go over OpenGL or theory of how coordinate systems work; you can get a more detailed explanation of these things at [https://learnopengl.com/](learnopengl.com) if you’re not already familiar.
 
 <Image
+  class="bg-gray-100"
   src="/images/content/scene-graph-visualization.webp"
   alt='A tree with 3 layers. The first layer with the root node is labeled "Scene Root", with the second layer being connected to it and labeled "Car", and the final layer having 5 connected nodes labeled "Driver", "Wheel 1 (Rotating)", "Wheel 2 (Rotating)", "Wheel 3 (Rotating)", and "Wheel 4 (Rotating)".'
   width="1920"
@@ -161,6 +162,7 @@ void PerspectiveCamera::updateWorldTransform() {
 Forward, up, and right vectors are initially created using world transform data; however since the up and right vectors are created using the forward vector, the roll is not accounted for as a 3 dimensional vector has no concept of roll. To get around this a new right vector is created by rotating it using sin and cos, then the up vector can be recalculated by crossing the right and forward vectors since we know all the vectors should be perpendicular.
 
 <Image
+  class="bg-gray-100"
   src="/images/content/camera-vectors-visualized.webp"
   alt="A 3D graphic showing that +Y is up, +Z is forward, and +X is right."
   width="1920"

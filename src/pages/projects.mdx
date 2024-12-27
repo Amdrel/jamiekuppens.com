@@ -4,6 +4,8 @@ title: "Projects"
 description: "This is a list of a few open source programs I've worked on. Most of them are one-offs and aren't actively maintained."
 ---
 
+import Image from "astro/components/Image.astro";
+
 # Projects
 
 This is a list of a few open source side projects I've worked on over the years. Most of them are
@@ -11,6 +13,14 @@ one-offs and aren't actively maintained. This list is non-comprehensive and is a
 projects I consider the most interesting and relevant.
 
 ## Lorewalker Cho
+
+<Image
+  class="w-full max-w-md mx-auto xl:inline-block xl:float-right xl:max-w-xs xl:mb-8 xl:ml-8"
+  src="/images/thumbnails/lorewalker-cho-conversation.webp"
+  alt="A short Discord conversation between a user and a bot."
+  width="320"
+  height="188"
+/>
 
 [Lorewalker Cho](https://github.com/amdrel/lorewalker-cho) is a fully functional Discord bot that
 plays games where it asks trivia questions related to the game World of Warcraft. The bot is written
@@ -33,32 +43,45 @@ Include your question text, answer and topic of the question being submitted.
 
 ## jamiekuppens.com
 
-[jamiekuppens.com](https://github.com/Amdrel/jamiekuppens.com) is this website that you're on right
-now! It's written in Astro and using a custom theme designed by myself. This website was designed to
-be as small and fast as possible.
+<Image
+  class="w-full max-w-md mx-auto xl:inline-block xl:float-right xl:max-w-xs xl:mb-8 xl:ml-8"
+  src="/images/thumbnails/jamiekuppens-com.webp"
+  alt="A short Discord conversation between a user and a bot."
+  width="320"
+  height="188"
+/>
+
+[jamiekuppens.com](https://github.com/Amdrel/jamiekuppens.com) is the website that you're on right
+now! It was created with Astro and it uses a custom theme designed by myself. This website was
+designed to be as small and fast as possible.
 
 Previously this website was written in [Hugo](https://gohugo.io/), which I still adore, but I much
 prefer using JSX for customizing my site instead of templates.
 
 ## Google Calendar Discord Syncer
 
-[Google Calendar Discord Syncer](https://github.com/Amdrel/gcal-discord-poster) is a CLI app that
-syncs Google calendar events to a Discord server via embeds. I wrote this a long time ago when
-Discord didn't support events yet so that I could have nice looking signup posts for World of
-Warcraft raids events in my guild. I've since replaced it with [Raid
-Helper](https://raid-helper.dev/).
+[Google Calendar Discord Syncer](https://github.com/Amdrel/gcal-discord-poster) is an interactive
+CLI application written in Python that syncs Google calendar events to a Discord server channel
+using embeds. I wrote this a long time ago when Discord didn't support events yet so that I could
+have nice looking signup posts for World of Warcraft raids events in my guild.
+
+The other reason why I wrote this tool was because I got tired of copy-pasting event posts and
+adjusting the times in them two times a week. However, I've since replaced it with [Raid
+Helper](https://raid-helper.dev/) since it supports scheduling event posts while also automatically
+changing the date.
 
 ## 5e Item Generator
 
 [5e Item Generator](https://github.com/Amdrel/5e-item-generator) is a React website that generates
 homebrew items for D&D 5e with random attributes. Right now it only generates basic items, but I
-plan on expanding on this in the future. I'm also thinking about integrating an LLM like [Llama](https://www.llama.com/) to generate
-relevant item names from the generated item attributes.
+plan on expanding on this in the future.
 
 ## Coffee Boy
 
 [Coffee Boy](https://github.com/Amdrel/coffee-boy) is a work-in-progress GameBoy and GameBoy Color
-emulator I'm writing in TypeScript. I plan on returning to this and finishing it up eventually.
+emulator I'm writing in TypeScript. I plan on returning to this and finishing it up eventually. When
+it's done I'm thinking of including a demo of it in this website with an open source test ROM, and
+also including a feature to let you use your own.
 
 ## Notch
 

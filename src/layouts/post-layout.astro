@@ -33,7 +33,8 @@ const schema: WithContext<BlogPosting> = {
 ---
 
 <script>
-  const COPY_TEXT = "Copy";
+  const COPY_BG = "/images/icons/copy_content.svg";
+  const COPIED_BG = "/images/icons/copy_success.svg";
 
   async function copy(element: Element, button: HTMLButtonElement) {
     const code = element.querySelector("code");
@@ -43,17 +44,17 @@ const schema: WithContext<BlogPosting> = {
 
     await navigator.clipboard.writeText(code.innerText);
 
-    button.innerText = "Copied";
+    button.style.backgroundImage = `url('${COPIED_BG}')`;
 
     setTimeout(() => {
-      button.innerText = COPY_TEXT;
+      button.style.background = `url('${COPY_BG}')`;
     }, 3000);
   }
 
   document.querySelectorAll(".astro-code").forEach((element) => {
     if (navigator.clipboard) {
       const button = document.createElement("button");
-      button.innerText = COPY_TEXT;
+      button.style.backgroundImage = `url('${COPY_BG}')`;
 
       button.addEventListener("click", async () => {
         await copy(element, button);
