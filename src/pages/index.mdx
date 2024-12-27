@@ -4,6 +4,8 @@ title: "Jamie Kuppens"
 description: "Jamie Kuppens is a software engineer with over 10 years of experience building for the web."
 ---
 
+import PostList from "../components/post-list.astro";
+
 # Hello! I'm Jamie
 
 I am a fullstack software engineer based in California with over 10 years of experience building
@@ -25,3 +27,9 @@ guild every week killing bosses and getting loot. As far as programming goes I h
 back into the side project groove again.
 
 ## Recent Posts
+
+<PostList limit="6" />
+
+<a href="/posts">
+  <p class="mb-0 text-right">More Posts →</p>
+</a>
