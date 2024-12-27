@@ -14,17 +14,17 @@ const { title, url, description, date, tags } = Astro.props as PostCardProps;
 ---
 
 <article class="rounded-2xl bg-gray-950 xl:max-w-[22rem]">
-  <div class="flex h-full flex-col p-4">
-    <a class="text-gray-300 hover:text-blue-300 focus:text-blue-300" href={url}>
+  <a class="text-gray-300 hover:text-blue-300 focus:text-blue-300" href={url}>
+    <div class="flex h-full flex-col p-4">
       <strong class="text-xl text-blue-200">{title}</strong>
-    </a>
-    <p class="my-1">{formatDate(date)}</p>
-    <div class="mt-1">
-      <TagList tags={tags} />
-    </div>
-    <a class="text-gray-300 hover:text-blue-300 focus:text-blue-300" href={url}>
+      <p class="my-1 text-gray-300">
+        {formatDate(date)}
+      </p>
+      <div class="mt-1">
+        <TagList tags={tags} nonInteractive={true} />
+      </div>
       <p class="max-h-48 truncate whitespace-normal text-base">{description}</p>
-      <p class="mb-0 mt-auto self-end text-blue-200">Read More →</p>
-    </a>
-  </div>
+      <p class="mb-0 mt-auto self-end text-blue-300">Read More →</p>
+    </div>
+  </a>
 </article>

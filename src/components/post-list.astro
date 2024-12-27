@@ -13,7 +13,7 @@ const posts: PostLayoutProps[] =
   Object.values(import.meta.glob("../pages/posts/*.mdx", { eager: true }));
 ---
 
-<ul class="mx-0 flex flex-wrap justify-between gap-8">
+<ul class="mx-0 mt-4 flex flex-wrap justify-between gap-8">
   {
     posts
       .sort(

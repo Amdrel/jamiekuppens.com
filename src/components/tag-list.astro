@@ -3,9 +3,10 @@ import type { PostLayoutProps } from "../layouts/post-layout.astro";
 
 export type TagListProps = {
   tags?: string[];
+  nonInteractive?: boolean;
 };
 
-const { tags } = Astro.props as TagListProps;
+const { tags, nonInteractive } = Astro.props as TagListProps;
 
 function getUniqueTags(tags?: string[]) {
   if (!tags) {
@@ -23,12 +24,18 @@ function getUniqueTags(tags?: string[]) {
   {
     getUniqueTags(tags).map((tag) => (
       <li class="">
-        <a
-          class="inline-block rounded-xl bg-green-950 px-2 py-1 text-green-500 hover:text-green-300 focus:text-green-300"
-          href={`${new URL(`/tags/${tag}`, Astro.site)}`}
-        >
-          {tag.replaceAll("-", " ")}
-        </a>
+        {nonInteractive ? (
+          <div class="inline-block rounded-xl bg-green-950 px-2 py-1 text-green-500">
+            {tag.replaceAll("-", " ")}
+          </div>
+        ) : (
+          <a
+            class="inline-block rounded-xl bg-green-950 px-2 py-1 text-green-500 hover:text-green-300 focus:text-green-300"
+            href={`${new URL(`/tags/${tag}`, Astro.site)}`}
+          >
+            {tag.replaceAll("-", " ")}
+          </a>
+        )}
       </li>
     ))
   }
