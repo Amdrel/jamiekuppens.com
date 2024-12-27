@@ -1,7 +1,7 @@
 # jamiekuppens.com
 
 This repo contains the content of my blog hosted at
-[www.jamiekuppens.com](https://www.jamiekuppens.com). The site requires Hugo to build.
+[www.jamiekuppens.com](https://www.jamiekuppens.com). This site is created with Astro.
 
 ## Project Structure
 
