@@ -30,6 +30,7 @@ const posts: PostLayoutProps[] =
             description={post.frontmatter.description}
             date={post.frontmatter.pubDate}
             tags={post.frontmatter.tags}
+            external={!!post.frontmatter.affiliateLink}
           />
         </li>
       ))

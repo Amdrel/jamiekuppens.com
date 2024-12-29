@@ -99,18 +99,6 @@
     @apply flex flex-col p-2 font-mono;
   }
 
-  .astro-code {
-    @apply relative bg-gray-950 !important;
-  }
-
-  .astro-code button {
-    @apply absolute right-3 top-3 size-6 bg-cover bg-no-repeat contain-content;
-  }
-
-  .line {
-    @apply min-h-5 text-xs leading-5;
-  }
-
   @keyframes slideUp {
     0% {
       opacity: 0;
@@ -122,11 +110,58 @@
     }
   }
 
+  @keyframes rightNudgeIn {
+    0% {
+      transform: translateX(0.15rem);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes rightNudgeOut {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(0.15rem);
+    }
+  }
+
   @view-transition {
     navigation: auto;
   }
 
   ::view-transition-group(root) {
     animation-duration: 0.25s;
+  }
+
+  .svg-right-nudge svg.arrow {
+    animation: rightNudgeIn 0.25s;
+    animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+    animation-fill-mode: both;
+    animation-direction: alternate;
+  }
+
+  .svg-right-nudge:hover svg.arrow,
+  .svg-right-nudge:focus svg.arrow {
+    animation: rightNudgeOut 0.25s;
+    animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+    animation-fill-mode: both;
+    animation-direction: alternate;
+  }
+
+  /* Custom rulsets for Astro-generated classes */
+
+  .astro-code {
+    @apply relative bg-gray-950 !important;
+  }
+
+  .astro-code button {
+    @apply absolute right-3 top-3 size-6 bg-cover bg-no-repeat contain-content;
+  }
+
+  .line {
+    @apply min-h-5 text-xs leading-5;
   }
 }
