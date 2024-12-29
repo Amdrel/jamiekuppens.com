@@ -7,7 +7,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "format": "prettier . --write"
+    "format": "prettier . --write",
+    "postbuild": "node ./scripts/postbuild.js"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.0.3",
