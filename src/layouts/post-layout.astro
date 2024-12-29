@@ -87,7 +87,9 @@ const schema: WithContext<BlogPosting> = {
 
   <h1 class="my-0">{frontmatter.title}</h1>
 
-  <p class="my-1">{formatDate(frontmatter.pubDate)}</p>
+  <time datetime={frontmatter.pubDate.split("T")[0]} class="my-1"
+    >{formatDate(frontmatter.pubDate)}</time
+  >
   <div class="my-3">
     <TagList tags={frontmatter.tags} />
   </div>

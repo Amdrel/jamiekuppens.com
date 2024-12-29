@@ -4,7 +4,7 @@
 
 @layer base {
   html {
-    @apply max-h-screen scroll-pt-6 overflow-y-scroll bg-slate-900 font-sans text-gray-300;
+    @apply max-h-screen scroll-pt-6 overflow-y-scroll scroll-smooth bg-slate-900 font-sans text-gray-300;
 
     color-scheme: dark;
 
@@ -97,6 +97,10 @@
 
   pre code {
     @apply flex flex-col p-2 font-mono;
+  }
+
+  figcaption {
+    @apply my-1.5 ml-1.5 italic text-gray-400;
   }
 
   @keyframes slideUp {
