@@ -1,7 +1,6 @@
 ---
 import BaseLayout, { type BaseLayoutProps } from "../layouts/base-layout.astro";
 import TagList from "../components/tag-list.astro";
-import TableOfContents from "../components/table-of-contents.astro";
 import { formatDate } from "../lib/date";
 import type { BlogPosting, WithContext } from "schema-dts";
 
@@ -72,19 +71,6 @@ const schema: WithContext<BlogPosting> = {
   redirectUrl={frontmatter.affiliateLink ?? null}
   {...Astro.props}
 >
-  <!--<p>{publishedDate}</p>-->
-  <!--<TableOfContents headings={headings} />-->
-  <!--<p>-->
-  <!--  {-->
-  <!--    frontmatter.tags.map((tag) => (-->
-  <!--      <>-->
-  <!--        <a href={`${new URL(`/tags/${tag}`, Astro.site)}`}>{tag}</a>-->
-  <!--        <br />-->
-  <!--      </>-->
-  <!--    ))-->
-  <!--  }-->
-  <!--</p>-->
-
   <h1 class="my-0">{frontmatter.title}</h1>
 
   <time datetime={frontmatter.pubDate.split("T")[0]} class="my-1"
