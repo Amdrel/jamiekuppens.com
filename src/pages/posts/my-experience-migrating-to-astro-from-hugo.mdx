@@ -1,0 +1,124 @@
+---
+layout: "../../layouts/post-layout.astro"
+title: "My Experience Migrating to Astro From Hugo"
+pubDate: 2024-12-29
+description: "Back in February of 2016 I created this website using Hugo. I chose Hugo primarily because of its fast builds, but also because it was to use and author content with as it supported markdown. However, I've recently switched my website over to Astro and I'm going to talk about my experience with it and why I made the switch."
+author: "Jamie Kuppens"
+tags: ["astro", "javascript", "mdx", "hugo"]
+---
+
+import Image from "astro/components/Image.astro";
+
+Back in February of 2016 I created this website using Hugo. I chose [Hugo](https://gohugo.io/)
+primarily because of its fast builds, but also because it was to use and author content with as it
+supported markdown. However, I've recently switched my website over to Astro and I'm going to talk
+about my experience with it and why I made the switch.
+
+## Why Migrate?
+
+There are a couple of reasons why I migrated, but the biggest one for me was theming. Of course,
+Hugo themes can be customized if needed, but in my experience it was a bit difficult. I initially
+started out with a custom theme of my own, but eventually decided to adopt another one instead and
+make changes to it to suit my needs.
+
+I made changes to my Hugo site so that externally linked content can be handled differently than the
+content I write for viewing on this site. However, it was common enough occurrence that new Hugo
+versions would deprecate a feature or change something requiring me to make changes accordingly. I
+synced my fork of the theme with the upstream version such that I was never more than a few months
+out of date, but even in just my changes alone I found that I had to keep up with breaking changes
+often enough that it became annoying whenever I added new content to the site.
+
+In addition to that Hugo templating syntax never really clicked for me. Whenever I had to return to
+it to make some changes to my site that meant that I had to relearn parts of it again since I don't
+use it with any other projects in my day to day, and frankly the syntax just felt clunky to me.
+
+That's where [Astro](https://astro.build/) comes in.
+
+## Introduce Astro
+
+A friend recommended that I try out Astro, and after seeing what it supports out of the box and how
+it worked I decided to give it a try. Astro, much like Hugo, is a static site generator.
+Specifically, it's a static site generator that I can use with technologies that I'm more familiar
+with.
+
+Before I decided to go with Astro I did think about going with [Next.js](https://nextjs.org/) since
+I already maintain a website with a blog written with it. However, I decided that would be
+unnecessary since the reason why we went with Next was for its first-class ISR support as that site
+has _a lot_ of content. This wasn't a problem I have to worry about with this site as SSG can handle
+a few dozen pages without breaking a sweat.
+
+## My First Impressions
+
+<Image
+  src="/images/content/astro-is-looking-nice.webp"
+  alt="A meme showing me looking at Astro while Hugo is upset."
+  width="1042"
+  height="640"
+/>
+
+I was surprised about how simple Astro was. After initializing a new project it gave me just a build
+system and an index page. That's it. Technically I could've gotten more had I used a theme, but I
+wanted to design this site myself from scratch. I didn't find this intimidating at all though since
+Astro pages and components use JSX-like syntax and MDX, both of which I'm intimately familiar with.
+Sharing components with pages is simple as well it's done through ESM imports.
+
+The builds are still very fast. It's not as fast as Hugo was on my site, but the difference is
+negligible for me.
+
+<figure>
+  <Image
+    src="/images/content/astro-is-fast.webp"
+    alt="A terminal's output showing that 76 pages were built in 1.60 seconds."
+    width="1042"
+    height="640"
+  />
+  <figcaption>That's still pretty fast!</figcaption>
+</figure>
+
+Although I had started from scratch [the
+documentation](https://docs.astro.build/en/getting-started/) was immensely helpful and well written.
+I adapted many of the examples in the [build a
+blog section](https://docs.astro.build/en/tutorial/0-introduction/) which helped me get familiar
+with Astro enough that I could extend my site however I needed to.
+
+## Astro sites are very easy to customize
+
+I love that fact that I can use JS as the language to generate my pages with. Need a bunch of
+data-driven pages using data from an external source? Just fetch it using `getStaticPaths` and
+render it, and if you need to transform the data you only have to write JS.
+
+Components are easy to write as well. I could create a new `.astro` file and put pure HTML in there,
+import it, and it'll just work. If I need to pass in data then I add a frontmatter section to the
+top of the file and read the fields I need off of `Astro.props`.
+
+## Tailwind is surprisingly awesome
+
+This is unrelated to Astro, but I managed to avoid using [Tailwind](https://tailwindcss.com/) for
+quite a while since none of the projects I've been on have used it. I avoided using it for a while
+since it seemed strange to me to put all of your styles alongside your markup, which mind you goes
+against everything I was taught early in my career, but I wanted to learn it regardless since it was
+likely I'd have a run in with it whether I liked it or not. Also, I can't really dislike something
+if I haven't given it a fair shake.
+
+_I was surprised at how fast I was able to create the theme for my site_. It took me 3 days to do
+the redesign, and they weren't full days either as I had been spending time with family, and on top
+of that the first day was mostly me getting all of the old markdown content ported over to work well
+with Astro and writing boilerplate. The speed at which Tailwind allowed me to write the theme for my
+site _was fast_ and I was impressed. Also, the fact that Tailwind removes unused CSS rulesets from
+pages that don't need it is a great bonus, although I don't benefit much from it with this site.
+
+Anyhow, I'm a Tailwind convert now.
+
+## My Final Thoughts
+
+I could not be any happier with choosing Astro for my website redesign. The fact that it uses
+JSX-like syntax makes me feel right at home when it comes to customizing my site and adding new
+components that can be used anywhere in my site is a breeze. I'm also confident that whenever I get
+around to adding dynamic functionality to my website that it'll be easy to do thanks to the [island
+architecture](https://docs.astro.build/en/concepts/islands/). You can view the source code of my
+website on [GitHub](https://github.com/amdrel/jamiekuppens.com) if you want to see how I implemented
+this redesign.
+
+Hugo has served me well for the last 8 years, and I hope Astro will as well for just as long, or
+even longer. If you are considering using Astro for a static site of yours, do it. I promise you
+that you won't be disappointed.
