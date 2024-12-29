@@ -21,6 +21,11 @@
     @apply w-full leading-6;
   }
 
+  main {
+    animation: slideUp 0.6s;
+    animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+  }
+
   main > *:first-child {
     @apply mt-0;
   }
@@ -106,17 +111,14 @@
     @apply min-h-5 text-xs leading-5;
   }
 
-  .slide-up {
-    animation: slideUp 0.75s;
-  }
-
   @keyframes slideUp {
     0% {
       opacity: 0;
-      transform: translateY(2rem);
+      transform: translateY(1.5rem);
     }
     100% {
       opacity: 1;
+      transform: translateY(0);
     }
   }
 
