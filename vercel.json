@@ -7,15 +7,15 @@
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "max-age=900 s-maxage=3600"
+          "value": "max-age=900, s-maxage=3600"
         },
         {
           "key": "CDN-Cache-Control",
-          "value": "max-age=3600 s-maxage=3600"
+          "value": "max-age=3600, s-maxage=3600"
         },
         {
           "key": "Vercel-CDN-Cache-Control",
-          "value": "max-age=3600 s-maxage=3600"
+          "value": "max-age=3600, s-maxage=3600"
         }
       ]
     },
@@ -24,15 +24,15 @@
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "max-age=86400 s-maxage=86400"
+          "value": "max-age=86400, s-maxage=86400"
         },
         {
           "key": "CDN-Cache-Control",
-          "value": "max-age=86400 s-maxage=86400"
+          "value": "max-age=86400, s-maxage=86400"
         },
         {
           "key": "Vercel-CDN-Cache-Control",
-          "value": "max-age=86400 s-maxage=86400"
+          "value": "max-age=86400, s-maxage=86400"
         }
       ]
     }
