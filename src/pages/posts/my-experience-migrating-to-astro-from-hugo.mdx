@@ -75,6 +75,28 @@ negligible for me.
   <figcaption>That's still pretty fast!</figcaption>
 </figure>
 
+The page weight of all these pages is very small, just as it was with Hugo. The largest parts of the
+page belong to media such as images. No unnecessary JS is required. This low page weight makes
+preloading pages a user might navigate to extremely cheap. I was able to add page preloading
+whenever a page link is hovered over with only a couple of lines of config.
+
+```ts
+export default defineConfig({
+  integrations: [mdx(), sitemap(), tailwind()],
+  adapter: vercel(),
+
+  site: process.env.PRODUCTION_URL
+    ? `https://${process.env.PRODUCTION_URL}`
+    : process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : "http://localhost:4321",
+
+  prefetch: {
+    prefetchAll: true,
+  },
+});
+```
+
 Although I had started from scratch [the
 documentation](https://docs.astro.build/en/getting-started/) was immensely helpful and well written.
 I adapted many of the examples in the [build a
@@ -119,6 +141,6 @@ architecture](https://docs.astro.build/en/concepts/islands/). You can view the s
 website on [GitHub](https://github.com/amdrel/jamiekuppens.com) if you want to see how I implemented
 this redesign.
 
-Hugo has served me well for the last 8 years, and I hope Astro will as well for just as long, or
-even longer. If you are considering using Astro for a static site of yours, do it. I promise you
-that you won't be disappointed.
+Hugo has served me well for the last 8 years, and I hope Astro will for just as long, if not longer.
+If you are considering using Astro for a static site of yours, do it. I promise you that you won't
+be disappointed.
