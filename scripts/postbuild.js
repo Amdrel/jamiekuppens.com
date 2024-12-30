@@ -1,15 +1,11 @@
 import fs from "fs";
 import { readdir } from "fs/promises";
+import matter from "gray-matter";
 import path from "path";
-import { Builder, parseStringPromise } from "xml2js";
 
 const SRC_POSTS_DIR = "./src/pages/posts";
 const DIST_POSTS_DIR = "./dist/posts";
-const SITEMAP_PATH = "./dist/sitemap-0.xml";
 const REDIRECTS_PATH = "./redirects.json";
-
-const EXTERNAL_LINK_RE = /affiliateLink: "(.+)"/;
-const INTERNAL_POST_LINK_RE = /^https?:\/\/.+\/posts\/([a-zA-Z0-9\-]+)\/?/;
 
 /**
  * Remove the external posts from the filesystem.
@@ -26,28 +22,6 @@ async function removeExternalPosts(externalPosts) {
 }
 
 /**
- * Remove external content from the sitemap.
- *
- * @param {Set<string>} externalPosts
- */
-async function removeExternalPostsFromSitemap(externalPosts) {
-  const sitemap = fs.readFileSync(SITEMAP_PATH, { encoding: "utf8" });
-  const parsedSitemap = await parseStringPromise(sitemap);
-
-  parsedSitemap.urlset.url = parsedSitemap.urlset.url.filter((url) => {
-    const match = url.loc[0].match(INTERNAL_POST_LINK_RE);
-    return !match || !externalPosts.has(match[1]);
-  });
-
-  fs.writeFileSync(
-    SITEMAP_PATH,
-    new Builder({
-      renderOpts: { pretty: false },
-    }).buildObject(parsedSitemap),
-  );
-}
-
-/**
  * Create a redirects.json file for our middleware with all external links.
  *
  * @param {Set<string>} externalPosts
@@ -58,9 +32,9 @@ async function generateRedirectsFile(externalPosts) {
   externalPosts.forEach((slug) => {
     const contentPath = path.join(SRC_POSTS_DIR, slug);
     const content = fs.readFileSync(`${contentPath}.mdx`, { encoding: "utf8" });
-    const redirectUrl = content.match(EXTERNAL_LINK_RE);
+    const frontmatter = matter(content).data;
 
-    redirects[`/posts/${slug}`] = redirectUrl[1];
+    redirects[`/posts/${slug}`] = frontmatter.affiliateLink;
   });
 
   fs.writeFileSync(REDIRECTS_PATH, JSON.stringify(redirects, null, 2));
@@ -83,12 +57,13 @@ async function generateRedirectsFile(externalPosts) {
       .filter((dirent) => {
         const contentPath = path.join(SRC_POSTS_DIR, dirent.name);
         const content = fs.readFileSync(contentPath, { encoding: "utf8" });
-        return EXTERNAL_LINK_RE.test(content);
+        const frontmatter = matter(content).data;
+
+        return !!frontmatter.affiliateLink;
       })
       .map((dirent) => dirent.name.slice(0, -4)),
   );
 
   await removeExternalPosts(externalPosts);
-  await removeExternalPostsFromSitemap(externalPosts);
   await generateRedirectsFile(externalPosts);
 })();
