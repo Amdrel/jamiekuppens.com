@@ -12,7 +12,7 @@ export default function middleware(request: Request) {
   const url = new URL(request.url);
 
   for (const [path, redirectUrl] of Object.entries(redirects)) {
-    if (url.pathname === path) {
+    if (url.pathname === path || url.pathname === path + "/") {
       return Response.redirect(redirectUrl, 308);
     }
   }
