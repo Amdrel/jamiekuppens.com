@@ -13,7 +13,7 @@ export default function middleware(request: Request) {
 
   for (const [path, redirectUrl] of Object.entries(redirects)) {
     if (url.pathname === path) {
-      return Response.redirect(redirectUrl, 301);
+      return Response.redirect(redirectUrl, 308);
     }
   }
 }
