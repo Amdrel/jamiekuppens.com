@@ -96,7 +96,7 @@
   }
 
   pre code {
-    @apply flex flex-col p-2 font-mono;
+    @apply flex flex-col px-4 py-3 font-mono;
   }
 
   figcaption {
@@ -165,7 +165,7 @@
     @apply absolute right-3 top-3 size-6 bg-cover bg-no-repeat contain-content;
   }
 
-  .line {
-    @apply min-h-5 text-xs leading-5;
+  .astro-code .line {
+    @apply min-h-5 leading-5;
   }
 }

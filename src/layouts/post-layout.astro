@@ -44,7 +44,7 @@ const schema: WithContext<BlogPosting> = {
       return;
     }
 
-    await navigator.clipboard.writeText(code.innerText);
+    await navigator.clipboard.writeText(code.textContent ?? "");
 
     button.style.backgroundImage = `url('${COPIED_BG}')`;
 
