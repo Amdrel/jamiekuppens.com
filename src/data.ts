@@ -5,6 +5,7 @@ export const siteDescription =
 
 export const navLinks = [
   { url: "/projects", label: "Projects" },
+  { url: "/experience", label: "Experience" },
   { url: "/contact", label: "Contact" },
   { url: "/posts", label: "Blog" },
 ];
