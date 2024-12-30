@@ -87,7 +87,6 @@ whenever a page link is hovered over with only a couple of lines of config.
 ```ts
 export default defineConfig({
   integrations: [mdx(), sitemap(), tailwind()],
-  adapter: vercel(),
 
   site: process.env.PRODUCTION_URL
     ? `https://${process.env.PRODUCTION_URL}`
@@ -95,6 +94,7 @@ export default defineConfig({
       ? `https://${process.env.VERCEL_URL}`
       : "http://localhost:4321",
 
+  // Prefetch everything by default since every page is lightweight.
   prefetch: {
     prefetchAll: true,
   },
