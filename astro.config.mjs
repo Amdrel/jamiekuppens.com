@@ -37,7 +37,12 @@ export default defineConfig({
       },
     }),
     ,
-    tailwind(),
+    tailwind({
+      // We apply base styles in global.css, so we don't need to do it again.
+      // This will break overridden base styles for headers and other semantic
+      // elements used in content if this is turned on.
+      applyBaseStyles: false,
+    }),
   ],
 
   site: process.env.PRODUCTION_URL
