@@ -1,5 +1,5 @@
 ---
-import type { PostLayoutProps } from "../layouts/post-layout.astro";
+import { getSortedTags } from "../lib/tags";
 
 export type TagListProps = {
   tags?: string[];
@@ -7,22 +7,11 @@ export type TagListProps = {
 };
 
 const { tags, nonInteractive } = Astro.props as TagListProps;
-
-function getUniqueTags(tags?: string[]) {
-  if (!tags) {
-    const posts: PostLayoutProps[] = Object.values(
-      import.meta.glob("../pages/posts/*.mdx", { eager: true }),
-    );
-    tags = posts.map((post) => post.frontmatter.tags).flat();
-  }
-
-  return [...new Set(tags)].sort((a, b) => a.localeCompare(b));
-}
 ---
 
 <ul class="mx-0 flex list-none flex-wrap gap-2">
   {
-    getUniqueTags(tags).map((tag) => (
+    getSortedTags(tags).map((tag) => (
       <li class="">
         {nonInteractive ? (
           <div class="inline-block rounded-xl bg-green-950 px-2 py-1 text-green-500">

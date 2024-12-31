@@ -1,16 +1,18 @@
 ---
 import PostCard from "./post-card.astro";
-import type { PostLayoutProps } from "../layouts/post-layout.astro";
+import { getPosts } from "../lib/posts";
+import type { PostLayoutProps } from "../types";
 
 export type PostListProps = {
   limit?: number;
+  posts?: PostLayoutProps[];
 };
 
-const { limit } = Astro.props as PostListProps;
+let { limit, posts } = Astro.props as PostListProps;
 
-const posts: PostLayoutProps[] =
-  Astro.props.posts ??
-  Object.values(import.meta.glob("../pages/posts/*.mdx", { eager: true }));
+if (!posts) {
+  posts = Object.values(getPosts());
+}
 ---
 
 <ul class="mx-0 mt-4 flex flex-wrap justify-between gap-8">

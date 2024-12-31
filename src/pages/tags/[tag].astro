@@ -1,30 +1,18 @@
 ---
 import PostList from "../../components/post-list.astro";
 import BaseLayout from "../../layouts/base-layout.astro";
-import type { PostLayoutProps } from "../../layouts/post-layout.astro";
-import { getTagName } from "../../lib/tags";
+import { getPosts } from "../../lib/posts";
+import { getTagName, getUniqueTags } from "../../lib/tags";
 
 export async function getStaticPaths() {
-  const posts: PostLayoutProps[] = Object.values(
-    import.meta.glob("../posts/*.mdx", { eager: true }),
-  );
-  const uniqueTags = [
-    ...new Set(posts.map((post) => post.frontmatter.tags).flat()),
-  ];
+  const posts = Object.values(getPosts());
 
-  return uniqueTags.map((tag) => {
-    const filteredPosts = posts.filter((post) =>
-      post.frontmatter.tags.includes(tag),
-    );
-
+  return [...getUniqueTags()].map((tag) => {
     return {
       params: { tag },
       props: {
-        frontmatter: {
-          title: tag,
-          description: "",
-        },
-        posts: filteredPosts,
+        frontmatter: { title: tag, description: "" },
+        posts: posts.filter((post) => post.frontmatter.tags.includes(tag)),
       },
     };
   });
@@ -33,19 +21,11 @@ export async function getStaticPaths() {
 const { tag } = Astro.params;
 const { posts, frontmatter } = Astro.props;
 
-const prettyTagName =
-  getTagName(tag) ??
-  tag
-    .replaceAll("-", " ")
-    .split(" ")
-    .map((word) => word.charAt(0).toLocaleUpperCase() + word.slice(1))
-    .join(" ");
-
-frontmatter.title = prettyTagName;
+frontmatter.title = getTagName(tag);
 ---
 
 <BaseLayout {...Astro.props}>
-  <h1>{prettyTagName}</h1>
+  <h1>{frontmatter.title}</h1>
 
   <PostList posts={posts} />
 </BaseLayout>

@@ -1,4 +1,28 @@
-export function getTagName(tag: string): string | null {
+import { getPosts } from "./posts";
+
+/**
+ * Finds all unique tags used in all blog content on the site.
+ */
+export function getUniqueTags(tags?: string[]): Set<string> {
+  return new Set(
+    tags ??
+      Object.values(getPosts())
+        .map((post) => post.frontmatter.tags)
+        .flat(),
+  );
+}
+
+/**
+ * Returns all tags sorted alphanumerically.
+ */
+export function getSortedTags(tags?: string[]) {
+  return [...getUniqueTags(tags)].sort((a, b) => a.localeCompare(b));
+}
+
+/**
+ * Map tag slugs to human-readable tag names.
+ */
+export function getTagName(tag: string): string {
   switch (tag) {
     case "app-engine":
       return "App Engine";
@@ -31,6 +55,10 @@ export function getTagName(tag: string): string | null {
     case "typescript":
       return "TypeScript";
     default:
-      return null;
+      return tag
+        .replaceAll("-", " ")
+        .split(" ")
+        .map((word) => word.charAt(0).toLocaleUpperCase() + word.slice(1))
+        .join(" ");
   }
 }

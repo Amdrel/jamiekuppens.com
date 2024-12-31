@@ -10,3 +10,10 @@ export function formatDate(date: string): string {
     { year: "numeric", month: "long", day: "numeric" },
   );
 }
+
+/**
+ * Extracts the date portion from an ISO 8601 datetime.
+ */
+export function datetimeToDate(datetime: string): string {
+  return datetime.split("T")[0];
+}

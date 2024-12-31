@@ -3,32 +3,11 @@ import "../styles/global.css";
 
 import Contact from "../components/contact.astro";
 import Navigation from "../components/navigation.astro";
-import type { Thing, WebSite, WithContext } from "schema-dts";
 import { siteName, siteDescription, navLinks, contactLinks } from "../data";
+import type { BaseLayoutProps } from "../types";
+import type { WebSite, WithContext } from "schema-dts";
 
-export type BaseLayoutProps = {
-  site: string;
-  url: string;
-  frontmatter: {
-    layout?: string;
-    title: string;
-    description: string;
-    image?: {
-      url: string;
-      alt?: string;
-    };
-  };
-  headings?: {
-    depth: number;
-    text: string;
-    slug: string;
-  }[];
-  redirectUrl?: boolean;
-  schemas?: WithContext<Thing>[];
-};
-
-const { url, frontmatter, redirectUrl, schemas } =
-  Astro.props as BaseLayoutProps;
+const { url, frontmatter, schemas } = Astro.props as BaseLayoutProps;
 
 const canonicalUrl = new URL(url, Astro.site);
 
@@ -45,14 +24,6 @@ const websiteSchema: WithContext<WebSite> = {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-
-    <!--{-->
-    <!--  // Affiliate blog post pages inject a redirect URL since those pages are-->
-    <!--  // meant to be viewed on an external site.-->
-    <!--  redirectUrl && (-->
-    <!--    <meta http-equiv="refresh" content={`1;url=${redirectUrl}`} />-->
-    <!--  )-->
-    <!--}-->
 
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="mobile-web-app-capable" content="yes" />
@@ -103,6 +74,7 @@ const websiteSchema: WithContext<WebSite> = {
         class="mx-auto flex w-full flex-col justify-between self-start pt-12 lg:sticky lg:top-0 lg:min-h-screen lg:w-full lg:min-w-80 lg:max-w-80 lg:max-w-fit lg:py-12"
       >
         <Navigation links={navLinks} />
+
         <div class="mt-4 hidden lg:block">
           <Contact links={contactLinks} />
         </div>
