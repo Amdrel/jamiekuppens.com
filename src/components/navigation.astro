@@ -12,7 +12,10 @@ const { links } = Astro.props as NavigationProps;
 ---
 
 <nav>
-  <a class="mb-6 flex items-center gap-3.5" href="/">
+  <a
+    class="mb-6 flex items-center justify-center gap-3.5 lg:justify-normal"
+    href="/"
+  >
     <Image
       class="h-8 w-8 rounded-full xs:h-12 xs:w-12"
       src="/images/me.webp"
@@ -23,12 +26,14 @@ const { links } = Astro.props as NavigationProps;
     <h1 class="my-0 text-3xl text-gray-300 xs:text-4xl">Jamie Kuppens</h1>
   </a>
 
-  <ul>
+  <ul
+    class="flex justify-center gap-6 border-b-2 border-b-gray-700 pb-2 lg:block lg:border-none lg:pb-0"
+  >
     {
       links.map((link) => (
         <li>
           <a
-            class="flex items-center gap-2 py-2 text-lg text-gray-300 before:inline-block before:h-0.5 before:w-6 before:bg-gray-300 before:content-[''] hover:text-gray-50 hover:before:bg-gray-50"
+            class="flex items-center justify-center gap-2 py-2 text-lg text-gray-200 hover:text-gray-50 focus:text-gray-50 lg:justify-normal lg:text-gray-300 lg:before:inline-block lg:before:h-0.5 lg:before:w-8 lg:before:bg-gray-300 lg:before:content-[''] lg:after:hidden lg:hover:before:bg-gray-50 lg:focus:before:bg-gray-50"
             href={link.url}
           >
             {link.label}
