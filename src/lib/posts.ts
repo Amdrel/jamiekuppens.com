@@ -11,7 +11,5 @@ export async function getPosts() {
  * Return a collection of internal blog posts only.
  */
 export async function getInternalPosts() {
-  return (await getCollection("posts")).filter(
-    (post) => !post.data.affiliateLink,
-  );
+  return getCollection("posts", (post) => !post.data.affiliateLink);
 }
