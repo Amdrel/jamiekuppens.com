@@ -2,6 +2,7 @@
 import PostList from "../../components/post-list.astro";
 import BaseLayout from "../../layouts/base-layout.astro";
 import type { PostLayoutProps } from "../../layouts/post-layout.astro";
+import { getTagName } from "../../lib/tags";
 
 export async function getStaticPaths() {
   const posts: PostLayoutProps[] = Object.values(
@@ -30,11 +31,21 @@ export async function getStaticPaths() {
 }
 
 const { tag } = Astro.params;
-const { posts } = Astro.props;
+const { posts, frontmatter } = Astro.props;
+
+const prettyTagName =
+  getTagName(tag) ??
+  tag
+    .replaceAll("-", " ")
+    .split(" ")
+    .map((word) => word.charAt(0).toLocaleUpperCase() + word.slice(1))
+    .join(" ");
+
+frontmatter.title = prettyTagName;
 ---
 
 <BaseLayout {...Astro.props}>
-  <h1 class="capitalize">{tag.replaceAll("-", " ")}</h1>
+  <h1>{prettyTagName}</h1>
 
   <PostList posts={posts} />
 </BaseLayout>
