@@ -1,3 +1,4 @@
+import { z } from "astro/zod";
 import type { Thing, WithContext } from "schema-dts";
 
 export type BaseLayoutProps = {
@@ -28,3 +29,20 @@ export type PostLayoutProps = BaseLayoutProps & {
     affiliateLink?: string;
   };
 };
+
+export const Post = z.object({
+  title: z.string(),
+  description: z.string(),
+  image: z
+    .object({
+      url: z.string(),
+      alt: z.string(),
+    })
+    .optional(),
+  pubDate: z.date(),
+  author: z.string(),
+  tags: z.array(z.string()),
+  affiliateLink: z.string().optional(),
+});
+
+export type Post = z.infer<typeof Post>;

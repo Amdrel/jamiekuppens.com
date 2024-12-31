@@ -14,6 +14,6 @@ export function formatDate(date: string): string {
 /**
  * Extracts the date portion from an ISO 8601 datetime.
  */
-export function datetimeToDate(datetime: string): string {
-  return datetime.split("T")[0];
+export function datetimeToDate(datetime: Date | string): string {
+  return `${datetime}`.split("T")[0];
 }

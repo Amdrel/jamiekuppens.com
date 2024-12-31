@@ -1,5 +1,17 @@
-import type { PostLayoutProps } from "../types";
+import { getCollection } from "astro:content";
 
-export function getPosts(): Record<string, PostLayoutProps> {
-  return import.meta.glob("../pages/posts/*.mdx", { eager: true });
+/**
+ * Return a collection of all blog posts on the site with no filters.
+ */
+export async function getPosts() {
+  return getCollection("posts");
+}
+
+/**
+ * Return a collection of internal blog posts only.
+ */
+export async function getInternalPosts() {
+  return (await getCollection("posts")).filter(
+    (post) => !post.data.affiliateLink,
+  );
 }

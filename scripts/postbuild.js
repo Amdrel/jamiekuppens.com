@@ -1,25 +1,9 @@
-import fs from "fs";
-import { readdir } from "fs/promises";
+import fs, { readdir } from "fs/promises";
 import matter from "gray-matter";
 import path from "path";
 
-const SRC_POSTS_DIR = "./src/pages/posts";
-const DIST_POSTS_DIR = "./dist/posts";
+const SRC_POSTS_DIR = "./src/content/posts";
 const REDIRECTS_PATH = "./redirects.json";
-
-/**
- * Remove the external posts from the filesystem.
- *
- * @param {Set<string>} externalPosts
- */
-async function removeExternalPosts(externalPosts) {
-  externalPosts.forEach((slug) => {
-    const externalPostPath = path.join(DIST_POSTS_DIR, slug);
-    if (fs.existsSync(externalPostPath)) {
-      fs.rmSync(externalPostPath, { recursive: true, force: true });
-    }
-  });
-}
 
 /**
  * Create a redirects.json file for our middleware with all external links.
@@ -29,41 +13,41 @@ async function removeExternalPosts(externalPosts) {
 async function generateRedirectsFile(externalPosts) {
   const redirects = {};
 
-  externalPosts.forEach((slug) => {
+  for (const slug of externalPosts) {
     const contentPath = path.join(SRC_POSTS_DIR, slug);
-    const content = fs.readFileSync(`${contentPath}.mdx`, { encoding: "utf8" });
+    const content = await fs.readFile(`${contentPath}.mdx`, {
+      encoding: "utf8",
+    });
     const frontmatter = matter(content).data;
 
     redirects[`/posts/${slug}`] = frontmatter.affiliateLink;
-  });
+  }
 
-  fs.writeFileSync(REDIRECTS_PATH, JSON.stringify(redirects, null, 2));
+  await fs.writeFile(REDIRECTS_PATH, JSON.stringify(redirects, null, 2));
 }
 
 /**
- * Remove external posts from the build, create dynamic redirects for use by
- * the middleware, and modify the sitemap to hide external content.
- *
- * The reason why I do this instead of using 'getStaticPaths' is because I was
- * unable to find a way to conditionally render MDX files that are imported from
- * another path outside of 'pages'. I prefer to store external URLs in
- * frontmatter in stubbed posts alongside real posts, so this was the next best
- * solution that I could think of.
+ * Create dynamic redirects for use by the middleware.
  */
 (async () => {
-  const externalPosts = new Set(
-    (await readdir(SRC_POSTS_DIR, { withFileTypes: true }))
-      .filter((dirent) => dirent.isFile())
-      .filter((dirent) => {
-        const contentPath = path.join(SRC_POSTS_DIR, dirent.name);
-        const content = fs.readFileSync(contentPath, { encoding: "utf8" });
-        const frontmatter = matter(content).data;
-
-        return !!frontmatter.affiliateLink;
-      })
-      .map((dirent) => dirent.name.slice(0, -4)),
+  const posts = (await readdir(SRC_POSTS_DIR, { withFileTypes: true })).filter(
+    (dirent) => dirent.isFile(),
   );
 
-  await removeExternalPosts(externalPosts);
+  const postContents = await Promise.all(
+    posts.map((dirent) =>
+      fs
+        .readFile(path.join(SRC_POSTS_DIR, dirent.name), { encoding: "utf8" })
+        .then((content) => ({ dirent, content })),
+    ),
+  );
+
+  // Determine if a post is external by looking at its frontmatter.
+  const externalPosts = new Set(
+    postContents
+      .filter(({ content }) => !!matter(content).data.affiliateLink)
+      .map(({ dirent }) => dirent.name.slice(0, -4)),
+  );
+
   await generateRedirectsFile(externalPosts);
 })();

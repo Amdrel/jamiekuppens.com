@@ -1,17 +1,19 @@
 ---
 import PostCard from "./post-card.astro";
 import { getPosts } from "../lib/posts";
-import type { PostLayoutProps } from "../types";
+import type { Post } from "../types";
 
 export type PostListProps = {
   limit?: number;
-  posts?: PostLayoutProps[];
+  posts?: { slug: string; data: Post }[];
 };
 
 let { limit, posts } = Astro.props as PostListProps;
 
 if (!posts) {
-  posts = Object.values(getPosts());
+  posts = Object.values(
+    (await getPosts()).map((post) => ({ slug: post.slug, data: post.data })),
+  );
 }
 ---
 
@@ -20,19 +22,19 @@ if (!posts) {
     posts
       .sort(
         (a, b) =>
-          new Date(b.frontmatter.pubDate).getTime() -
-          new Date(a.frontmatter.pubDate).getTime(),
+          new Date(b.data.pubDate).getTime() -
+          new Date(a.data.pubDate).getTime(),
       )
       .slice(0, limit)
       .map((post) => (
         <li class="contents">
           <PostCard
-            title={post.frontmatter.title}
-            url={post.frontmatter.affiliateLink ?? post.url}
-            description={post.frontmatter.description}
-            date={post.frontmatter.pubDate}
-            tags={post.frontmatter.tags}
-            external={!!post.frontmatter.affiliateLink}
+            title={post.data.title}
+            url={post.data.affiliateLink ?? `/posts/${post.slug}`}
+            description={post.data.description}
+            date={post.data.pubDate}
+            tags={post.data.tags}
+            external={!!post.data.affiliateLink}
           />
         </li>
       ))

@@ -3,11 +3,11 @@ import { getPosts } from "./posts";
 /**
  * Finds all unique tags used in all blog content on the site.
  */
-export function getUniqueTags(tags?: string[]): Set<string> {
+export async function getUniqueTags(tags?: string[]) {
   return new Set(
     tags ??
-      Object.values(getPosts())
-        .map((post) => post.frontmatter.tags)
+      Object.values(await getPosts())
+        .map((post) => post.data.tags)
         .flat(),
   );
 }
@@ -15,14 +15,14 @@ export function getUniqueTags(tags?: string[]): Set<string> {
 /**
  * Returns all tags sorted alphanumerically.
  */
-export function getSortedTags(tags?: string[]) {
-  return [...getUniqueTags(tags)].sort((a, b) => a.localeCompare(b));
+export async function getSortedTags(tags?: string[]) {
+  return [...(await getUniqueTags(tags))].sort((a, b) => a.localeCompare(b));
 }
 
 /**
  * Map tag slugs to human-readable tag names.
  */
-export function getTagName(tag: string): string {
+export function getTagName(tag: string) {
   switch (tag) {
     case "app-engine":
       return "App Engine";

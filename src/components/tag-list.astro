@@ -11,7 +11,7 @@ const { tags, nonInteractive } = Astro.props as TagListProps;
 
 <ul class="mx-0 flex list-none flex-wrap gap-2">
   {
-    getSortedTags(tags).map((tag) => (
+    (await getSortedTags(tags)).map((tag) => (
       <li class="">
         {nonInteractive ? (
           <div class="inline-block rounded-xl bg-green-950 px-2 py-1 text-green-500">

@@ -63,9 +63,9 @@ const schema: WithContext<BlogPosting> = {
   redirectUrl={frontmatter.affiliateLink ?? null}
   {...Astro.props}
 >
-  <h1 class="my-0 mb-2">{frontmatter.title}</h1>
+  <h1 class="my-0 mb-1">{frontmatter.title}</h1>
 
-  <time datetime={datetimeToDate(frontmatter.pubDate)} class="my-1"
+  <time datetime={publishedDate} class="my-1"
     >{formatDate(frontmatter.pubDate)}</time
   >
   <div class="my-3">
