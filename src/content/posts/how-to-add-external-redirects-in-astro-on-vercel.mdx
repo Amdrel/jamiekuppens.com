@@ -1,0 +1,158 @@
+---
+title: "How to Add External Redirects to Your Astro Site on Vercel"
+pubDate: 2025-01-04
+description: "Astro supports redirects out of the box when using an adapter, but only redirects to pages on the same site that Astro knows to exist. Although the Cloudflare adapter does support external redirects, supporting them is considered a \"non-goal\" according to the Astro roadmap. There does seem to be interest in adding external redirects to the Vercel adapter as well, but as of now this doesn't work."
+author: "Jamie Kuppens"
+tags: ["astro", "javascript", "serverless", "vercel"]
+---
+
+Astro [supports redirects](https://docs.astro.build/en/guides/routing/#redirects) out of the box
+when using an adapter, but only redirects to pages on the same site that Astro knows to exist.
+Although the Cloudflare adapter does support external redirects, supporting them is considered a
+"non-goal" according to the [Astro
+roadmap](https://github.com/withastro/roadmap/blob/main/proposals/0041-redirects.md#non-goals).
+There does seem to be interest in adding external redirects to the Vercel adapter as well, but as of
+now this doesn't work.
+
+It's unfortunate that this isn't supported out of the box as some people may need redirects to keep
+old links from breaking. For now the only way to implement redirects is to define them in your
+`vercel.json` file, or by using [Edge Middleware](https://vercel.com/docs/functions/edge-middleware)
+if you need to do the redirects more dynamically. I'll show you how to do this with Vercel in this
+article, however these concepts could be applied to other serverless providers as well even if the
+implementation will differ.
+
+## Defining redirects in your configuration
+
+For most cases you can define your redirects in `vercel.json`. Redirects defined here can use
+patterns so you don't have to list every possible URL that you need to redirect.
+
+Here is an example of how a redirect to another website might look:
+
+```json
+{
+  ...
+
+  "redirects": [
+    {
+      "source": "/posts/:path(.*)",
+      "destination": "https://<SOME_OTHER_DOMAIN>.com/posts/:path",
+      "permanent": true
+    },
+}
+```
+
+However, if you have a more complicated situation where you need to conditionally redirect content
+off of some other criteria other than the URL alone, then you will need middleware. In my case I had
+to use middleware as I have some old search engine entries pointing to the wrong site (this one)
+that need to be cleaned up.
+
+## Defining redirects using Edge Middleware
+
+To solve this problem I created stubbed out articles in my Astro content collection for each piece
+of external content that I have. Each of these has a special key in its frontmatter with the value
+being the fully-qualified URL of the article on the other site. You could call it something like
+`externalLink`. This link is used both for overriding the URL in my blog post list to point to the
+external site and also setting up the redirect so that old links go to the right place.
+
+Here is the middleware that I used to accomplish this:
+
+```ts
+import redirects from "./redirects.json";
+
+export const config = {
+  matcher: "/posts/:slug*",
+};
+
+export default function middleware(request: Request) {
+  const url = new URL(request.url);
+
+  for (const [path, redirectUrl] of Object.entries(redirects)) {
+    if (url.pathname === path || url.pathname === path + "/") {
+      return Response.redirect(redirectUrl, 308); // 308 is a permanent redirect
+    }
+  }
+}
+```
+
+You will notice that I'm importing redirects from a static file. The `redirects.json` is generated
+at build time using a `postbuild` npm script which runs automatically after every build. I also
+limit this middleware to only running against blog URLs since it doesn't need to run on everything
+else, though this is optional.
+
+The `postbuild` script needs to identify which URLs belong to external content and which ones do
+not by reading the frontmatter. I do this using the `gray-matter` library:
+
+```js
+// @ts-check
+import fs, { readdir } from "fs/promises";
+import matter from "gray-matter";
+import path from "path";
+
+const SRC_POSTS_DIR = "./src/content/posts";
+const REDIRECTS_PATH = "./redirects.json";
+
+/**
+ * Create a redirects.json file for the middleware with all external links.
+ */
+async function generateRedirectsFile() {
+  /** @type {Record<string, string>} */
+  const redirects = {};
+
+  // Gather a list of all files in src/content/posts into an array.
+  const posts = (await readdir(SRC_POSTS_DIR, { withFileTypes: true })).filter(
+    (dirent) => dirent.isFile(),
+  );
+
+  for (const post of posts) {
+    const contentPath = path.join(post.path, post.name);
+    const content = await fs.readFile(contentPath, { encoding: "utf8" });
+    const frontmatter = matter(content).data;
+
+    if (frontmatter.externalLink) {
+      // Remove the .mdx extension.
+      const slug = post.name.slice(0, -4);
+
+      // Create the redirect entry in the JSON file.
+      redirects[`/posts/${slug}`] = frontmatter.externalLink;
+    }
+  }
+
+  // Save the JSON file to the project root.
+  await fs.writeFile(REDIRECTS_PATH, JSON.stringify(redirects, null, 2));
+}
+
+await generateRedirectsFile();
+```
+
+Don't forget to modify your `package.json` with the `postbuild` script entry:
+
+```json
+{
+  "name": "jamiekuppens.com",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "preview": "astro preview",
+    "astro": "astro",
+    "build": "astro build",
+    "postbuild": "node ./scripts/postbuild.js"
+  },
+
+  ...
+```
+
+With that done, redirects should now work once the site gets deployed. Since this is using Vercel
+this won't work locally unless the Vercel adapter is being used.
+
+## In Summary
+
+Although Astro doesn't support external redirects out of the box, this can be worked around by using
+the features provided by your deployment platform of choice. I doubt many people have to do
+redirects like I do and a simple rule in `vercel.json` would suffice, but for more complicated
+scenarios Edge Middleware is a powerful tool to have at your disposal.
+
+You could also use middleware to configure redirects defined outside of your project using another
+data source like [Edge Config](https://vercel.com/docs/storage/edge-config), which would allow you
+to change redirects without having to rebuild your site.
+
+Anyhow, I hope this article was helpful 😊
