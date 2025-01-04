@@ -30,14 +30,15 @@ Here is an example of how a redirect to another website might look:
 
 ```json
 {
-  ...
-
   "redirects": [
     {
       "source": "/posts/:path(.*)",
       "destination": "https://<SOME_OTHER_DOMAIN>.com/posts/:path",
       "permanent": true
-    },
+    }
+  ],
+
+  ...
 }
 ```
 
