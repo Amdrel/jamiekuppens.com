@@ -54,6 +54,8 @@ export function getTagName(tag: string) {
       return "Shadow DOM";
     case "typescript":
       return "TypeScript";
+    case "ci":
+      return "CI / CD";
     default:
       return tag
         .replaceAll("-", " ")
