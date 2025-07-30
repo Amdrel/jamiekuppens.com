@@ -1,7 +1,7 @@
 export const siteName = "Jamie Kuppens";
 
 export const siteDescription =
-  "Jamie Kuppens is a software engineer with over 10 years of experience building for the web.";
+  "I am a software developer with over 10 years of experience building for the web.";
 
 export const navLinks = [
   { url: "/projects", label: "Projects" },
