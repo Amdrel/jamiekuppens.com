@@ -22,7 +22,7 @@ export const contactLinks = [
     iconUrl: "/images/icons/bluesky.svg",
   },
   {
-    url: "mailto://contact@amdrel.net",
+    url: "mailto:contact@amdrel.net",
     label: "contact@amdrel.net",
     iconUrl: "/images/icons/email.svg",
   },
