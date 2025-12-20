@@ -1,6 +1,6 @@
 {
   "name": "jamiekuppens.com",
-  "type": "module",
+  "type": "nodenext",
   "version": "0.0.1",
   "engines": {
     "node": ">=24.0.0",
@@ -12,7 +12,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier . --write",
-    "postbuild": "node ./scripts/postbuild.js"
+    "postbuild": "node ./scripts/postbuild.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.2.3",

@@ -1,4 +1,4 @@
-import redirects from "./redirects.json";
+import redirects from "./redirects.json" with { type: "json" };
 
 export const config = {
   matcher: "/posts/:slug*",
