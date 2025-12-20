@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 @layer base {
   html {
@@ -100,7 +98,7 @@
   }
 
   figcaption {
-    @apply my-1.5 ml-1.5 italic text-gray-400;
+    @apply my-1.5 ml-1.5 text-gray-400 italic;
   }
 
   @keyframes slideUp {
@@ -158,11 +156,11 @@
   /* Custom rulsets for Astro-generated classes */
 
   .astro-code {
-    @apply relative bg-gray-950 !important;
+    @apply relative bg-gray-950;
   }
 
   .astro-code button {
-    @apply absolute right-3 top-3 size-6 bg-cover bg-no-repeat contain-content;
+    @apply absolute top-3 right-3 size-6 bg-cover bg-no-repeat contain-content;
   }
 
   .astro-code .line {

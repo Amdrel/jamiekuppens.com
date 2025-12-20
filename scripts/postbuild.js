@@ -18,7 +18,7 @@ async function generateRedirectsFile() {
   );
 
   for (const post of posts) {
-    const contentPath = path.join(post.path, post.name);
+    const contentPath = path.join(post.parentPath, post.name);
     const content = await fs.readFile(contentPath, { encoding: "utf8" });
     const frontmatter = matter(content).data;
 
