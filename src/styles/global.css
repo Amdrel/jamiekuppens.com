@@ -33,7 +33,11 @@
   }
 
   main ul {
-    @apply ml-4 list-disc;
+    @apply ml-4 list-disc text-gray-400;
+  }
+
+  main li {
+    @apply my-1;
   }
 
   main img {
