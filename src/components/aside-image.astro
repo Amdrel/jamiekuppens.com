@@ -1,0 +1,26 @@
+---
+import Image from "astro/components/Image.astro";
+
+export interface AsideImageProps {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  direction?: "left" | "right";
+}
+
+const { src, alt, width, height, direction } = Astro.props as AsideImageProps;
+
+const baseClasses =
+  "mx-auto w-full max-w-md xl:mb-8 xl:inline-block xl:max-w-xs";
+const directionClasses =
+  direction === "left" ? "xl:float-left xl:mr-8" : "xl:float-right xl:ml-8";
+---
+
+<Image
+  class={`${baseClasses} ${directionClasses}`}
+  src={src}
+  alt={alt}
+  width={width}
+  height={height}
+/>
