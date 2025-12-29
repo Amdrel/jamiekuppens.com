@@ -4,7 +4,7 @@ export const siteDescription =
   "I am a software developer with over 10 years of experience building for the web.";
 
 export const navLinks = [
-  { url: "/projects", label: "Projects" },
+  { url: "/open-source", label: "Open Source" },
   { url: "/experience", label: "Experience" },
   { url: "/contact", label: "Contact" },
   { url: "/posts", label: "Blog" },

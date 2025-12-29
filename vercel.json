@@ -52,6 +52,16 @@
       "source": "/(about\\/?.*)",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/projects",
+      "destination": "/open-source",
+      "permanent": true
+    },
+    {
+      "source": "/tags/affiliate",
+      "destination": "/tags/external",
+      "permanent": true
     }
   ]
 }
