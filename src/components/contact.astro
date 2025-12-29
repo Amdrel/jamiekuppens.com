@@ -16,7 +16,7 @@ const { links } = Astro.props as NavigationProps;
   {
     links.map((link) => (
       <li>
-        <a href={link.url}>
+        <a href={link.url} target="_blank" rel="noopener">
           <Image
             class="h-6 w-6 invert"
             src={link.iconUrl}
@@ -33,7 +33,7 @@ const { links } = Astro.props as NavigationProps;
 </ul>
 
 <div class="mt-4 text-xs text-gray-400">
-  <p class="my-0 text-sm">Powered by Astro</p>
-  <p class="my-0 text-sm">© 2025 Jamie Kuppens. CC BY-SA 3.0.</p>
+  <p class="my-0 text-sm">Powered by Astro and Vercel</p>
+  <p class="my-0 text-sm">© 2016-2026 Jamie Kuppens. CC BY-SA 3.0.</p>
   <p class="my-0 text-sm">Externally linked content is not owned by me.</p>
 </div>
