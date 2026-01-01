@@ -5,6 +5,7 @@ export type NavigationProps = {
   links: {
     url: string;
     label: string;
+    mobile?: boolean;
   }[];
 };
 
@@ -34,7 +35,7 @@ const { links } = Astro.props as NavigationProps;
       links.map((link) => (
         <li>
           <a
-            class="flex items-center justify-center py-2 text-lg text-gray-200 hover:text-gray-50 focus:text-gray-50 lg:justify-normal lg:text-gray-300 lg:before:inline-block lg:hover:before:bg-gray-50 lg:focus:before:bg-gray-50"
+            class=`flex items-center justify-center py-2 text-lg text-gray-200 hover:text-gray-50 focus:text-gray-50 lg:justify-normal lg:text-gray-300 lg:before:inline-block lg:hover:before:bg-gray-50 lg:focus:before:bg-gray-50 lg:block ${link.mobile === false ? 'hidden' : ''}`
             href={link.url}
           >
             {link.label}

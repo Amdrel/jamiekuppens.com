@@ -7,7 +7,7 @@ export const navLinks = [
   { url: "/open-source", label: "Open Source" },
   { url: "/experience", label: "Experience" },
   { url: "/contact", label: "Contact" },
-  { url: "/posts", label: "Blog" },
+  { url: "/posts", label: "Blog", mobile: false },
 ];
 
 export const contactLinks = [
