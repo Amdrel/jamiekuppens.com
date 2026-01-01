@@ -8,7 +8,7 @@ import AsideImage from "../components/aside-image.astro";
 
 # Open Source and Personal Projects
 
-This is a list of notable open source and personal projects I've worked on over the years. Most of
+This is a list of notable open source, demos, and personal projects I've worked on over the years. Most of
 my personal projects are one-offs and aren't actively maintained. This list is non-comprehensive and
 is a showcase of the projects I consider the most interesting and relevant.
 
@@ -19,12 +19,36 @@ is a showcase of the projects I consider the most interesting and relevant.
 I've made several contributions to Wikimedia projects, primarily to extensions but also other
 related community projects. Some notable contributions include the following:
 
-- Helped implement multi-question surveys with conditional flow and improved audience targeting.
+- Helped implement multi-question surveys for the QuickSurveys extension with conditional flow and improved audience targeting.
 - Streamlined the user vanishing process for both users and stewards.
-- Submitted patches to several extensions to make them more compatible with temporary accounts.
+- Contributed patches to several extensions to make them compatible with temporary accounts.
 - Extended SecurePoll to support multiple tallies for more transparency if a tally must be redone.
 - Contributed several features and bug fixes to Video2Commons.
 - Implemented performance improvements and created management scripts for Wikilink.
+
+## Demos
+
+### Ginger
+
+<AsideImage
+  src="/images/content/ginger.webp"
+  alt="A picture of an animated 3D head of a woman with an open mouth next to a control panel that
+  allows the user to manipulate her facial expressions."
+  width="512"
+  height="384"
+/>
+
+A _very_ long time ago when I joined Stickman Ventures they had an early WebGL demo hosted on
+[Chrome Experiments](https://experiments.withgoogle.com/ginger-facial-rigging) named
+[Ginger](https://github.com/Amdrel/ginger) that utilized morph targets with
+[three.js](https://threejs.org/). I didn't work on the initial implementation, however at some point
+we determined that we wanted to open source the demo. Before doing so it was determined that we
+would modernize it and make some performance improvements, and so I was tasked to
+help with that.
+
+Ginger is currently not hosted anywhere, but I might fix that soon considering that the source code
+is open source. It's licensed under the Apache-2.0 license and the model assets are owned by [David
+Steele](https://bsky.app/profile/bootstrapbuckaroo.bsky.social) (CC BY-NC 4.0).
 
 ## Personal Projects
 
