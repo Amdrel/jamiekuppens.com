@@ -162,11 +162,11 @@
   }
 
   .zoomed {
-    @apply fixed top-0 left-0 z-10 box-border flex h-full max-h-full w-full max-w-full cursor-zoom-out flex-col items-center justify-center bg-black/90 p-24;
+    @apply fixed top-0 left-0 z-10 box-border flex h-full max-h-full w-full max-w-full cursor-zoom-out flex-col items-center justify-center bg-black/90 p-4;
   }
 
   .zoomed img {
-    @apply max-h-4/5 max-w-fit cursor-zoom-out rounded-none border-0;
+    @apply m-4 max-h-4/5 max-w-fit cursor-zoom-out rounded-none border-0;
   }
 
   .zoomed figcaption {
