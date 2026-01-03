@@ -88,5 +88,31 @@ const websiteSchema: WithContext<WebSite> = {
         <Contact links={contactLinks} />
       </footer>
     </div>
+
+    <script>
+      let zoomedFigure = null;
+
+      document.querySelectorAll("figure").forEach((figure) => {
+        figure.addEventListener("click", (event) => {
+          if (!event.target) return;
+
+          // Disable on mobile.
+          if (window.innerWidth <= 1024) return;
+
+          // Don't close the modal if a user is interacting with the text.
+          if (event.target.tagName === "FIGCAPTION") return;
+
+          if (!zoomedFigure) {
+            zoomedFigure = figure;
+            zoomedFigure.classList.add("zoomed");
+            document.documentElement.style.overflow = "hidden";
+          } else {
+            zoomedFigure.classList.remove("zoomed");
+            zoomedFigure = null;
+            document.documentElement.style.overflow = "";
+          }
+        });
+      });
+    </script>
   </body>
 </html>

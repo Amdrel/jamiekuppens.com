@@ -44,6 +44,10 @@
     @apply rounded-2xl border-2 border-slate-900 bg-clip-padding;
   }
 
+  main figure img {
+    @apply cursor-zoom-in;
+  }
+
   table {
     @apply mx-auto w-full bg-gray-900;
   }
@@ -155,6 +159,18 @@
     animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
     animation-fill-mode: both;
     animation-direction: alternate;
+  }
+
+  .zoomed {
+    @apply fixed top-0 left-0 z-10 box-border flex h-full max-h-full w-full max-w-full cursor-zoom-out flex-col items-center justify-center bg-black/90 p-24;
+  }
+
+  .zoomed img {
+    @apply max-h-4/5 max-w-fit cursor-zoom-out rounded-none border-0;
+  }
+
+  .zoomed figcaption {
+    @apply cursor-text;
   }
 
   /* Custom rulsets for Astro-generated classes */
